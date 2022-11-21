@@ -24,10 +24,12 @@
         :rules="[{ required: true, message: '请填写收货地址' }]" />
 
 
+      <div style="margin: 16px; margin-top: 50px;">
+        <van-button round block type="info" color="#1baeae" native-type="submit" >保存</van-button>
+      </div>
 
       <div style="margin: 16px; margin-top: 50px;">
-        <!-- <div class="link-register" @click="toggle('register')">立即注册</div> -->
-        <van-button round block type="info" color="#1baeae" native-type="submit">保存</van-button>
+        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">删除</van-button>
       </div>
     </van-form>
 
@@ -57,22 +59,13 @@ export default {
 
       username: '',
       telphone: '',
-      address: ''
+      address: '',
+      bnt_delet:false
 
     }
   },
   async mounted() {
-    //   // 省市区列表构造
-    //   let _province_list = {}
-
-    //   tdist.getLev1().forEach(p => {
-    //     _province_list[p.id] = p.text
-
-    //   })
-    //   this.areaList.province_list = _province_list
-
-
-    //   //http://localhost:8080/#/address-edit?type=edit&addressId=5&from=mine 
+    //http://localhost:8080/#/address-edit?type=edit&addressId=5&from=mine
     const { addressId, type, from } = this.$route.query   //获取地址后面的参数
     this.addressId = addressId
     this.type = type
@@ -81,30 +74,23 @@ export default {
     //编辑地址
     if (type == 'edit') {
       const { data: addressDetail } = await getAddressDetail(addressId)
-      let _areaCode = ''
-      // const province = tdist.getLev1()
-      // Object.entries(this.areaList.county_list).forEach(([id, text]) => {
-      //   // 先找出当前对应的区
-      //   if (text == addressDetail.regionName) {
-      //     // 找到区对应的几个省份
-      //     const provinceIndex = province.findIndex(item => item.id.substr(0, 2) == id.substr(0, 2))
-      //     // 找到区对应的几个市区
-      //     const cityItem = Object.entries(this.areaList.city_list).filter(([cityId, cityName]) => cityId.substr(0, 4) == id.substr(0, 4))[0]
-      //     // 对比找到的省份和接口返回的省份是否相等，因为有一些区会重名
-      //     if (province[provinceIndex].text == addressDetail.provinceName && cityItem[1] == addressDetail.cityName) {
-      //       _areaCode = id
-      //     }
-      //   }
-      // })
+
+      console.log(addressDetail)
       this.addressInfo = {
         id: addressDetail.addressId,
         name: addressDetail.userName,
         tel: addressDetail.userPhone,
         province: addressDetail.provinceName,
         addressDetail: addressDetail.detailAddress,
-        areaCode: _areaCode,
         isDefault: !!addressDetail.defaultFlag
+
       }
+
+      //數據回顯
+      this.username = this.addressInfo.name
+      this.telphone = this.addressInfo.tel
+      this.address  =this.addressInfo.addressDetail
+      this.bnt_delet =true  //显示删除按钮
     }
   },
 
@@ -112,15 +98,9 @@ export default {
 
 
     async onSubmit(content) {
-
-      console.log(content.username, content.telphone, content.address)
-
       const params = {
         userName: content.username,
         userPhone: content.telphone,
-        // provinceName: content.province,
-        // cityName: content.city,
-        // regionName: content.county,
         detailAddress: content.address,
         defaultFlag: 1,
       }
@@ -142,26 +122,26 @@ export default {
     },
 
 
-    async onSave(content) {
-      const params = {
-        userName: content.name,
-        userPhone: content.tel,
-        provinceName: content.province,
-        cityName: content.city,
-        regionName: content.county,
-        detailAddress: content.addressDetail,
-        defaultFlag: content.isDefault ? 1 : 0,
-      }
-      if (this.type == 'edit') {
-        params['addressId'] = this.addressId
-      }
-      const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
-      Toast('保存成功')
-      setTimeout(() => {
-        this.$router.push({ path: `address?from=${this.from}` })
-      }, 1000)
-
-    },
+    // async onSave(content) {
+    //   const params = {
+    //     userName: content.name,
+    //     userPhone: content.tel,
+    //     provinceName: content.province,
+    //     cityName: content.city,
+    //     regionName: content.county,
+    //     detailAddress: content.addressDetail,
+    //     defaultFlag: content.isDefault ? 1 : 0,
+    //   }
+    //   if (this.type == 'edit') {
+    //     params['addressId'] = this.addressId
+    //   }
+    //   const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
+    //   Toast('保存成功')
+    //   setTimeout(() => {
+    //     this.$router.push({ path: `address?from=${this.from}` })
+    //   }, 1000)
+    //
+    // },
     async onDelete() {
       const { data } = await DeleteAddress(this.addressId)
       Toast('删除成功')
