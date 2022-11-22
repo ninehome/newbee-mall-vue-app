@@ -91,6 +91,7 @@ export default {
       this.telphone = this.addressInfo.tel
       this.address  =this.addressInfo.addressDetail
       this.bnt_delet =true  //显示删除按钮
+      this.default_flag = this.addressInfo.id
     }
   },
 
