@@ -91,7 +91,7 @@ export default {
       this.telphone = this.addressInfo.tel
       this.address  =this.addressInfo.addressDetail
       this.bnt_delet =true  //显示删除按钮
-      this.default_flag = this.addressInfo.id
+      this.addressId = this.addressInfo.id
     }
   },
 
@@ -122,27 +122,6 @@ export default {
 
     },
 
-
-    // async onSave(content) {
-    //   const params = {
-    //     userName: content.name,
-    //     userPhone: content.tel,
-    //     provinceName: content.province,
-    //     cityName: content.city,
-    //     regionName: content.county,
-    //     detailAddress: content.addressDetail,
-    //     defaultFlag: content.isDefault ? 1 : 0,
-    //   }
-    //   if (this.type == 'edit') {
-    //     params['addressId'] = this.addressId
-    //   }
-    //   const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
-    //   Toast('保存成功')
-    //   setTimeout(() => {
-    //     this.$router.push({ path: `address?from=${this.from}` })
-    //   }, 1000)
-    //
-    // },
     async onDelete() {
       const { data } = await DeleteAddress(this.addressId)
       Toast('删除成功')
