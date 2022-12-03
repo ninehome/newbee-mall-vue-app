@@ -16,6 +16,8 @@
         <van-swipe class="my-swipe" indicator-color="#1baeae">
           <van-swipe-item v-for="(item, index) in detail.goodsCarouselList" :key="index">
             <img :src="prefix(item)" alt="">
+<!--            <img :src="item" alt="">-->
+
           </van-swipe-item>
         </van-swipe>
       </div>
@@ -37,6 +39,8 @@
           <li>常见问题</li>
         </ul>
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
+
+
       </div>
     </div>
     <van-goods-action>
@@ -58,7 +62,8 @@ export default {
     return {
       detail: {
         goodsCarouselList: []
-      }
+      },
+      htmlstr:""
     }
   },
   components: {

@@ -54,8 +54,6 @@ export default {
     },
     async logout() {
       const { resultCode } = await logout()
-
-      console.log(resultCode)
       if (resultCode == 200) {
         setLocal('token', '')
         window.location.href = '/'

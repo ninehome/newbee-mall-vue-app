@@ -12,8 +12,8 @@ import router from "../router";
 // "http://backend-api-01.newbee.ltd/api/v1";
 axios.defaults.baseURL =
   process.env.NODE_ENV == "development"
-    ? "http://localhost:8888/api/v1"
-    : "http://localhost:8888/api/v1";
+    ? "http://localhost:9191/api/v1"
+    : "http://localhost:9191/api/v1";
 axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers["token"] = localStorage.getItem("token") || "";
