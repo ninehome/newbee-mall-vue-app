@@ -34,7 +34,7 @@
         </div>
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">立即注册</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">登录</van-button>
+          <van-button  class="bnt"   round block type="info"  native-type="submit">登录</van-button>
         </div>
       </van-form>
     </div>
@@ -60,7 +60,7 @@
         </div>
         <div style="margin: 16px;">
           <div class="link-login" @click="toggle('login')">已有登录账号</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">注册</van-button>
+          <van-button class="bnt" round block type="info"  native-type="submit">注册</van-button>
         </div>
       </van-form>
     </div>
@@ -133,7 +133,8 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+@import '../common/style/mixin';
   .login {
     .logo {
       width: 120px;
@@ -148,25 +149,34 @@ export default {
       .link-register {
         font-size: 14px;
         margin-bottom: 20px;
-        color: #1989fa;
+        color:  @primary;
         display: inline-block;
+      }
+      .bnt{
+        color:  #ffffff;
+        background-color:  @primary;
       }
     }
     .register {
       .link-login {
         font-size: 14px;
         margin-bottom: 20px;
-        color: #1989fa;
+        color:  @primary;
         display: inline-block;
+      }
+
+      .bnt{
+        color:  #ffffff;
+        background-color:  @primary;
       }
     }
     .verify-bar-area {
       margin-top: 24px;
       .verify-left-bar {
-        border-color: #1baeae;
+        border-color: @primary;
       }
       .verify-move-block {
-        background-color: #1baeae;
+        background-color: @primary;
         color: #fff;
       }
     }
