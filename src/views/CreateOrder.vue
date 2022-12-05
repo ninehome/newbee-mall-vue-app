@@ -79,7 +79,7 @@ export default {
       const { data: list } = await getByCartItemIds({ cartItemIds: _cartItemIds.join(',') })
       const { data: address, resultCode } = addressId ? await getAddressDetail(addressId) : await getDefaultAddress()
 
-      console.log(resultCode)
+      // console.log(resultCode)
       if (resultCode != 200) {
         setTimeout(() => {
           this.$router.push({ path: '/address' })
@@ -114,15 +114,15 @@ export default {
         // console.log(data)
 
 
-        console.log('------>>>0000000000000')
+        // console.log('------>>>0000000000000')
         const { paydata, payCode } = await payOrder({ orderNo: this.orderNo, payType: 1 })  //支付
 
         // if (payCode != 200) {
         //   console.log(paydata.message)
         // }
 
-        console.log('------>>>')
-        console.log(paydata)
+        // console.log('------>>>')
+        // console.log(paydata)
         this.$router.push({ path: '/order' })
 
 

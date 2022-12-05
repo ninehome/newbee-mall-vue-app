@@ -28,8 +28,7 @@ newbee-mall 项目是一套电商系统，包括 newbee-mall 商城系统及 new
 ![wx-gzh](https://newbee-mall.oss-cn-beijing.aliyuncs.com/wx-gzh/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%8D%81%E4%B8%89-%E5%85%AC%E4%BC%97%E5%8F%B7.png)
 
 ## 开发及部署文档
-
-- [向“全栈”进发！大型线上商城实战项目，Spring Boot + Vue 前后端分离版本的商城来了！](https://juejin.im/book/6844733826191589390)
+[向“全栈”进发！大型线上商城实战项目，Spring Boot + Vue 前后端分离版本的商城来了！](https://juejin.im/book/6844733826191589390)
 - [项目须知和课程约定](https://juejin.im/book/6844733826191589390)
 - [全栈开发！你必须要知道的“前后端分离”](https://juejin.im/book/6844733826191589390)
 - [前端模块化的发展历史](https://juejin.im/book/6844733826191589390)
@@ -74,7 +73,7 @@ newbee-mall 项目是一套电商系统，包括 newbee-mall 商城系统及 new
 
 ## 联系作者
 
-> 大家有任何问题或者建议都可以在 [issues](https://github.com/newbee-ltd/newbee-mall-vue-app/issues) 中反馈给我，我会慢慢完善这个项目。
+ 大家有任何问题或者建议都可以在 [issues](https://github.com/newbee-ltd/newbee-mall-vue-app/issues) 中反馈给我，我会慢慢完善这个项目。
 
 - 我的邮箱：2449207463@qq.com
 - QQ技术交流群：932227898 719099151 796794009 552142710
@@ -83,7 +82,7 @@ newbee-mall 项目是一套电商系统，包括 newbee-mall 商城系统及 new
 
 >本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
 
-![](https://newbee-mall.oss-cn-beijing.aliyuncs.com/poster/store/newbee-mall-copyright-02.png)
+
 
 ## 页面展示
 
@@ -92,7 +91,6 @@ newbee-mall 项目是一套电商系统，包括 newbee-mall 商城系统及 new
 - 登录页
 
 ![](static-files/登录.png)
-
 - 首页
 
 ![](static-files/首页.png)

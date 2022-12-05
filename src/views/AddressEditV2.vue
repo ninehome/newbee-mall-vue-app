@@ -75,7 +75,7 @@ export default {
     if (type == 'edit') {
       const { data: addressDetail } = await getAddressDetail(addressId)
 
-      console.log(addressDetail)
+      // console.log(addressDetail)
       this.addressInfo = {
         id: addressDetail.addressId,
         name: addressDetail.userName,
@@ -106,11 +106,11 @@ export default {
         defaultFlag: 1,
       }
       if (this.type == 'edit') {
-        console.log(333333333333)
+        // console.log(333333333333)
         params['addressId'] = this.addressId
       }
 
-      console.log(this.type)
+      // console.log(this.type)
       const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
       Toast('保存成功')
 
