@@ -130,8 +130,8 @@ export default {
     width: 94%;
     margin: 10px;
     height: 115px;
-    background: linear-gradient(90deg, @primary, #51c7c7);
-    box-shadow: 0 2px 5px #269090;
+    background: linear-gradient(90deg, @primary_start,@primary);
+    box-shadow: 0 2px 5px @primary;
     border-radius: 6px;
     margin-top: 10px;
 

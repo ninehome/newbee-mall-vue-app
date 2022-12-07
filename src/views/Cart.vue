@@ -44,7 +44,7 @@
     <div class="empty" v-if="!list.length">
       <van-icon name="smile-o" />
       <div class="title">购物车空空空如也</div>
-      <van-button color="#1baeae" type="primary" @click="goTo" block>前往首页</van-button>
+      <van-button class="bnt" type="primary" @click="goTo" block>前往首页</van-button>
     </div>
     <nav-bar></nav-bar>
   </div>
@@ -248,6 +248,10 @@ export default {
     .title {
       font-size: 16px;
       margin-bottom: 20px;
+    }
+    .bnt{
+      background-color:@primary ;
+      color: #ffffff;
     }
   }
 

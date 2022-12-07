@@ -199,11 +199,11 @@ export default {
   }
 
   .van-goods-action-button--warning {
-    background: linear-gradient(to right, #6bd8d8, @primary)
+    background: linear-gradient(to right, @primary_start, @primary)
   }
 
   .van-goods-action-button--danger {
-    background: linear-gradient(to right, #0dc3c3, #098888)
+    background: linear-gradient(to right, @primary_start, @primary)
   }
 }
 </style>
