@@ -113,12 +113,12 @@ export default {
       });
     },
     async showPayFn(id) {
-      console.log(id)
+      // console.log(id)
       Toast.loading
       const { data, resultCode } = await payOrder({ orderNo: id, payType: 2 })
 
       if (resultCode == 200) {
-        console.log('++++++++++++++++++++++')
+        // console.log('++++++++++++++++++++++')
         this.showPay = false
         // this.init()
         Toast('SUCCESS')

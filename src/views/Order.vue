@@ -66,7 +66,7 @@ export default {
       if (this.page >= data.totalPage) this.finished = true
     },
     onChangeTab(name, title) {
-      console.log(name, "===>", title)
+      // console.log(name, "===>", title)
       this.status = name   //查询数据的type
       this.onRefresh()
     },
