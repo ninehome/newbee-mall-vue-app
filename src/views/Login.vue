@@ -34,7 +34,7 @@
         </div>
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">立即注册</div>
-          <van-button  class="bnt"   round block type="info"  native-type="submit">登录</van-button>
+          <van-button round block type="info" color="#1baeae" native-type="submit">登录</van-button>
         </div>
       </van-form>
     </div>
@@ -60,7 +60,7 @@
         </div>
         <div style="margin: 16px;">
           <div class="link-login" @click="toggle('login')">已有登录账号</div>
-          <van-button class="bnt" round block type="info"  native-type="submit">注册</van-button>
+          <van-button round block type="info" color="#1baeae" native-type="submit">注册</van-button>
         </div>
       </van-form>
     </div>
@@ -133,81 +133,71 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import '../common/style/mixin';
+<style lang="less">
+.login {
+  .logo {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 80px auto 0px;
+  }
+  .login-body {
+    padding: 0 20px;
+  }
   .login {
-    .logo {
-      width: 120px;
-      height: 120px;
-      display: block;
-      margin: 80px auto 0px;
+    .link-register {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #1989fa;
+      display: inline-block;
     }
-    .login-body {
-      padding: 0 20px;
+  }
+  .register {
+    .link-login {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #1989fa;
+      display: inline-block;
     }
-    .login {
-      .link-register {
-        font-size: 14px;
-        margin-bottom: 20px;
-        color:  @primary;
-        display: inline-block;
-      }
-      .bnt{
-        color:  #ffffff;
-        background-color:  @primary;
-      }
+  }
+  .verify-bar-area {
+    margin-top: 24px;
+    .verify-left-bar {
+      border-color: #1baeae;
     }
-    .register {
-      .link-login {
-        font-size: 14px;
-        margin-bottom: 20px;
-        color:  @primary;
-        display: inline-block;
-      }
-
-      .bnt{
-        color:  #ffffff;
-        background-color:  @primary;
-      }
+    .verify-move-block {
+      background-color: #1baeae;
+      color: #fff;
     }
-    .verify-bar-area {
-      margin-top: 24px;
-      .verify-left-bar {
-        border-color: @primary;
-      }
-      .verify-move-block {
-        background-color: @primary;
-        color: #fff;
-      }
+  }
+  .verify {
+    >div {
+      width: 100%;
     }
-    .verify {
-      >div {
-        width: 100%;
+    display: flex;
+    justify-content: center;
+    .cerify-code-panel {
+      margin-top: 16px;
+    }
+    .verify-code {
+      width: 40%!important;
+      float: left!important;
+    }
+    .verify-code-area {
+      float: left!important;
+      width: 54%!important;
+      margin-left: 14px!important;
+      .varify-input-code {
+        width: 90px;
+        height: 38px!important;
+        border: 1px solid #e9e9e9;
+        padding-left: 10px;
+        font-size: 16px;
       }
-      display: flex;
-      justify-content: center;
-      .cerify-code-panel {
-        margin-top: 16px;
-      }
-      .verify-code {
-        width: 40%!important;
-        float: left!important;
-      }
-      .verify-code-area {
-        float: left!important;
-        width: 54%!important;
-        margin-left: 14px!important;
-        .varify-input-code {
-          width: 90px;
-          height: 38px!important;
-          border: 1px solid #e9e9e9;
-          padding-left: 10px;
-          font-size: 16px;
-        }
-        .verify-change-area {
-          line-height: 44px;
-        }
+      .verify-change-area {
+        line-height: 44px;
       }
     }
   }
+}
 </style>
