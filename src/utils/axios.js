@@ -34,9 +34,9 @@ axios.interceptors.response.use((res) => {
     Toast.fail("服务端异常！");
     return Promise.reject(res);
   }
-  if (res.data.resultCode != 200) {
+  if (res.data.resultCode !== 200) {
     if (res.data.message) Toast.fail(res.data.message);
-    if (res.data.resultCode == 416) {
+    if (res.data.resultCode === 416) {
       router.push({ path: "/login" });
     }
     // console.log(res.data);
