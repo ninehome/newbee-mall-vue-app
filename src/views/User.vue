@@ -31,6 +31,12 @@
         <span>点击充值</span>
         <van-icon name="arrow" />
       </li>
+
+      <li @click="goTo('withdrawal')">
+        <span>点击提款</span>
+        <van-icon name="arrow" />
+      </li>
+
       <li @click="goTo('order')">
         <span>我的订单</span>
         <van-icon name="arrow" />
