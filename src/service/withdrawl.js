@@ -10,11 +10,11 @@
 import axios from '../utils/axios'
 
 export function createWithdrawal(params) {
-  return axios.post('/saveOrder', params);
+  return axios.post('/user/withdrawal', params);
 }
 
 export function getBankList(params) {
-  return axios.get('/user/bankList', { params });
+  return axios.post('/user/bankList', { params });
 }
 
 

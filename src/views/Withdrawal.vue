@@ -62,7 +62,7 @@ import {Image, Toast} from 'vant';
 
 import {getUserInfo} from "@/service/user";
 
-import {getBankList} from "@/service/withdrawl";
+import {getBankList ,createWithdrawal} from "@/service/withdrawl";
 export default {
 
   data(){
@@ -77,6 +77,7 @@ export default {
       actions:[],
       select_bank:'',
       withdrawal_money: '',
+      bank_id:''
 
 
     }
@@ -85,8 +86,10 @@ export default {
   async mounted() {
     const { data } = await getUserInfo()
     this.user_money = data.userMoney +" ₽"
-    this.user = data
-    this.actions = [{name: '银行1',subname: '111111111111111'}, {name: '银行2',subname: '222222222222222'}, {name: '银行3', subname: '3333333333'}]
+
+    await this.initBanks()
+
+
 
 
 
@@ -97,46 +100,54 @@ export default {
   },
 
   methods: {
+     //初始化银行
+    async initBanks(){
+      const { data,resultCode } = await  getBankList({ pageNumber: 1 })
 
+      if (resultCode === 200){
+        data.forEach((value, index) => {
+          var c = {name:value.bankName,subname:value.bankNumber}
+          this.actions[index]  = c
+        })
+      }
 
-    async loadData() {
-      const { data, data: { list } } = await getOrderList({ pageNumber: this.page, status: this.status })
-      this.list = this.list.concat(list)
-      this.totalPage = data.totalPage
-      this.loading = false;
-      if (this.page >= data.totalPage) this.finished = true
     },
+
+    // async loadData() {
+    //   const { data, data: { list } } = await createWithdrawal({ pageNumber: this.page, status: this.status })
+    //   this.list = this.list.concat(list)
+    //   this.totalPage = data.totalPage
+    //   this.loading = false;
+    //   if (this.page >= data.totalPage) this.finished = true
+    // },
 
     async onSubmit(content) {
 
       if (this.isChoseBank === false){
+        await this.initBanks()
         this.$toast({
           message:"请选择收款银行账户",
           duration:500
         })
+
+        return
       }
 
+      this.actions.forEach((value, index) => {
 
-      console.log(content.withdrawal_money)
-      // const params = {
-      //   userName: content.username,
-      //   userPhone: content.telphone,
-      //   detailAddress: content.address,
-      //   defaultFlag: 1,
-      // }
-      // if (this.type == 'edit') {
-      //   // console.log(333333333333)
-      //   params['addressId'] = this.addressId
-      // }
-      //
-      // // console.log(this.type)
-      // const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
-      // Toast('保存成功')
-      //
-      //
-      // setTimeout(() => {
-      //   this.$router.push({ path: `address?from=${this.from}` })
-      // }, 1000)
+        if ( this.select_bank  === value.bankNumber){
+          this.bank_id = value.bank_id
+        }
+
+      })
+
+
+
+        console.log(content.withdrawal_money)
+
+        const { data } = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(this.bank_id) })
+        console.log(data)
+
 
 
     },
