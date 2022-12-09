@@ -14,7 +14,7 @@ export function createWithdrawal(params) {
 }
 
 export function getBankList(params) {
-  return axios.get('/bankList', { params });
+  return axios.get('/user/bankList', { params });
 }
 
 

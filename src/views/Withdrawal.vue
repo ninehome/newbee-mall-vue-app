@@ -61,8 +61,8 @@ import sHeader from '@/components/SimpleHeader'
 import {Image, Toast} from 'vant';
 
 import {getUserInfo} from "@/service/user";
-import {addAddress, EditAddress} from "@/service/address";
-import {getOrderList} from "@/service/order";
+
+import {getBankList} from "@/service/withdrawl";
 export default {
 
   data(){
@@ -87,6 +87,9 @@ export default {
     this.user_money = data.userMoney +" ₽"
     this.user = data
     this.actions = [{name: '银行1',subname: '111111111111111'}, {name: '银行2',subname: '222222222222222'}, {name: '银行3', subname: '3333333333'}]
+
+
+
   },
 
   components: {
