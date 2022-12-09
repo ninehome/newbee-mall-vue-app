@@ -28,12 +28,17 @@
     </div>
     <ul class="user-list">
       <li @click="goTo('recharge')">
-        <span>点击充值</span>
+        <span>充值</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('withdrawal')">
-        <span>点击提款</span>
+        <span>提款</span>
+        <van-icon name="arrow" />
+      </li>
+
+      <li @click="goTo('order')">
+        <span>收款账户管理</span>
         <van-icon name="arrow" />
       </li>
 

@@ -175,6 +175,18 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "create-order" */ "../views/Recharge.vue"),
   },
+  {
+    path: "/withdrawal",
+    name: "withdrawal",
+    meta: {
+      index: 2,
+    },
+    component: () =>
+      import(/* webpackChunkName: "create-order" */ "../views/Withdrawal.vue"),
+  },
+
+
+
 ];
 
 const router = new VueRouter({

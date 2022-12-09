@@ -39,6 +39,7 @@
 import sHeader from '@/components/SimpleHeader'
 import { getOrderList } from '../service/order'
 import { prefix } from '@/common/js/utils'
+import {getBankList} from "@/service/withdrawl";
 
 export default {
   data() {
@@ -58,12 +59,13 @@ export default {
     // this.loadData()
   },
   methods: {
-    async loadData() {
-      const { data, data: { list } } = await getOrderList({ pageNumber: this.page, status: this.status })
-      this.list = this.list.concat(list)
-      this.totalPage = data.totalPage
-      this.loading = false;
-      if (this.page >= data.totalPage) this.finished = true
+    //银行卡列表
+    async loadBankData() {
+      const { data, data: { list } } = await getBankList({ pageNumber: this.page, status: this.status })
+      // this.list = this.list.concat(list)
+      // this.totalPage = data.totalPage
+      // this.loading = false;
+      // if (this.page >= data.totalPage) this.finished = true
     },
     onChangeTab(name, title) {
       // console.log(name, "===>", title)
