@@ -103,7 +103,7 @@ export default {
 
       if (resultCode === 200){
 
-        if(data.size()===0){
+        if(data.size ===0){
 
           await this.$router.push({path: `add-bank?type=add&from=${this.from}`})
 
@@ -149,12 +149,21 @@ export default {
         console.log(content.withdrawal_money)
         const { data , resultCode} = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(this.bank_id) })
         if (resultCode === 200){
-          setTimeout(() => {
-            this.$router.push({ path: 'user' })
-          }, 500)
+          this.$toast({
+            message:"Success",
+            duration:500
+          })
+          await this.$router.push({path: 'user'})
 
+        }else {
+          this.$toast({
+            message:"fail",
+            duration:500
+          })
         }
-        console.log(data)
+
+
+
 
 
     },

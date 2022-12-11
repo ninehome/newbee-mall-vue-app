@@ -38,7 +38,7 @@
       </li>
 
       <li @click="goTo('bank')">
-        <span>提现账户管理</span>
+        <span>银行管理</span>
         <van-icon name="arrow" />
       </li>
 
