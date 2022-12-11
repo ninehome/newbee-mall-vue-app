@@ -77,7 +77,8 @@ export default {
       actions:[],
       select_bank:'',
       withdrawal_money: '',
-      bank_id:''
+      bank_id:'',
+      bankList:[]
 
 
     }
@@ -111,6 +112,8 @@ export default {
         }
 
 
+        this.bankList = data
+
         data.forEach((value, index) => {
           var c = {name:value.bankName,subname:value.bankNumber}
           this.actions[index]  = c
@@ -137,17 +140,18 @@ export default {
 
         return
       }
+      console.log( this.select_bank)
 
-      this.actions.forEach((value, index) => {
+      let bankid = 0
+      this.bankList.forEach((value, index) => {
         if ( this.select_bank  === value.bankNumber){
-          this.bank_id = value.bank_id
+          bankid = value.bankId
         }
 
       })
 
 
-        console.log(content.withdrawal_money)
-        const { data , resultCode} = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(this.bank_id) })
+        const { data , resultCode} = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(bankid) })
         if (resultCode === 200){
           this.$toast({
             message:"Success",
