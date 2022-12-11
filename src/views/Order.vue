@@ -56,16 +56,15 @@ export default {
     sHeader
   },
   async mounted() {
-    // this.loadData()
+    this.loadData()
   },
   methods: {
-    //银行卡列表
-    async loadBankData() {
-      const { data, data: { list } } = await getBankList({ pageNumber: this.page, status: this.status })
-      // this.list = this.list.concat(list)
-      // this.totalPage = data.totalPage
-      // this.loading = false;
-      // if (this.page >= data.totalPage) this.finished = true
+    async loadData() {
+      const { data, data: { list } } = await getOrderList({ pageNumber: this.page, status: this.status })
+      this.list = this.list.concat(list)
+      this.totalPage = data.totalPage
+      this.loading = false;
+      if (this.page >= data.totalPage) this.finished = true
     },
     onChangeTab(name, title) {
       // console.log(name, "===>", title)
@@ -116,7 +115,6 @@ export default {
     color: #252525;
     background: #fff;
     border-bottom: 1px solid #dcdcdc;
-
     .order-name {
       font-size: 14px;
     }
@@ -132,7 +130,6 @@ export default {
 
   .order-list-refresh {
     margin-top: 68px;
-
     .van-card__content {
       display: flex;
       flex-direction: column;
@@ -152,7 +149,6 @@ export default {
     .order-item-box {
       margin: 20px 10px;
       background-color: #fff;
-
       .order-item-header {
         padding: 10px 20px 0 20px;
         display: flex;

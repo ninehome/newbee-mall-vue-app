@@ -93,6 +93,22 @@ const routes = [
     component: () => import(/* webpackChunkName: "user" */ "../views/User.vue"),
   },
   {
+    path: "/bank",
+    name: "bank",
+    meta: {
+      index: 1,
+    },
+    component: () => import(/* webpackChunkName: "user" */ "../views/BankView.vue"),
+  },
+  {
+    path: "/add-bank",
+    name: "add-bank",
+    meta: {
+      index: 1,
+    },
+    component: () => import(/* webpackChunkName: "user" */ "../views/AddNewBank.vue"),
+  },
+  {
     path: "/order",
     name: "order",
     meta: {

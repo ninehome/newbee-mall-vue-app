@@ -90,9 +90,6 @@ export default {
     await this.initBanks()
 
 
-
-
-
   },
 
   components: {
@@ -105,6 +102,15 @@ export default {
       const { data,resultCode } = await  getBankList({ pageNumber: 1 })
 
       if (resultCode === 200){
+
+        if(data.size()===0){
+
+          await this.$router.push({path: `add-bank?type=add&from=${this.from}`})
+
+          return
+        }
+
+
         data.forEach((value, index) => {
           var c = {name:value.bankName,subname:value.bankNumber}
           this.actions[index]  = c
@@ -122,7 +128,6 @@ export default {
     // },
 
     async onSubmit(content) {
-
       if (this.isChoseBank === false){
         await this.initBanks()
         this.$toast({
@@ -134,7 +139,6 @@ export default {
       }
 
       this.actions.forEach((value, index) => {
-
         if ( this.select_bank  === value.bankNumber){
           this.bank_id = value.bank_id
         }
@@ -142,12 +146,15 @@ export default {
       })
 
 
-
         console.log(content.withdrawal_money)
+        const { data , resultCode} = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(this.bank_id) })
+        if (resultCode === 200){
+          setTimeout(() => {
+            this.$router.push({ path: 'user' })
+          }, 500)
 
-        const { data } = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(this.bank_id) })
+        }
         console.log(data)
-
 
 
     },
