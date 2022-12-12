@@ -14,7 +14,7 @@
     <div class="order-status">
       <div class="status-item">
         <label>订单状态：</label>
-        <span>{{ detail.orderStatusString }}</span>
+        <span style="color: #1baeae">{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
         <label>订单编号：</label>
@@ -35,7 +35,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>商品金额：</label>
-        <span>¥ {{ detail.totalPrice }}</span>
+        <span style="color: #1baeae">¥ {{ detail.totalPrice }}</span>
       </div>
       <div class="price-item">
         <label>配送方式：</label>
