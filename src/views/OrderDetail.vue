@@ -25,7 +25,7 @@
         <span>{{ detail.createTime }}</span>
       </div>
       <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block
-        @click="handleConfirmOrder(detail.orderNo)">确认</van-button>
+        @click="handleConfirmOrder(detail.orderNo)">确认回购</van-button>
       <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block
         @click="showPayFn(detail.orderNo)">
         去支付</van-button>
