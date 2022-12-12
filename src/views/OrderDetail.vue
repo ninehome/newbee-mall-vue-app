@@ -100,11 +100,11 @@ export default {
     },
     handleConfirmOrder(id) {
       Dialog.confirm({
-        title: '是否确认收货？',
+        title: '是否确认进行回购？',
       }).then(() => {
         confirmOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('确认成功')
+            Toast('回购成功')
             this.init()
           }
         })
