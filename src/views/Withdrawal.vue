@@ -8,7 +8,7 @@
  *-->
 <template>
   <div class="bank-box">
-    <s-header :name="'提款'"></s-header>
+    <s-header :name="'Снятие средств'"></s-header>
 
 
     <div class="div-content">
@@ -16,7 +16,7 @@
 
       <div>
 
-        <van-cell class="status" title="账户余额" size="large"  >
+        <van-cell class="status" title="Остаток на счете" size="large"  >
           <template>
             <p style="margin:0" :style={color:bindcolor}>{{user_money}}</p>
           </template>
@@ -29,15 +29,15 @@
 
       <div>
 
-        <van-cell is-link title="选择收款银行" @click="show = true" :value="select_bank" />
+        <van-cell is-link title="Выберите банк-получатель" @click="show = true" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>
 
 
       <van-form @submit="onSubmit">
-        <van-field v-model="withdrawal_money" name="withdrawal_money" label="提款金额" placeholder="请填写提款金额"
-                   :rules="[{ required: true, message: '请填写用户名' }]" />
+        <van-field v-model="withdrawal_money" name="withdrawal_money" label="Сумма снятия" placeholder="Пожалуйста, заполните сумму снятия"
+                   :rules="[{ required: true, message: 'Пожалуйста, заполните сумму снятия' }]" />
 <!--        <van-field v-model="telphone" name="telphone" label="手机号码" placeholder="请填写手机号码"-->
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
@@ -45,7 +45,7 @@
 
 
         <div style="margin: 16px; margin-top: 50px;">
-          <van-button round block type="info" color="#1baeae" native-type="submit" >提交</van-button>
+          <van-button round block type="info" color="#1baeae" native-type="submit" >Отправить</van-button>
         </div>
 
       </van-form>
@@ -134,7 +134,7 @@ export default {
       if (this.isChoseBank === false){
         await this.initBanks()
         this.$toast({
-          message:"请选择收款银行账户",
+          message:"Пожалуйста, выберите банковский счет получателя",
           duration:500
         })
 

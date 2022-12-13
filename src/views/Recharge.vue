@@ -8,11 +8,11 @@
  *-->
 <template>
   <div class="about">
-    <s-header :name="'充值'"></s-header>
+    <s-header :name="'Пополнить'"></s-header>
 
     <!-- <van-divider :style="{ color: '#1baeae', borderColor: '#1baeae', fontSize: '20px', fontWeight: 500 }">简介
       </van-divider> -->
-    <div class="about-body">请点击选择一个沟通方式与充值客服人员取得联系，并按照客服的指导完成账户充值。</div>
+    <div class="about-body">Пожалуйста, нажмите на один из способов связи, чтобы связаться с клиентской службой пополнения счета и следуйте инструкциям для завершения пополнения счета。</div>
     <!-- <van-divider :style="{ color: '#1baeae', borderColor: '#1baeae', fontSize: '20px', fontWeight: 500 }">开源地址
       </van-divider> -->
 

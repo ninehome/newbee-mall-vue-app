@@ -10,40 +10,40 @@
 
 <template>
   <div class="order-detail-box">
-    <s-header :name="'订单详情'" @callback="close"></s-header>
+    <s-header :name="'Детали заказа'" @callback="close"></s-header>
     <div class="order-status">
       <div class="status-item">
-        <label>订单状态：</label>
+        <label>Статус заказа：</label>
         <span style="color: #1baeae">{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
-        <label>订单编号：</label>
+        <label>Номер заказа：</label>
         <span>{{ detail.orderNo }}</span>
       </div>
       <div class="status-item">
-        <label>下单时间：</label>
+        <label>Время：</label>
         <span>{{ detail.createTime }}</span>
       </div>
       <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block
-        @click="handleConfirmOrder(detail.orderNo)">确认回购</van-button>
+        @click="handleConfirmOrder(detail.orderNo)">Подтверждение выкупа</van-button>
       <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block
         @click="showPayFn(detail.orderNo)">
-        去支付</van-button>
+        Перейти к оплате</van-button>
       <!-- <van-button v-if="!(detail.orderStatus < 0 || detail.orderStatus == 4)" block
         @click="cancelOrder(detail.orderNo)">取消订单</van-button> -->
     </div>
     <div class="order-price">
       <div class="price-item">
-        <label>商品金额：</label>
-        <span style="color: #1baeae">¥ {{ detail.totalPrice }}</span>
+        <label>Сумма товаров：</label>
+        <span style="color: #1baeae">₽ {{ detail.totalPrice }}</span>
       </div>
       <div class="price-item">
-        <label>配送方式：</label>
-        <span>普通快递</span>
+        <label>Способ доставки：</label>
+        <span>DHL Express</span>
       </div>
     </div>
     <van-card v-for="item in detail.newBeeMallOrderItemVOS" :key="item.goodsId" style="background: #fff"
-      :num="item.goodsCount" :price="item.sellingPrice" desc="全场包邮" :title="item.goodsName"
+      :num="item.goodsCount" :price="item.sellingPrice"   currency="₽ " desc="Бесплатная доставка" :title="item.goodsName"
       :thumb="prefix(item.goodsCoverImg)" />
     <!-- <van-popup v-model="showPay" position="bottom" :style="{ height: '24%' }">
       <div :style="{ width: '90%', margin: '0 auto', padding: '20px 0' }">
@@ -76,7 +76,7 @@ export default {
   methods: {
     async init() {
       Toast.loading({
-        message: '加载中...',
+        message: 'Загрузка...',
         forbidClick: true
       });
       const { id } = this.$route.query
@@ -86,11 +86,11 @@ export default {
     },
     cancelOrder(id) {
       Dialog.confirm({
-        title: '确认取消订单？',
+        title: 'Подтвердить отмену заказов？',
       }).then(() => {
         cancelOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('删除成功')
+            Toast('Удалено успешно')
             this.init()
           }
         })
@@ -100,11 +100,11 @@ export default {
     },
     handleConfirmOrder(id) {
       Dialog.confirm({
-        title: '是否确认进行回购？',
+        title: 'Подтверждать ли выкуп？',
       }).then(() => {
         confirmOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('回购成功')
+            Toast('Успех')
             this.init()
           }
         })

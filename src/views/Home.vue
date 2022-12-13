@@ -26,7 +26,7 @@
 
 
 
-      <router-link class="login" tag="span" to="./login" v-if="!isLogin">登录</router-link>
+      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Вход в систему</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
       </router-link>
@@ -43,37 +43,37 @@
     </div>
 
     <div class="good">
-      <header class="good-header">新品上线</header>
+      <header class="good-header">Новые продукты онлайн</header>
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">¥ {{ item.sellingPrice }}</div>
+            <div class="price">₽ {{ item.sellingPrice }}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="good">
-      <header class="good-header">热门商品</header>
+      <header class="good-header">Популярные товары</header>
       <div class="good-box">
         <div class="good-item" v-for="item in hots" :key="item.goodsId" @click="goToDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">¥ {{ item.sellingPrice }}</div>
+            <div class="price">₽ {{ item.sellingPrice }}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="good" :style="{ paddingBottom: '100px' }">
-      <header class="good-header">最新推荐</header>
+      <header class="good-header">Последние рекомендации</header>
       <div class="good-box">
         <div class="good-item" v-for="item in recommends" :key="item.goodsId" @click="goToDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">¥ {{ item.sellingPrice }}</div>
+            <div class="price">₽ {{ item.sellingPrice }}</div>
           </div>
         </div>
       </div>
@@ -100,24 +100,33 @@ export default {
       newGoodses: [],
       recommends: [],
       categoryList: [
+        // {
+        //   name: 'Торговый центр',  //新蜂超市
+        //   imgUrl: '//s.weituibao.com/1583585285461/cs.png',
+        //   categoryId: 100001
+        // },
+        // {
+        //   name: 'Популярная одежда',  //新蜂服饰
+        //   imgUrl: '//s.weituibao.com/1583585285468/fs.png',
+        //   categoryId: 100003
+        // },
         {
-          name: '新蜂超市',
-          imgUrl: '//s.weituibao.com/1583585285461/cs.png',
-          categoryId: 100001
-        }, {
-          name: '新蜂服饰',
-          imgUrl: '//s.weituibao.com/1583585285468/fs.png',
-          categoryId: 100003
-        }, {
-          name: '全球购',
+          name: 'Глобальный',  //全球购
           imgUrl: '//s.weituibao.com/1583585285470/qq.png',
           categoryId: 100002
-        }, {
-          name: '新蜂生鲜',
+        },
+        {
+          name: 'Покупки',  //新蜂超市
+          imgUrl: '//s.weituibao.com/1583585285461/cs.png',
+          categoryId: 100001
+        },
+        {
+          name: 'Удобный',  //新蜂生鲜
           imgUrl: '//s.weituibao.com/1583585285472/sx.png',
           categoryId: 100004
-        }, {
-          name: '新蜂到家',
+        },
+        {
+          name: 'Быстрый',  //新蜂到家
           imgUrl: '//s.weituibao.com/1583585285467/dj.png',
           categoryId: 100005
         }

@@ -25,9 +25,9 @@
         <div class="product-title">
           {{ detail.goodsName }}
         </div>
-        <div class="product-desc">免邮费 顺丰快递</div>
+        <div class="product-desc">Бесплатная доставка</div>
         <div class="product-price">
-          <span>¥{{ detail.sellingPrice }}</span>
+          <span>₽{{ detail.sellingPrice }}</span>
           <!-- <span>库存203</span> -->
         </div>
       </div>
@@ -44,10 +44,10 @@
       </div>
     </div>
     <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text="购物车" />
-      <van-goods-action-button type="warning" @click="addCart" text="加入购物车" />
-      <van-goods-action-button type="danger" @click="goToCart" text="立即购买" />
+      <van-goods-action-icon icon="chat-o" text="   " />
+      <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text=" " />
+      <van-goods-action-button type="warning" @click="addCart" text="Добавить в корзину" />
+      <van-goods-action-button type="danger" @click="goToCart" text="Купить сейчас" />
     </van-goods-action>
   </div>
 </template>
@@ -83,7 +83,7 @@ export default {
     },
     async addCart() {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode == 200) Toast.success('添加成功')
+      if (resultCode == 200) Toast.success('Добавлено успешно')
       this.$store.dispatch('updateCart')
     },
     async goToCart() {

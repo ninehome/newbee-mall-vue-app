@@ -10,7 +10,7 @@
 
 <template>
   <div class="address-edit-box">
-    <s-header :name="`${type == 'add' ? '新增·地址' : '编辑地址'}`"></s-header>
+    <s-header :name="`${type == 'add' ? '新增22地址' : '编辑22地址'}`"></s-header>
     <van-address-edit class="edit" :area-list="areaList" :address-info="addressInfo" :show-delete="type == 'edit'"
       show-set-default show-search-result :search-result="searchResult"
       :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" />
@@ -56,7 +56,7 @@ export default {
     // this.areaList.city_list = _city_list
     // this.areaList.county_list = _county_list
 
-    //http://localhost:8080/#/address-edit?type=edit&addressId=5&from=mine 
+    //http://localhost:8080/#/address-edit?type=edit&addressId=5&from=mine
     const { addressId, type, from } = this.$route.query   //获取地址后面的参数
     this.addressId = addressId
     this.type = type

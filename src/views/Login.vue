@@ -10,31 +10,31 @@
 
 <template>
   <div class="login">
-    <s-header :name="type == 'login' ? '登录' : '注册'" :back="'/home'"></s-header>
+    <s-header :name="type == 'login' ? 'Вход в систему' : 'Регистрация'" :back="'/home'"></s-header>
     <img class="logo" src="//s.weituibao.com/1582958061265/mlogo.png" alt="">
     <div v-if="type == 'login'" class="login-body login">
       <van-form @submit="onSubmit">
         <van-field
           v-model="username"
           name="username"
-          label="用户名"
-          placeholder="用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]"
+          label="Мобильные телефоны"
+          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
+          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
         />
         <van-field
           v-model="password"
           type="password"
           name="password"
-          label="密码"
-          placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          label="Пароль"
+          placeholder="Пароль"
+          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
         <div class="verify">
           <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'" :height="'40px'" :fontSize="'16px'" :type="2"></Verify>
         </div>
         <div style="margin: 16px;">
-          <div class="link-register" @click="toggle('register')">立即注册</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">登录</van-button>
+          <div class="link-register" @click="toggle('register')">Зарегистрируйтесь сейчас</div>
+          <van-button round block type="info" color="#1baeae" native-type="submit">Вход в систему</van-button>
         </div>
       </van-form>
     </div>
@@ -43,24 +43,24 @@
         <van-field
           v-model="username1"
           name="username1"
-          label="用户名"
-          placeholder="用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]"
+          label="Мобильные телефоны"
+          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
+          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
         />
         <van-field
           v-model="password1"
           type="password"
           name="password1"
-          label="密码"
-          placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          label="Пароль"
+          placeholder="Пароль"
+          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
         <div class="verify">
           <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'" :height="'40px'" :fontSize="'16px'" :type="2"></Verify>
         </div>
         <div style="margin: 16px;">
-          <div class="link-login" @click="toggle('login')">已有登录账号</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">注册</van-button>
+          <div class="link-login" @click="toggle('login')">Уже есть логин</div>
+          <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
         </div>
       </van-form>
     </div>
@@ -100,7 +100,7 @@ export default {
     async onSubmit(values) {
       this.dealTriVer()
       if (!this.verify) {
-        Toast.fail('验证码未填或填写错误!')
+        Toast.fail('Проверочный код не заполнен или заполнен неправильно!')
         return
       }
       if (this.type == 'login') {
@@ -115,7 +115,7 @@ export default {
           "loginName": values.username1,
           "password": values.password1
         })
-        Toast.success('注册成功')
+        Toast.success('Регистрация прошла успешно')
         this.type = 'login'
       }
     },

@@ -33,7 +33,7 @@ axios.interceptors.response.use((res) => {
   console.log(res.data);
   console.log("----------end----------");
   if (typeof res.data !== "object") {
-    Toast.fail("服务端异常！");
+    Toast.fail("Ошибка сети, попробуйте еще раз！");
     return Promise.reject(res);
   }
   if (res.data.resultCode !== 200) {

@@ -2,22 +2,19 @@
 
 <template>
   <div class="address-edit-box">
-    <s-header :name="`${type == 'add' ? '新增提现账户' : '编辑提现账户'}`"></s-header>
-    <!-- <van-address-edit class="edit" :area-list="areaList" :address-info="addressInfo" :show-delete="type == 'edit'"
-      show-set-default show-search-result :search-result="searchResult"
-      :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" /> -->
+    <s-header :name="`${type == 'add' ? 'Добавьте новый счет для вывода средств' : 'Редактирование счета для вывода средств'}`"></s-header>
 
     <van-form @submit="onSubmit">
 
-      <van-field v-model="telphone" name="telphone" label="银行名称" placeholder="请填写银行名称"
-        :rules="[{ required: true, message: '请填写银行名称' }]" />
-      <van-field v-model="address" name="address" label="银行账户号" placeholder="请填写银行账户号"
-        :rules="[{ required: true, message: '请填写银行账号' }]" />
-      <van-field v-model="username" name="username" label="账户姓名" placeholder="请填写姓名"
-                 :rules="[{ required: true, message: '请填写用户名' }]" />
+      <van-field v-model="telphone" name="telphone" label="Название банка" placeholder="Пожалуйста, заполните название банка"
+        :rules="[{ required: true, message: 'Пожалуйста, заполните название банка' }]" />
+      <van-field v-model="address" name="address" label="Номер банковского счета" placeholder="Пожалуйста, заполните номер банковского счета"
+        :rules="[{ required: true, message: 'Пожалуйста, заполните номер банковского счета' }]" />
+      <van-field v-model="username" name="username" label="Название счета" placeholder="Пожалуйста, введите ваше имя пользователя"
+                 :rules="[{ required: true, message: 'Пожалуйста, введите ваше имя пользователя' }]" />
 
       <div style="margin: 16px; margin-top: 100px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit"  >保存</van-button>
+        <van-button round block type="info" color="#1baeae" native-type="submit"  >Сохранить</van-button>
       </div>
 
 <!--      <div style="margin: 16px; margin-top: 50px;">-->
@@ -25,7 +22,7 @@
 <!--      </div>-->
     </van-form>
     <div style="margin: 16px; margin-top: 50px;">
-      <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">删除</van-button>
+      <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>
     </div>
 
 
@@ -103,7 +100,6 @@ export default {
       }
 
 
-      console.log(4434444444444)
       const { resultCode } =  this.type == 'add' ?await addAddress(params) :await EditAddress(params)
       // Toast('保存成功')
       console.log(resultCode)

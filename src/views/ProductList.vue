@@ -11,16 +11,16 @@
           <i class="nbicon nbSearch"></i>
           <input type="text" class="search-title" @mouseenter="textEnter" @mouseleave="textLeave" v-model="keyword" />
         </div>
-        <span class="search-btn" @click="getSearch">搜索</span>
+        <span class="search-btn" @click="getSearch">Поискu</span>
       </header>
       <van-tabs type="card" color="#1baeae" @click="changeTab">
-        <van-tab title="推荐" name=""></van-tab>
-        <van-tab title="新品" name="new"></van-tab>
-        <van-tab title="价格" name="price"></van-tab>
+        <van-tab title="Новый" name=""></van-tab>
+        <van-tab title="Популярные" name="new"></van-tab>
+        <van-tab title="Цена" name="price"></van-tab>
       </van-tabs>
     </div>
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh">
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" @offset="300">
+      <van-list v-model="loading" :finished="finished" finished-text="Не более..." @load="onLoad" @offset="300">
         <!-- <p v-for="item in list" :key="item">{{ item }}</p> -->
         <div class="product-item" v-for="(item, index) in productList" :key="index" @click="productDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" />

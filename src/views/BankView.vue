@@ -1,11 +1,11 @@
 
 <template>
   <div class="address-box">
-    <s-header :name="'提现银行账户管理'" :back="'/user'"></s-header>
+    <s-header :name="'Управление банковским счетом для снятия средств'" :back="'/user'"></s-header>
     <div class="address-item">
-      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="默认" @add="onAdd"
+      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
                         @edit="onEdit" @select="select" />
-      <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="默认" @add="onAdd"
+      <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
                         @edit="onEdit" />
     </div>
   </div>

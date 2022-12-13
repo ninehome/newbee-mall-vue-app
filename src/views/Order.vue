@@ -2,29 +2,29 @@
 
 <template>
   <div class="order-box">
-    <s-header :name="'我的订单'" :back="'/user'"></s-header>
+    <s-header :name="'Мои заказы'" :back="'/user'"></s-header>
     <van-tabs @change="onChangeTab" :color="'#1baeae'" :title-active-color="'#1baeae'" class="order-tab"
       v-model="status">
-      <van-tab title="全部" name=''></van-tab>
-      <van-tab title="待付款" name="0"></van-tab>
-      <van-tab title="待回购" name="1"></van-tab>     <!--      <van-tab title="待确认" name="1"></van-tab>-->
+      <van-tab title="Все" name=''></van-tab>
+      <van-tab title="Неоплаченный" name="0"></van-tab>
+      <van-tab title="Не выкуплены" name="1"></van-tab>     <!--      <van-tab title="待确认" name="1"></van-tab>-->
 <!--      <van-tab title="待发货" name="2"></van-tab>-->
 <!--      <van-tab title="已发货" name="3"></van-tab>-->
-      <van-tab title="回购状态" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
+      <van-tab title="Статус выкупа" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
     </van-tabs>
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh">
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
-            <span>订单时间：{{ item.createTime }}</span>
+            <span>Время заказа：{{ item.createTime }}</span>
             <span style="color: #1baeae">{{ item.orderStatusString }}</span>
           </div>
           <van-card v-for="one in item.newBeeMallOrderItemVOS"
                     :key="one.orderId"
                     :num="one.goodsCount"
                     :price="one.sellingPrice"
-
-                     desc="全场包邮" :title="one.goodsName"
+                     currency="₽ "
+                     desc="Бесплатная доставка" :title="one.goodsName"
                     :thumb="prefix(one.goodsCoverImg)" />
         </div>
       </van-list>

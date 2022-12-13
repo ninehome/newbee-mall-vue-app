@@ -5,7 +5,7 @@
 
 <template>
   <div class="create-order">
-    <s-header :name="'商品支付详情'" @callback="deleteLocal"></s-header>
+    <s-header :name="'Детали оплаты товара'" @callback="deleteLocal"></s-header>
     <div class="address-wrap">
       <div class="name" @click="goTo">
         <span>{{ address.userName }} </span>
@@ -25,17 +25,17 @@
             <span>x{{ item.goodsCount }}</span>
           </div>
           <div class="good-btn">
-            <div class="price">¥{{ item.sellingPrice }}</div>
+            <div class="price">₽{{ item.sellingPrice }}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="pay-wrap">
       <div class="price">
-        <span>支付总金额</span>
-        <span>¥{{ total }}</span>
+        <span>Общая сумма платежа</span>
+        <span>₽{{ total }}</span>
       </div>
-      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>确认支付</van-button>
+      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Подтвердить оплату</van-button>
     </div>
     <!-- <van-popup closeable :close-on-click-overlay="false" v-model="showPay" position="bottom" :style="{ height: '30%' }"
       @close="close">
