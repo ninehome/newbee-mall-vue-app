@@ -53,13 +53,20 @@ export default {
     sHeader
   },
   async mounted() {
-    this.loadData()
+    // this.onLoad()
   },
   methods: {
     async loadData() {
+      console.log("loadData")
+      console.log("*****************")
       const { data, data: { list } } = await getOrderList({ pageNumber: this.page, status: this.status })
+
       this.list = this.list.concat(list)
+      this.list .sort(function(a, b){return a.orderStatus - b.orderStatus});
       this.totalPage = data.totalPage
+      //数据去重
+
+
       this.loading = false;
       if (this.page >= data.totalPage) this.finished = true
     },
@@ -75,6 +82,8 @@ export default {
       this.$router.go(-1)
     },
     onLoad() {
+      console.log("onLoad()")
+      console.log("*****************")
       if (!this.refreshing && this.page < this.totalPage) {
         this.page = this.page + 1
       }
