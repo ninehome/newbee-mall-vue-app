@@ -1,5 +1,6 @@
 <!--
 确认支付页面
+
 -->
 
 <template>
@@ -115,21 +116,15 @@ export default {
 
 
         // console.log('------>>>0000000000000')
-        const { paydata, payCode } = await payOrder({ orderNo: this.orderNo, payType: 1 })  //支付
+        const { paydata, resultCode } = await payOrder({ orderNo: this.orderNo, payType: 1 })  //支付
+        if (resultCode === 200) {
+          await this.$router.push({path: '/order'})
+          await this.$router.push({path: `order-detail?id=${this.orderNo}`})
+        }else {
+          await this.$router.push({path: '/order'})
 
-        // if (payCode != 200) {
-        //   console.log(paydata.message)
-        // }
+        }
 
-        // console.log('------>>>')
-        // console.log(paydata)
-        this.$router.push({ path: '/order' })
-
-
-
-
-        // this.$store.dispatch('updateCart')
-        // this.$router.go(0)
 
       } else {
         //支付失败返回购物车
