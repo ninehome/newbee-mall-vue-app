@@ -10,15 +10,18 @@
       <van-tab title="Не выкуплены" name="1"></van-tab>     <!--      <van-tab title="待确认" name="1"></van-tab>-->
 <!--      <van-tab title="待发货" name="2"></van-tab>-->
 <!--      <van-tab title="已发货" name="3"></van-tab>-->
-      <van-tab title="Статус выкупа" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
+      <van-tab title="Выкупы" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
     </van-tabs>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh">
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text = "Loading..." loosing-text	="Обновить данные" pulling-text	="Потяните вниз и обновите данные">
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
-            <span>Время заказа：{{ item.createTime }}</span>
             <span style="color: #1baeae">{{ item.orderStatusString }}</span>
           </div>
+          <div class="order-item-header">
+            <span> {{ item.createTime }}</span>
+          </div>
+
           <van-card v-for="one in item.newBeeMallOrderItemVOS"
                     :key="one.orderId"
                     :num="one.goodsCount"
@@ -26,6 +29,7 @@
                      currency="₽ "
                      desc="Бесплатная доставка" :title="one.goodsName"
                     :thumb="prefix(one.goodsCoverImg)" />
+
         </div>
       </van-list>
     </van-pull-refresh>
