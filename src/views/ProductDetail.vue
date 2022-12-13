@@ -10,7 +10,7 @@
 
 <template>
   <div class="product-detail">
-    <s-header :name="'商品详情'"></s-header>
+    <s-header :name="'Детали продукта'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
         <van-swipe class="my-swipe" indicator-color="#1baeae">
@@ -33,16 +33,25 @@
       </div>
       <div class="product-intro">
         <ul>
-          <li>概述</li>
-          <li>参数</li>
-          <li>安装服务</li>
-          <li>常见问题</li>
+          <li>Обзор</li>
+          <li>Параметры</li>
+          <li>Услуги</li>
+          <li>Рекомендации</li>
         </ul>
+
+
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
 
 
       </div>
+
+
     </div>
+
+
+
+
+
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="   " />
       <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text=" " />
@@ -50,6 +59,8 @@
       <van-goods-action-button type="danger" @click="goToCart" text="Купить сейчас" />
     </van-goods-action>
   </div>
+
+
 </template>
 
 <script>
