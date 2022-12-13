@@ -10,7 +10,7 @@
       <van-tab title="待回购" name="1"></van-tab>     <!--      <van-tab title="待确认" name="1"></van-tab>-->
 <!--      <van-tab title="待发货" name="2"></van-tab>-->
 <!--      <van-tab title="已发货" name="3"></van-tab>-->
-      <van-tab title="回购状态" name="4"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
+      <van-tab title="回购状态" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
     </van-tabs>
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh">
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300">
@@ -57,8 +57,8 @@ export default {
   },
   methods: {
     async loadData() {
-      console.log("loadData")
-      console.log("*****************")
+      // console.log("loadData")
+      // console.log("*****************")
       const { data, data: { list } } = await getOrderList({ pageNumber: this.page, status: this.status })
 
       this.list = this.list.concat(list)
@@ -82,8 +82,8 @@ export default {
       this.$router.go(-1)
     },
     onLoad() {
-      console.log("onLoad()")
-      console.log("*****************")
+      // console.log("onLoad()")
+      // console.log("*****************")
       if (!this.refreshing && this.page < this.totalPage) {
         this.page = this.page + 1
       }

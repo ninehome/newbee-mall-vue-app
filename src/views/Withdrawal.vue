@@ -140,7 +140,7 @@ export default {
 
         return
       }
-      console.log( this.select_bank)
+      // console.log( this.select_bank)
 
       let bankid = 0
       this.bankList.forEach((value, index) => {
@@ -173,7 +173,7 @@ export default {
     },
 
     onSelect(item){
-      console.log(item);
+      // console.log(item);
       this.show = false;
       if (item.subname !== ""){
         this.select_bank = item.subname
