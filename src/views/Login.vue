@@ -11,7 +11,18 @@
 <template>
   <div class="login">
     <s-header :name="type == 'login' ? 'Вход в систему' : 'Регистрация'" :back="'/home'"></s-header>
-    <img class="logo" src="//s.weituibao.com/1582958061265/mlogo.png" alt="">
+
+<!--    <van-swipe-item class="imglogo" v-for="(image, index) in imageList" :key="index" >-->
+<!--      <img :src="image" style="width:100%;height:150px;" />-->
+<!--    </van-swipe-item>-->
+<!--    <van-image class="logo"  :src="require('../../static-files/newbee-mall.png')" />-->
+    <van-image
+      class="logo"
+      fit="contain"
+      :src="require('../../static-files/logo.png')"
+    />
+
+<!--    <img class="logo" src="require('../../static-files/newbee-mall.png')"     alt="">-->
     <div v-if="type == 'login'" class="login-body login">
       <van-form @submit="onSubmit">
         <van-field
@@ -29,9 +40,12 @@
           placeholder="Пароль"
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
-        <div class="verify">
-          <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'" :height="'40px'" :fontSize="'16px'" :type="2"></Verify>
-        </div>
+
+<!--        <div class="verify">-->
+<!--          <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'" :height="'40px'" :fontSize="'16px'" :type="picture"></Verify>-->
+<!--        </div>-->
+<!--        -->
+
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Зарегистрируйтесь сейчас</div>
           <van-button round block type="info" color="#1baeae" native-type="submit">Вход в систему</van-button>
@@ -55,13 +69,19 @@
           placeholder="Пароль"
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
-        <div class="verify">
-          <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'" :height="'40px'" :fontSize="'16px'" :type="2"></Verify>
-        </div>
+
+
+<!--        <div class="verify">-->
+<!--          <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'"  :height="'40px'" :fontSize="'16px'" :type="picture"></Verify>-->
+<!--        </div>-->
+
+
         <div style="margin: 16px;">
           <div class="link-login" @click="toggle('login')">Уже есть логин</div>
           <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
         </div>
+
+
       </van-form>
     </div>
   </div>
@@ -81,12 +101,19 @@ export default {
       username1: '',
       password1: '',
       type: 'login',
-      verify: false
+      verify: false,
+
+      // imageList: [
+      //   require('../../static-files/newbee-mall.png'),
+      //   // require('../static-files/newbee-mall.png'),
+      //   // require('../static-files/newbee-mall.png'),
+      // ],
+
     }
   },
   components: {
     sHeader,
-    Verify
+    // Verify
   },
   methods: {
     dealTriVer() {
@@ -98,11 +125,14 @@ export default {
       this.type = v
     },
     async onSubmit(values) {
-      this.dealTriVer()
-      if (!this.verify) {
-        Toast.fail('Проверочный код не заполнен или заполнен неправильно!')
-        return
-      }
+      // this.dealTriVer()
+
+      // if (!this.verify) {
+      //   Toast.fail('Проверочный код не заполнен или заполнен неправильно!')
+      //   return
+      // }
+      //
+
       if (this.type == 'login') {
         const { data, resultCode } = await login({
           "loginName": values.username,
@@ -119,16 +149,16 @@ export default {
         this.type = 'login'
       }
     },
-    success(obj) {
-      this.verify = true
-      // 回调之后，刷新验证码
-      obj.refresh()
-    },
-    error(obj) {
-      this.verify = false
-      // 回调之后，刷新验证码
-      obj.refresh()
-    }
+    // success(obj) {
+    //   this.verify = true
+    //   // 回调之后，刷新验证码
+    //   obj.refresh()
+    // },
+    // error(obj) {
+    //   this.verify = false
+    //   // 回调之后，刷新验证码
+    //   obj.refresh()
+    // }
   },
 }
 </script>
@@ -136,8 +166,8 @@ export default {
 <style lang="less">
 .login {
   .logo {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 46px;
     display: block;
     margin: 80px auto 0px;
   }

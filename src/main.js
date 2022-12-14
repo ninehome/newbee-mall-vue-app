@@ -44,7 +44,7 @@ import {
   GoodsActionButton,
   SubmitBar,
   Toast,
-  ActionSheet
+  ActionSheet, Image
 } from "vant";
 import "lib-flexible/flexible";
 
@@ -78,6 +78,7 @@ Vue.use(Divider)
   .use(SubmitBar)
   .use(Checkbox)
   .use(ActionSheet)
+  .use(Image)
   .use(CheckboxGroup);
 Vue.config.productionTip = false;
 
