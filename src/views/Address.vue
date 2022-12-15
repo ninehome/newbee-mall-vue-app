@@ -11,10 +11,10 @@
   <div class="address-box">
     <s-header :name="'Адрес редакции'" :back="'/user'"></s-header>
     <div class="address-item">
-      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
-        @edit="onEdit" @select="select"   add-button-text ="Новый адрес" />
-      <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
-        @edit="onEdit" add-button-text ="Новый адрес"	 />
+      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию"  add-button-text ="Новый адрес"    @add="onAdd"
+        @edit="onEdit" @select="select"    />
+      <van-address-list v-else v-model="chosenAddressId" :list="list"  add-button-text ="Новый адрес"	     default-tag-text="По умолчанию" @add="onAdd"
+        @edit="onEdit"  />
     </div>
   </div>
 </template>
