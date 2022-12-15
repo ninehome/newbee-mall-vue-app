@@ -9,7 +9,7 @@
         <i></i>
         <div class="header-search">
           <i class="nbicon nbSearch"></i>
-          <router-link tag="span" class="search-title" to="./product-list?from=category">全场50元起步</router-link>
+          <router-link tag="span" class="search-title" to="./product-list?from=category">Нажмите для поиска товаров</router-link>
         </div>
         <i class="iconfont icon-More"></i>
       </header>

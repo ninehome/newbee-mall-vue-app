@@ -26,7 +26,7 @@
 
 
 
-      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Вход в систему</router-link>
+      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Доступ</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
       </router-link>
@@ -144,7 +144,7 @@ export default {
     }
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: '加载中...',
+      message: 'Данные запроса...',
       forbidClick: true
     });
     const { data } = await getHome()
