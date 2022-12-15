@@ -4,10 +4,15 @@
   <header class="simple-header">
     <i class="nbicon nbfanhui" @click="goBack"></i>
     <div class="simple-header-name">{{ name }}</div>
-    <i @click="goCopyUrl">
-      <van-icon name="ellipsis" />
-    </i>
-
+<!--    <i @click="goCopyUrl">-->
+<!--      <van-icon name="ellipsis" />-->
+<!--    </i>-->
+    <van-image
+      class="logo"
+      @click="goCopyUrl"
+      fit="contain"
+      :src="require('../../static-files/link.png')"
+    />
 
   </header>
 </template>
@@ -66,6 +71,12 @@ export default {
 
   .simple-header-name {
     font-size: 14px;
+  }
+
+  .logo{
+    margin-top: 11px;
+    height: 20px;
+    width: 20px;
   }
 }
 </style>
