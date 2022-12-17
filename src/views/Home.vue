@@ -1,4 +1,4 @@
-<!--
+ <!--
  * 严肃声明：
  * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
  * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
@@ -23,10 +23,7 @@
       </div>
 
 
-
-
-
-      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Вход в систему</router-link>
+      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Login</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
       </router-link>
