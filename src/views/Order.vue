@@ -12,8 +12,8 @@
 <!--      <van-tab title="已发货" name="3"></van-tab>-->
       <van-tab title="Выкупы" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
     </van-tabs>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text = "Loading..." loosing-text	="Обновить данные" pulling-text	="Потяните вниз и обновите данные">
-      <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300">
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text	="loading ...." loosing-text	="Обновить данные" pulling-text	="Потяните вниз и обновите данные">
+      <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
             <span style="color: #1baeae">{{ item.orderStatusString }}</span>

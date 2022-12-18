@@ -35,6 +35,7 @@ export default {
 <style lang='less' scoped>
 .my-swipe{
   width: 100%;
+  height: 220px; //定高
   .van-swipe-item {
     img {
       height: 220px; //定高
