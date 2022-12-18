@@ -19,15 +19,15 @@
         <van-tab title="Цена" name="price"></van-tab>
       </van-tabs>
     </div>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh">
-      <van-list v-model="loading" :finished="finished" finished-text="Не более..." @load="onLoad" @offset="300">
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="Обновление данных завершено" pulling-text="Продолжайте прокручивать вниз...">
+      <van-list v-model="loading" :finished="finished" finished-text="Не более..." @load="onLoad" @offset="300" >
         <!-- <p v-for="item in list" :key="item">{{ item }}</p> -->
         <div class="product-item" v-for="(item, index) in productList" :key="index" @click="productDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" />
           <div class="product-info">
             <p class="name">{{ item.goodsName }}</p>
             <p class="subtitle">{{ item.goodsIntro }}</p>
-            <span class="price">￥ {{ item.sellingPrice }}</span>
+            <span class="price">₽ {{ item.sellingPrice }}</span>
           </div>
         </div>
       </van-list>

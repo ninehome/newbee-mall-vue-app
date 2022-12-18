@@ -12,23 +12,19 @@
   <div class="login">
     <s-header :name="type == 'login' ? 'Вход в систему' : 'Регистрация'" :back="'/home'"></s-header>
 
-<!--    <van-swipe-item class="imglogo" v-for="(image, index) in imageList" :key="index" >-->
-<!--      <img :src="image" style="width:100%;height:150px;" />-->
-<!--    </van-swipe-item>-->
-<!--    <van-image class="logo"  :src="require('../../static-files/newbee-mall.png')" />-->
+
     <van-image
       class="logo"
       fit="contain"
       :src="require('../../static-files/logo.png')"
     />
 
-<!--    <img class="logo" src="require('../../static-files/newbee-mall.png')"     alt="">-->
     <div v-if="type == 'login'" class="login-body login">
-      <van-form @submit="onSubmit">
+      <van-form @submit="onSubmit" >
         <van-field
           v-model="username"
           name="username"
-          label="Мобильные телефоны"
+          label="телефоны"
           placeholder="Пожалуйста, введите номер вашего мобильного телефона"
           :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
         />
@@ -169,7 +165,7 @@ export default {
     width: 160px;
     height: 46px;
     display: block;
-    margin: 80px auto 0px;
+    margin: 80px auto 80px;
   }
   .login-body {
     padding: 0 20px;

@@ -141,7 +141,7 @@ export default {
     }
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: '加载中...',
+      message: 'Данные запроса...',
       forbidClick: true
     });
     const { data } = await getHome()

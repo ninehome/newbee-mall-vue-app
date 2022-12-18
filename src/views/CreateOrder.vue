@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     async init() {
-      Toast.loading({ message: '加载中...', forbidClick: true });
+      Toast.loading({ message: 'Данные запроса...', forbidClick: true });
       const { addressId, cartItemIds } = this.$route.query
       const _cartItemIds = cartItemIds ? JSON.parse(cartItemIds) : JSON.parse(getLocal('cartItemIds'))
       setLocal('cartItemIds', JSON.stringify(_cartItemIds))

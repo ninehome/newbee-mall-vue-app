@@ -19,13 +19,22 @@
 
     <ul class="user-list">
       <li @click="linkDownload('https://t.me/nine183183')">
-        <i class="nbicon nbmenu2"></i>
+        <van-image
+          class="logo"
+          fit="contain"
+          :src="require('../../static-files/icon_telegram.png')"
+        />
         <a class="a-style">Telegram</a>
         <van-icon name="arrow" />
       </li>
 
       <li @click="linkDownload('https://t.me/nine183183')">
-        <i class="nbicon nbmenu2"></i>
+        <van-image
+          class="logo"
+          fit="contain"
+          :src="require('../../static-files/icon_whatsapp.png')"
+        />
+
         <a class="a-style">WhatApp</a>
         <van-icon name="arrow" />
       </li>
@@ -68,6 +77,11 @@ export default {
   .user-list {
     padding: 0 10px;
     margin-top: 40px;
+    .logo{
+      margin-top: 8px;
+      height: 30px;
+      width: 30px;
+    }
 
     li {
       height: 40px;
