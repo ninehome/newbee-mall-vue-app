@@ -42,9 +42,19 @@
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all" :price="total * 100" button-text="结算" @submit="onSubmit">
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Поселение" @submit="onSubmit"  	>
+
+
       <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
+
+      <div >
+        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+      </div>
+
+
     </van-submit-bar>
+
+
     <div class="empty" v-if="!list.length">
       <van-icon name="smile-o" />
       <div class="title">Корзина пуста</div>
@@ -105,9 +115,6 @@ export default {
 
       Toast.clear()
 
-
-    const  v =  await  formatNum(50000)
-      console.log(v)
     },
     goBack() {
       this.$router.go(-1)
@@ -267,18 +274,23 @@ export default {
   }
 
   .submit-all {
-    margin-bottom: 50px;
-
+    width: 100%;
+    margin-bottom: 47px;
+    display: flex;
     .van-checkbox {
-      margin-left: 10px
+      width: 130px;
+
     }
 
     .van-submit-bar__text {
-      margin-right: 10px
+      //margin-right: 10px
+      width: 200px;
     }
 
     .van-submit-bar__button {
       background: @primary;
+      margin-left: 50px;
+      width: 100px;
     }
   }
 
