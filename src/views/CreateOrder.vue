@@ -25,7 +25,7 @@
             <span>x{{ item.goodsCount }}</span>
           </div>
           <div class="good-btn">
-            <div class="price">₽{{ item.sellingPrice }}</div>
+            <div class="price">{{formatNum(item.sellingPrice)}} ₽ </div>
           </div>
         </div>
       </div>
@@ -54,6 +54,7 @@ import { getDefaultAddress, getAddressDetail } from '../service/address'
 import { createOrder, payOrder } from '../service/order'
 import { setLocal, getLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
+import {formatNum} from '../service/number'
 import { timeout } from 'q'
 export default {
   components: {
@@ -65,7 +66,8 @@ export default {
       address: {},
       showPay: false,
       orderNo: '',
-      cartItemIds: []
+      cartItemIds: [],
+      formatNum:formatNum
     }
   },
   mounted() {

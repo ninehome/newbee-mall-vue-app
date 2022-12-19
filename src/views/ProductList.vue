@@ -27,7 +27,7 @@
           <div class="product-info">
             <p class="name">{{ item.goodsName }}</p>
             <p class="subtitle">{{ item.goodsIntro }}</p>
-            <span class="price">₽ {{ item.sellingPrice }}</span>
+            <span class="price">{{  formatNum(item.sellingPrice )}}  ₽ </span>
           </div>
         </div>
       </van-list>
@@ -39,9 +39,11 @@
 import { getQueryString } from '@/common/js/utils'
 import { search } from '../service/good'
 import { Toast } from 'vant'
+import {formatNum} from '../service/number'
 export default {
   data() {
     return {
+      formatNum:formatNum,
       keyword: this.$route.query.keyword || '',
       searchBtn: false,
       seclectActive: false,

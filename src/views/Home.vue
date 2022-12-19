@@ -46,7 +46,7 @@
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">₽ {{ item.sellingPrice }}</div>
+            <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">₽ {{ item.sellingPrice }}</div>
+            <div class="price"> {{formatNum(item.sellingPrice) }} ₽</div>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
           <img :src="prefix(item.goodsCoverImg)" alt="">
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">₽ {{ item.sellingPrice }}</div>
+            <div class="price">{{ formatNum(item.sellingPrice ) }} ₽</div>
           </div>
         </div>
       </div>
@@ -86,10 +86,12 @@ import { getHome } from '../service/home'
 import { getUserInfo } from '../service/user'
 import { getLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
+import {formatNum} from '../service/number'
 export default {
   name: 'home',
   data() {
     return {
+      formatNum:formatNum,
       swiperList: [],
       isLogin: false,
       headerScroll: false,

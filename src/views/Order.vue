@@ -22,14 +22,20 @@
             <span> {{ item.createTime }}</span>
           </div>
 
+<!--          :price="one.sellingPrice"-->
+<!--          currency="₽ "-->
           <van-card v-for="one in item.newBeeMallOrderItemVOS"
                     :key="one.orderId"
                     :num="one.goodsCount"
-                    :price="one.sellingPrice"
-                     currency="₽ "
-                     desc="Бесплатная доставка" :title="one.goodsName"
-                    :thumb="prefix(one.goodsCoverImg)" />
+                     desc="Бесплатная доставка"
+                    :title="one.goodsName"
+                    :thumb="prefix(one.goodsCoverImg)" >
 
+                <template #footer>
+                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} ₽  </span>
+
+                </template>
+            </van-card>
         </div>
       </van-list>
     </van-pull-refresh>
@@ -41,10 +47,11 @@ import sHeader from '@/components/SimpleHeader'
 import { getOrderList } from '../service/order'
 import { prefix } from '@/common/js/utils'
 import {getBankList} from "@/service/withdrawl";
-
+import {formatNum} from '../service/number'
 export default {
   data() {
     return {
+      formatNum:formatNum,
       status: '',
       loading: false,
       finished: false,

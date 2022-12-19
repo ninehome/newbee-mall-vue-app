@@ -35,23 +35,26 @@
     <div class="order-price">
       <div class="price-item">
         <label>Сумма товаров：</label>
-        <span style="color: #1baeae">₽ {{ detail.totalPrice }}</span>
+        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} ₽</span>
       </div>
       <div class="price-item">
         <label>Способ доставки：</label>
         <span>DHL Express</span>
       </div>
     </div>
+
     <van-card v-for="item in detail.newBeeMallOrderItemVOS" :key="item.goodsId" style="background: #fff"
-      :num="item.goodsCount" :price="item.sellingPrice"   currency="₽ " desc="Бесплатная доставка" :title="item.goodsName"
-      :thumb="prefix(item.goodsCoverImg)" />
-    <!-- <van-popup v-model="showPay" position="bottom" :style="{ height: '24%' }">
-      <div :style="{ width: '90%', margin: '0 auto', padding: '20px 0' }">
-        <van-button :style="{ marginBottom: '10px' }" color="#1989fa" block @click="payOrder(detail.orderNo, 1)">支付宝支付
-        </van-button>
-        <van-button color="#4fc08d" block @click="payOrder(detail.orderNo, 2)">微信支付</van-button>
-      </div>
-    </van-popup> -->
+      :num="item.goodsCount"  desc="Бесплатная доставка" :title="item.goodsName"
+      :thumb="prefix(item.goodsCoverImg)" >
+
+      <template #footer>
+        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} ₽  </span>
+      </template>
+
+   </van-card>
+
+
+
   </div>
 </template>
 
@@ -59,12 +62,14 @@
 import sHeader from '@/components/HeaderDetaily'
 import { getOrderDetail, cancelOrder, confirmOrder, payOrder } from '../service/order'
 import { Dialog, Toast } from 'vant'
+import {formatNum} from '../service/number'
 export default {
   components: {
     sHeader
   },
   data() {
     return {
+      formatNum:formatNum,
       detail: {},
       showPay: false
     }

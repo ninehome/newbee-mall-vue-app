@@ -27,7 +27,11 @@
                 <span>x{{ item.goodsCount }}</span>
               </div>
               <div class="good-btn">
-                <div class="price">¥{{ item.sellingPrice }}</div>
+
+
+                <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
+
+
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
                   @change="onChange" />
               </div>
@@ -55,6 +59,7 @@ import { Toast } from 'vant'
 import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
+import {formatNum} from '../service/number'
 export default {
   data() {
     return {
@@ -62,7 +67,9 @@ export default {
       list: [],
       all: false,
       result: [],
-      checkAll: true
+      checkAll: true,
+      formatNum:formatNum,
+
     }
   },
   components: {
@@ -85,6 +92,7 @@ export default {
   methods: {
     async init() {
 
+
       Toast.loading({ message: 'Загрузка...', forbidClick: true });
       const { data } = await getCart({ pageNumber: 1 })
       if (data == null) {
@@ -97,6 +105,9 @@ export default {
 
       Toast.clear()
 
+
+    const  v =  await  formatNum(50000)
+      console.log(v)
     },
     goBack() {
       this.$router.go(-1)

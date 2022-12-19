@@ -9,26 +9,16 @@
 <template>
   <div class="bank-box">
     <s-header :name="'Снятие средств'"></s-header>
-
-
     <div class="div-content">
-
-
       <div>
-
         <van-cell class="status" title="Остаток на счете" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>{{user_money}}</p>
+            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} ₽</p>
           </template>
         </van-cell>
-
       </div>
 
-
-
-
       <div>
-
         <van-cell is-link title="Выберите банк-получатель" @click="show = true" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
@@ -42,14 +32,11 @@
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
 <!--                   :rules="[{ required: true, message: '请填写收货地址' }]" />-->
-
-
         <div style="margin: 16px; margin-top: 50px;">
           <van-button round block type="info" color="#1baeae" native-type="submit" >Отправить</van-button>
         </div>
 
       </van-form>
-
 
 
     </div>
@@ -63,12 +50,14 @@ import {Image, Toast} from 'vant';
 import {getUserInfo} from "@/service/user";
 
 import {getBankList ,createWithdrawal} from "@/service/withdrawl";
+import {formatNum} from '../service/number'
 export default {
 
   data(){
     return{
+      formatNum:formatNum,
       bindcolor:"#14dad4",
-      user_money:'0.00 ₽',
+      user_money:'0.00 ',
       user: {},
 
       msg: '',
@@ -86,7 +75,7 @@ export default {
 
   async mounted() {
     const { data } = await getUserInfo()
-    this.user_money = data.userMoney +" ₽"
+    this.user_money = data.userMoney
 
     await this.initBanks()
 

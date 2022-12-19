@@ -27,7 +27,7 @@
         </div>
         <div class="product-desc">Бесплатная доставка</div>
         <div class="product-price">
-          <span>₽{{ detail.sellingPrice }}</span>
+          <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
           <!-- <span>库存203</span> -->
         </div>
       </div>
@@ -68,9 +68,11 @@ import { getDetail } from '../service/good'
 import { addCart } from '../service/cart'
 import sHeader from '@/components/HeaderDetaily'
 import { Toast } from 'vant'
+import {formatNum} from '../service/number'
 export default {
   data() {
     return {
+      formatNum:formatNum,
       detail: {
         goodsCarouselList: []
       },
