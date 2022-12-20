@@ -37,7 +37,8 @@ axios.interceptors.response.use((res) => {
     return Promise.reject(res);
   }
   if (res.data.resultCode !== 200) {
-    if (res.data.message) Toast.fail(res.data.message);
+    // if (res.data.message) Toast.fail(res.data.message);
+    Toast.fail("Ошибка сети, попробуйте еще раз！");
     if (res.data.resultCode === 416) {
       router.push({ path: "/login" });
     }
