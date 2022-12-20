@@ -22,7 +22,15 @@
 
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
-          <img :src="prefix(item.goodsCoverImg)" alt="">
+<!--          <lazy-component>-->
+<!--            <img :src="prefix(item.goodsCoverImg)" alt="" v-lazy="img">-->
+<!--          </lazy-component>-->
+
+          <van-image
+            lazy-load
+            :src="prefix(item.goodsCoverImg)"
+          />
+
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
             <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>

@@ -43,7 +43,12 @@
       <header class="good-header">Новые продукты онлайн</header>
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
-          <img :src="prefix(item.goodsCoverImg)" alt="">
+<!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
+          <van-image
+            lazy-load
+            :src="prefix(item.goodsCoverImg)"
+          />
+
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
             <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>
@@ -55,7 +60,14 @@
       <header class="good-header">Популярные товары</header>
       <div class="good-box">
         <div class="good-item" v-for="item in hots" :key="item.goodsId" @click="goToDetail(item)">
-          <img :src="prefix(item.goodsCoverImg)" alt="">
+<!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
+
+          <van-image
+            lazy-load
+            :src="prefix(item.goodsCoverImg)"
+          />
+
+
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
             <div class="price"> {{formatNum(item.sellingPrice) }} ₽</div>
@@ -67,7 +79,13 @@
       <header class="good-header">Последние рекомендации</header>
       <div class="good-box">
         <div class="good-item" v-for="item in recommends" :key="item.goodsId" @click="goToDetail(item)">
-          <img :src="prefix(item.goodsCoverImg)" alt="">
+<!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
+
+          <van-image
+            lazy-load
+            :src="prefix(item.goodsCoverImg)"
+          />
+
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
             <div class="price">{{ formatNum(item.sellingPrice ) }} ₽</div>

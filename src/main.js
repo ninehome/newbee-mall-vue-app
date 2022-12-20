@@ -13,6 +13,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { prefix } from "@/common/js/utils";
+import { Lazyload } from 'vant';
+// import VueLazyLoad from 'vue-lazyload'
+
 import {
   Divider,
   Popup,
@@ -82,6 +85,14 @@ Vue.use(Divider)
   .use(CheckboxGroup);
 Vue.config.productionTip = false;
 
+//vant 懒加载
+Vue.use(Lazyload, {
+  lazyComponent: true,
+});
+// Vue.use(VueLazyLoad,{
+//   error:'./static/error.png',   //图片加载失败显示的图片
+//   loading:'./static/loading.gif'// 图片加载中显示的图片
+// })
 new Vue({
   router,
   store,
