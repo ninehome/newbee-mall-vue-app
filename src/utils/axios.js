@@ -13,16 +13,16 @@ import router from "../router";
 //发布服务器
 //http://154.198.224.126/
 //发布服务器
-axios.defaults.baseURL =
-  process.env.NODE_ENV == "development"
-    ? "http://154.198.224.126:9191/api/v1"
-    : "http://154.198.224.126:9191/api/v1";
-
-//本地环境
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV == "development"
-//     ? "http://localhost:9191/api/v1"
-//     : "http://localhost:9191/api/v1";
+//     ? "http://154.198.224.126:9191/api/v1"
+//     : "http://154.198.224.126:9191/api/v1";
+
+//本地环境
+axios.defaults.baseURL =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:9191/api/v1"
+    : "http://localhost:9191/api/v1";
 axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers["token"] = localStorage.getItem("token") || "";
@@ -37,7 +37,8 @@ axios.interceptors.response.use((res) => {
     return Promise.reject(res);
   }
   if (res.data.resultCode !== 200) {
-    if (res.data.message) Toast.fail(res.data.message);
+    // if (res.data.message) Toast.fail(res.data.message);
+    Toast.fail("Ошибка сети, попробуйте еще раз！code==2");
     if (res.data.resultCode === 416) {
       router.push({ path: "/login" });
     }
