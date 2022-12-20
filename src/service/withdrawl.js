@@ -17,6 +17,11 @@ export function getBankList(params) {
   return axios.post('/user/bankList', { params });
 }
 
+// 客服联系方式
+export function getChatList(params) {
+  return axios.post('/user/chatList', { params });
+}
+
 
 //
 // export function getOrderDetail(id) {

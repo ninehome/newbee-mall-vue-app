@@ -18,7 +18,7 @@
 
 
     <ul class="user-list">
-      <li @click="linkDownload('https://t.me/nine183183')">
+      <li @click="linkDownload(1)"  v-show = "tgShow">
         <van-image
           class="logo"
           fit="contain"
@@ -28,7 +28,7 @@
         <van-icon name="arrow" />
       </li>
 
-      <li @click="linkDownload('https://t.me/nine183183')">
+      <li @click="linkDownload(2)"  v-show = "wsShow">
         <van-image
           class="logo"
           fit="contain"
@@ -36,6 +36,17 @@
         />
 
         <a class="a-style">WhatApp</a>
+        <van-icon name="arrow" />
+      </li>
+
+      <li @click="linkDownload(3)"  v-show = "vbShow">
+        <van-image
+          class="logo"
+          fit="contain"
+          :src="require('../../static-files/viber.png')"
+        />
+
+        <a class="a-style">Viber</a>
         <van-icon name="arrow" />
       </li>
 
@@ -49,15 +60,70 @@
 <script>
 import sHeader from '@/components/SimpleHeader'
 import { Image } from 'vant';
+import {getChatList} from "@/service/withdrawl";
+
 export default {
+
+  data() {
+    return {
+      tg :"https://t.me/nine183183",
+      ws :"https://t.me/nine183183",
+      vb :"https://t.me/nine183183",
+      tgShow :false,
+      wsShow:false,
+      vbShow:false
+    }
+  },
+  async mounted() {
+    //请求数据
+
+    const { data } = await getChatList()
+
+    for (var v of data) {
+      console.log(v);
+      this.TgInit(v)
+    }
+
+
+
+  },
   components: {
     sHeader,
 
   },
   methods: {
-    linkDownload(url) {
-      window.open(url, '_blank') // 新窗口打开外链接
-    }
+
+    linkDownload(type) {
+      if (type ===1){
+        window.open(this.tg, '_blank') // 新窗口打开外链接
+      }else  if (type ===2){
+        window.open(this.ws, '_blank') // 新窗口打开外链接
+      }else if (type === 3) {
+        window.open(this.vb, '_blank') // 新窗口打开外链接
+
+      }
+
+    },
+
+
+
+    TgInit(v){
+      if (v.Type === 1){
+        this.tg = v.ChatValue
+        this.tgShow = true
+      }else if (v.Type === 2){
+        this.ws = v.ChatValue
+        this.wsShow = true
+      }else if (v.Type === 3){
+        this.vb = v.ChatValue
+        this.vbShow = true
+      }
+
+    },
+
+
+
+
   }
 
 }
