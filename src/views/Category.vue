@@ -77,7 +77,7 @@
 
 <script>
 import navBar from '@/components/NavBar'
-import { getHome } from '../service/home'
+import {getHome, getList} from '../service/home'
 import { getUserInfo } from '../service/user'
 import { getLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
@@ -109,14 +109,15 @@ export default {
       message: 'Данные запроса...',
       forbidClick: true
     });
-    const { data } = await getHome()
+    const { data } = await getList()
 
 
+    console.log(data)
 
-
-    this.newGoodses = data.newGoodses
-    this.hots = data.hotGoodses
-    this.recommends = data.recommendGoodses
+    //
+    this.newGoodses = data.list
+    // this.hots = data.hotGoodses
+    // this.recommends = data.recommendGoodses
     // console.log(this.newGoodses)
 
     Toast.clear()
