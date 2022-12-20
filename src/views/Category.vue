@@ -13,16 +13,7 @@
 <template>
   <div>
 
-<!--    <header class="home-header wrap" :class="{ 'active': true }">-->
-<!--      <span>Популярные</span>-->
-<!--&lt;!&ndash;      <div class="header-search" @click="serach">&ndash;&gt;-->
-<!--&lt;!&ndash;        <router-link tag="span" class="search-title" to="./product-list?from=home"></router-link>&ndash;&gt;-->
-<!--&lt;!&ndash;      </div>&ndash;&gt;-->
-<!--    </header>-->
-
-<!--    <header class="good-header">...</header>-->
     <nav-bar></nav-bar>
-
     <div class="good">
 <!--      顶部边距-->
       <header class="good-header">Популярные</header>
@@ -39,38 +30,11 @@
         </div>
       </div>
 
-
-<!--      底部边距-->
-
-      <header class="good-header">...</header>
+<!-- 底部边距-->
+      <header class="good-header">Больше никаких предметов...</header>
     </div>
 
-<!--    <div class="good">-->
-<!--      <header class="good-header">Популярные товары</header>-->
-<!--      <div class="good-box">-->
-<!--        <div class="good-item" v-for="item in hots" :key="item.goodsId" @click="goToDetail(item)">-->
-<!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
-<!--          <div class="good-desc">-->
-<!--            <div class="title">{{ item.goodsName }}</div>-->
-<!--            <div class="price"> {{formatNum(item.sellingPrice) }} ₽</div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
 
-
-<!--    <div class="good" :style="{ paddingBottom: '100px' }">-->
-<!--      <header class="good-header">Последние рекомендации</header>-->
-<!--      <div class="good-box">-->
-<!--        <div class="good-item" v-for="item in recommends" :key="item.goodsId" @click="goToDetail(item)">-->
-<!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
-<!--          <div class="good-desc">-->
-<!--            <div class="title">{{ item.goodsName }}</div>-->
-<!--            <div class="price">{{ formatNum(item.sellingPrice ) }} ₽</div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
 
   </div>
 </template>
@@ -87,38 +51,30 @@ export default {
   data() {
     return {
       formatNum:formatNum,
-
-      isLogin: false,
       headerScroll: true,
       hots: [],
       newGoodses: [],
       recommends: [],
-
     }
   },
   components: {
     navBar,  //底部导航
   },
   async mounted() {
-    const token = getLocal('token')
-    if (token) {
-      this.isLogin = true
-    }
+
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
       message: 'Данные запроса...',
       forbidClick: true
     });
-    const { data } = await getList()
 
-
-    console.log(data)
-
-    //
+    const params = {
+      pageNumber: 1,
+      pageSize: 88
+    }
+    const { data } = await getList(params)
     this.newGoodses = data.list
-    // this.hots = data.hotGoodses
-    // this.recommends = data.recommendGoodses
-    // console.log(this.newGoodses)
+
 
     Toast.clear()
   },

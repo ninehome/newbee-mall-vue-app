@@ -7,5 +7,7 @@ export function getHome(params) {
 
 
 export function getList(params) {
-  return axios.get("/goods/list");
+  return axios.get("/goods/list",{ params });
 }
+
+
