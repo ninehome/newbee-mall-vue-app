@@ -80,7 +80,6 @@ export default {
     const { data } = await getChatList()
 
     for (var v of data) {
-      console.log(v);
       this.TgInit(v)
     }
 

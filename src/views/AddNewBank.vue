@@ -57,10 +57,9 @@ export default {
     // this.addressId = addressId
     this.type = type
     this.from = from || ''
-    console.log(addressId)
-    console.log(445555)
+
     this.addressId  = addressId
-    console.log(  this.addressId)
+
     //编辑地址
     if (type == 'edit') {
       const { data: addressDetail } = await getBankDetail(addressId)
@@ -102,7 +101,7 @@ export default {
 
       const { resultCode } =  this.type == 'add' ?await addAddress(params) :await EditAddress(params)
       // Toast('保存成功')
-      console.log(resultCode)
+
       if (resultCode === 200) {
         Toast('Success')
       } else {
@@ -118,13 +117,10 @@ export default {
     },
 
      async onDelete() {
-       console.log(2233333333)
-       console.log(this.addressId)
+
 
        const { resultCode} = await DeleteBank(this.addressId)
 
-
-       console.log(resultCode)
        if (resultCode === 200) {
          Toast('Success')
        } else {

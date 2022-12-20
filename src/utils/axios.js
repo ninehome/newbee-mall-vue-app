@@ -32,10 +32,10 @@ axios.interceptors.response.use((res) => {
   console.log("-----------start---------");
   console.log(res.data);
   console.log("----------end----------");
-  if (typeof res.data !== "object") {
-    Toast.fail("Ошибка сети, попробуйте еще раз！");
-    return Promise.reject(res);
-  }
+  // if (typeof res.data !== "object") {
+  //   Toast.fail("Ошибка сети, попробуйте еще раз！");
+  //   return Promise.reject(res);
+  // }
   if (res.data.resultCode !== 200) {
     if (res.data.message) Toast.fail(res.data.message);
     if (res.data.resultCode === 416) {
