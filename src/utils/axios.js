@@ -16,8 +16,8 @@ import router from "../router";
 //发布服务器  wildberries.store
 axios.defaults.baseURL =
   process.env.NODE_ENV == "development"
-    ? "http://134.122.197.173:9191/api/v1"
-    : "http://134.122.197.173:9191/api/v1";
+    ? "https://wildberries.store/api/v1"
+    : "https://wildberries.store/api/v1";
 
 
 
