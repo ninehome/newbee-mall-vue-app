@@ -12,7 +12,17 @@ import router from "../router";
 // "http://backend-api-01.newbee.ltd/api/v1";
 //发布服务器
 //http://154.198.224.126/
-//发布服务器
+
+//发布服务器  wildberries.store
+axios.defaults.baseURL =
+  process.env.NODE_ENV == "development"
+    ? "http://134.122.197.173:9191/api/v1"
+    : "http://134.122.197.173:9191/api/v1";
+
+
+
+
+//发布服务器  wildberriesgoods.top
 axios.defaults.baseURL =
   process.env.NODE_ENV == "development"
     ? "http://154.198.224.126:9191/api/v1"
