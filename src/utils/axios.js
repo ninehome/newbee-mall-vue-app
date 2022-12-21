@@ -23,10 +23,10 @@ axios.defaults.baseURL =
 
 
 //发布服务器  wildberriesgoods.top
-axios.defaults.baseURL =
-  process.env.NODE_ENV == "development"
-    ? "http://154.198.224.126:9191/api/v1"
-    : "http://154.198.224.126:9191/api/v1";
+// axios.defaults.baseURL =
+//   process.env.NODE_ENV == "development"
+//     ? "http://154.198.224.126:9191/api/v1"
+//     : "http://154.198.224.126:9191/api/v1";
 
 //本地环境
 // axios.defaults.baseURL =
