@@ -14,25 +14,25 @@ import router from "../router";
 //http://154.198.224.126/
 
 //发布服务器  wildberries.store
-// axios.defaults.baseURL =
-//   process.env.NODE_ENV == "development"
-//     ? "https://wildberries.store/api/v1"
-//     : "https://wildberries.store/api/v1";
+axios.defaults.baseURL =
+  process.env.NODE_ENV == "development"
+    ? "https://wildberries.store/api/v1"
+    : "https://wildberries.store/api/v1";
 
 
 
 
-//发布服务器  wildberriesgoods.top
+//发布服务器
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV == "development"
 //     ? "http://154.198.224.126:9191/api/v1"
 //     : "http://154.198.224.126:9191/api/v1";
 
 //本地环境
-axios.defaults.baseURL =
-  process.env.NODE_ENV == "development"
-    ? "http://localhost:9191/api/v1"
-    : "http://localhost:9191/api/v1";
+// axios.defaults.baseURL =
+//   process.env.NODE_ENV == "development"
+//     ? "http://localhost:9191/api/v1"
+//     : "http://localhost:9191/api/v1";
 
 
 axios.defaults.withCredentials = true;
