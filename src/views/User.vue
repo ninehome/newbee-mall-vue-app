@@ -87,10 +87,16 @@ export default {
       nickName: '',
       introduceSign: '',
       password: '',
-      user: {}
+      user: {
+        loginName:'',
+        userMoney:0,
+        userLevel:0
+      }
     }
   },
   async mounted() {
+    // console.log("我的token" )
+    // console.log(localStorage.getItem("token") )
     const { data } = await getUserInfo()
     this.user = data
   },

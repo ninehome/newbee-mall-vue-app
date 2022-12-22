@@ -10,26 +10,32 @@
 import axios from '../utils/axios'
 
 export function createOrder(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/saveOrder', params);
 }
 
 export function getOrderList(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/order', { params });
 }
 
 export function getOrderDetail(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get(`/order/${id}`);
 }
 
 export function cancelOrder(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.put(`/order/${id}/cancel`);
 }
 
 export function confirmOrder(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.put(`/order/${id}/finish`)
 }
 
 export function payOrder(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/paySuccess', { params })
 }
 

@@ -10,26 +10,32 @@
 import axios from '../utils/axios'
 
 export function addAddress(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/address', params);
 }
 
 export function EditAddress(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.put('/address', params);
 }
 
 export function DeleteAddress(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.delete(`/address/${id}`);
 }
 
 export function getDefaultAddress() {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/address/default');
 }
 
 export function getAddressList() {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/address', { pageNumber: 1, pageSize: 1000 })
 }
 
 export function getAddressDetail(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get(`/address/${id}`)
 }
 

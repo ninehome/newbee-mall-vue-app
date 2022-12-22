@@ -12,14 +12,17 @@ import axios from '../utils/axios'
 
 
 export function addAddress(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/addBank', params);
 }
 
 export function EditAddress(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.put('/addBank', params);
 }
 
 export function DeleteBank(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.delete(`/delete/bank/${id}`);
 }
 
@@ -28,6 +31,7 @@ export function DeleteBank(id) {
 // }
 
 export function getBankList() {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/user/bankList')
 }
 

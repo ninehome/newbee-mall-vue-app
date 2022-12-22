@@ -106,6 +106,9 @@ export default {
     handleConfirmOrder(id) {
       Dialog.confirm({
         title: 'Подтверждать ли выкуп？',
+        confirmButtonText:"Подтверждение",
+        cancelButtonText:"Аннулирование"
+
       }).then(() => {
         confirmOrder(id).then(res => {
           if (res.resultCode == 200) {
