@@ -106,13 +106,10 @@ export default {
         })
        //注册成功
         if (resultCode === 200){
-
-          this.login(values.username,values.password)
+          //登录
+          await this.login(values.username, values.password)
         }else {
           Toast.fail('!! '+message)
-          // this.jump(`register`)
-          // await this.$router.push({path: `register`})
-          // window.location.href = '/register'
         }
 
 
@@ -128,13 +125,10 @@ export default {
 
       // 登录成功
       if (resultCode === 200 && data !== null) {
-        // console.log(1313131)
         setLocal('token', data)
-        // console.log(localStorage.getItem("token"))
         setTimeout(() => {
-          console.log(5555555555555)
           this.jump(`user`)
-        }, 1000);
+        }, 500);
 
       }else {
         this.jump(`login`)

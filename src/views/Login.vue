@@ -11,7 +11,7 @@
 <template>
   <div class="login">
     <s-header name="Вход в систему" :back="'/home'"></s-header>
-    
+
     <van-image
       class="logo"
       fit="contain"
