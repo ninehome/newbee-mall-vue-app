@@ -110,16 +110,16 @@ export default {
     },
     goTo(r) {
       this.$router.push({ path: r })
-      // if (r === 'withdrawal'){ //先判断 如果没有卡 需要跳转添加卡页面
-      //   if ( this.bankcard){
-      //   this.$router.push({ path: r })
-      //   }else {
-      //     this.$router.push({path: `add-bank?type=add&from=mine`})
-      //   }
-      // }else {
-      //
-      // this.$router.push({ path: r })
-      // }
+      if (r === 'withdrawal'){ //先判断 如果没有卡 需要跳转添加卡页面
+        if ( this.bankcard){
+        this.$router.push({ path: r })
+        }else {
+          this.$router.push({path: `add-bank?type=add&from=mine`})
+        }
+      }else {
+
+      this.$router.push({ path: r })
+      }
 
     },
     linkDownload(url) {
