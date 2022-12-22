@@ -8,7 +8,7 @@
  *-->
 <template>
   <div class="bank-box">
-    <s-header :name="'Снятие средств'"></s-header>
+    <s-header :name="'Снятие средств'" ></s-header>
     <div class="div-content">
       <div>
         <van-cell class="status" title="Остаток на счете" size="large"  >
@@ -17,9 +17,9 @@
           </template>
         </van-cell>
       </div>
-
+<!--      @click="show = true"-->
       <div>
-        <van-cell is-link title="Выберите банк-получатель" @click="show = true" :value="select_bank" />
+        <van-cell is-link title="Выберите банк-получатель"   @click="itemClick" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>
@@ -76,9 +76,7 @@ export default {
   async mounted() {
     const { data } = await getUserInfo()
     this.user_money = data.userMoney
-
     await this.initBanks()
-
 
   },
 
@@ -89,27 +87,42 @@ export default {
   methods: {
      //初始化银行
     async initBanks(){
+
       const { data,resultCode } = await  getBankList({ pageNumber: 1 })
 
       if (resultCode === 200){
 
-        if(data.size ===0){
+        if(data == null || data.size === 0){
 
-          await this.$router.push({path: `add-bank?type=add&from=${this.from}`})
+           // this.jump()
 
-          return
+        }else {
+          this.bankList = data
+          data.forEach((value, index) => {
+            let c = {name:value.bankName,subname:value.bankNumber}
+            this.actions[index]  = c
+          })
         }
 
 
-        this.bankList = data
-
-        data.forEach((value, index) => {
-          var c = {name:value.bankName,subname:value.bankNumber}
-          this.actions[index]  = c
-        })
       }
 
     },
+
+
+    itemClick(){
+
+      if (this.bankList == null || this.bankList.length ===0){
+        this.$router.push({path: `add-bank?type=add&from=mine`})
+      }else {
+        this.show = true
+      }
+
+    },
+
+    // jump(path){
+    //   this.$router.push({path: `add-bank?type=add&from=mine`})
+    // },
 
     // async loadData() {
     //   const { data, data: { list } } = await createWithdrawal({ pageNumber: this.page, status: this.status })
@@ -119,6 +132,7 @@ export default {
     //   if (this.page >= data.totalPage) this.finished = true
     // },
 
+    //提款
     async onSubmit(content) {
       if (this.isChoseBank === false){
         await this.initBanks()

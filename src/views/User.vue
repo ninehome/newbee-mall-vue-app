@@ -77,6 +77,7 @@ import sHeader from '@/components/SimpleHeader'
 import { getUserInfo, EditUserInfo, logout } from '../service/user'  //需要注册网络请求的方法
 import { setLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
+import {getBankList} from "@/service/withdrawl";
 export default {
   components: {
     navBar,
@@ -87,6 +88,7 @@ export default {
       nickName: '',
       introduceSign: '',
       password: '',
+      bankcard: false,
       user: {
         loginName:'',
         userMoney:0,
@@ -99,6 +101,8 @@ export default {
     // console.log(localStorage.getItem("token") )
     const { data } = await getUserInfo()
     this.user = data
+
+    await this.initBanks()
   },
   methods: {
     goBack() {
@@ -106,6 +110,17 @@ export default {
     },
     goTo(r) {
       this.$router.push({ path: r })
+      // if (r === 'withdrawal'){ //先判断 如果没有卡 需要跳转添加卡页面
+      //   if ( this.bankcard){
+      //   this.$router.push({ path: r })
+      //   }else {
+      //     this.$router.push({path: `add-bank?type=add&from=mine`})
+      //   }
+      // }else {
+      //
+      // this.$router.push({ path: r })
+      // }
+
     },
     linkDownload(url) {
       window.open(url, '_blank') // 新窗口打开外链接
@@ -116,7 +131,21 @@ export default {
         setLocal('token', '')
         window.location.href = '/'
       }
-    }
+    },
+
+    async initBanks(){
+      const { data,resultCode } = await  getBankList({ pageNumber: 1 })
+
+      if (resultCode === 200){
+        if(data.size === 0){
+          this.bankcard  = false
+        }else {
+          this.bankcard  = true
+        }
+
+      }
+
+    },
   }
 }
 </script>

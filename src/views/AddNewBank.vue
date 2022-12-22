@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="address-edit-box">
+  <div class="address-edit-box" >
     <s-header :name="`${type == 'add' ? 'Добавьте новый счет для вывода средств' : 'Редактирование счета для вывода средств'}`"></s-header>
 
     <van-form @submit="onSubmit">
