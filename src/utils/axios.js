@@ -34,8 +34,8 @@ axios.defaults.baseURL =
 //     ? "http://localhost:9191/api/v1"
 //     : "http://localhost:9191/api/v1";
 
-
-axios.defaults.withCredentials = true;
+  // 会影响跨域
+// axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers["token"] = localStorage.getItem("token");
 axios.defaults.headers.post["Content-Type"] = "application/json";
