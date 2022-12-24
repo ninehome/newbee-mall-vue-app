@@ -11,7 +11,7 @@
 <template>
   <div class="cart-box">
     <div class="header_title">
-      Корзина
+      購物車
     </div>
 
 
@@ -42,13 +42,13 @@
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Поселение" @submit="onSubmit"  	>
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="支付" @submit="onSubmit"  	>
 
 
-      <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
+      <van-checkbox @click="allCheck" v-model="checkAll">選擇所有</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} {{huobi}} </span>
       </div>
 
 
@@ -57,8 +57,8 @@
 
     <div class="empty" v-if="!list.length">
       <van-icon name="smile-o" />
-      <div class="title">Корзина пуста</div>
-      <van-button class="bnt" type="primary" @click="goTo" block>Отправляйтесь за покупками</van-button>
+      <div class="title">購物車是空的</div>
+      <van-button class="bnt" type="primary" @click="goTo" block>購買</van-button>
     </div>
     <nav-bar></nav-bar>
   </div>
@@ -70,6 +70,7 @@ import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
 import {formatNum} from '../service/number'
+import { global } from '../common/common.vue'
 export default {
   data() {
     return {
@@ -79,6 +80,7 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
+      huobi: global.huobi
 
     }
   },

@@ -10,26 +10,26 @@
 
 <template>
   <div class="address-edit-box">
-    <s-header :name="`${type == 'add' ? 'Добавить адрес' : 'Адрес редакции'}`"></s-header>
+    <s-header :name="`${type == 'add' ? '新增地址' : '編輯地址'}`"></s-header>
     <!-- <van-address-edit class="edit" :area-list="areaList" :address-info="addressInfo" :show-delete="type == 'edit'"
       show-set-default show-search-result :search-result="searchResult"
       :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" /> -->
 
     <van-form @submit="onSubmit">
-      <van-field v-model="username" name="username" label="Имя" placeholder="Пожалуйста, заполните ваше имя"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните ваше имя' }]" />
-      <van-field v-model="telphone" name="telphone" label="Номер мобильного телефона" placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-        :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]" />
-      <van-field v-model="address" name="address" label="Адрес получения" placeholder="Пожалуйста, заполните адрес доставки"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните адрес доставки' }]" />
+      <van-field v-model="username" name="username" label="收件人" placeholder="請填寫收件人"
+        :rules="[{ required: true, message: '請填寫收件人' }]" />
+      <van-field v-model="telphone" name="telphone" label="聯繫電話" placeholder="請填寫聯繫電話"
+        :rules="[{ required: true, message: '請填寫聯繫電話' }]" />
+      <van-field v-model="address" name="address" label="收件地址" placeholder="請填寫收件地址"
+        :rules="[{ required: true, message: '請填寫收件地址' }]" />
 
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit" >Сохранить</van-button>
+        <van-button round block type="info" color="#1baeae" native-type="submit" >確認提交</van-button>
       </div>
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>
+        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">刪除</van-button>
       </div>
     </van-form>
 

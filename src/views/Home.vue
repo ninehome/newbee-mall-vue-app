@@ -40,7 +40,7 @@
     </div>
 
     <div class="good">
-      <header class="good-header">Новые продукты онлайн</header>
+      <header class="good-header">新品</header>
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="good">
-      <header class="good-header">Популярные товары</header>
+      <header class="good-header">熱門</header>
       <div class="good-box">
         <div class="good-item" v-for="item in hots" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="good" :style="{ paddingBottom: '100px' }">
-      <header class="good-header">Последние рекомендации</header>
+      <header class="good-header">推薦</header>
       <div class="good-box">
         <div class="good-item" v-for="item in recommends" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->

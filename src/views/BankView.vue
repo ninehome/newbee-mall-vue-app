@@ -1,12 +1,12 @@
 
 <template>
   <div class="address-box">
-    <s-header :name="'Управление банковским счетом для снятия средств'" ></s-header>
+    <s-header :name="'管理收款賬戶'" ></s-header>
     <div class="address-item">
-      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
-                        @edit="onEdit" @select="select"  add-button-text ="Добавить банковский счет"	 />
-      <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
-                        @edit="onEdit"   add-button-text = "Добавить банковский счет"	/>
+      <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="默認" @add="onAdd"
+                        @edit="onEdit" @select="select"  add-button-text ="新增銀行賬戶"	 />
+      <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="默認" @add="onAdd"
+                        @edit="onEdit"   add-button-text = "新增銀行賬戶"	/>
     </div>
   </div>
 </template>
