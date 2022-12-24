@@ -22,7 +22,7 @@ axios.defaults.baseURL =
 
 
 
-//发布服务器  wildberriesgoods.top
+//发布服务器
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV == "development"
 //     ? "http://154.198.224.126:9191/api/v1"
@@ -33,9 +33,11 @@ axios.defaults.baseURL =
 //   process.env.NODE_ENV == "development"
 //     ? "http://localhost:9191/api/v1"
 //     : "http://localhost:9191/api/v1";
-axios.defaults.withCredentials = true;
+
+  // 会影响跨域
+// axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
-axios.defaults.headers["token"] = localStorage.getItem("token") || "";
+axios.defaults.headers["token"] = localStorage.getItem("token");
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 axios.interceptors.response.use((res) => {

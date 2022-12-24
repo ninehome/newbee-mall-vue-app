@@ -10,14 +10,17 @@
 import axios from '../utils/axios'
 
 export function getDetail(id) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get(`/goods/detail/${id}`);
 }
 
 export function getCategory() {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/categories');
 }
 
 export function search(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.get('/search', { params });
 }
 

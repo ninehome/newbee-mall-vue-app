@@ -10,7 +10,7 @@
 
 <template>
   <div class="login">
-    <s-header :name="type == 'login' ? 'Вход в систему' : 'Регистрация'" :back="'/home'"></s-header>
+    <s-header name="Регистрация счета" :back="'/login'"></s-header>
 
 
     <van-image
@@ -19,63 +19,42 @@
       :src="require('../../static-files/logo.png')"
     />
 
-    <div v-if="type == 'login'" class="login-body login">
+    <div  class="login-body login">
       <van-form @submit="onSubmit" >
         <van-field
           v-model="username"
           name="username"
-          label="телефоны"
+          label="Телефон +7"
           placeholder="Пожалуйста, введите номер вашего мобильного телефона"
           :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
         />
+
+
         <van-field
           v-model="password"
-          type="password"
+          :type="isPassword? 'password' :'text'"
           name="password"
           label="Пароль"
+          :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
+          @click-right-icon="showPassword"
           placeholder="Пароль"
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
 
-
         <div style="margin: 16px;">
-          <div class="link-register" @click="toggle('register')">Зарегистрируйтесь сейчас</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Вход в систему</van-button>
-        </div>
-      </van-form>
-    </div>
-    <div v-else class="login-body register">
-      <van-form @submit="onSubmit">
-        <van-field
-          v-model="username1"
-          name="username1"
-          label="Мобильные телефоны"
-          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
-        />
-        <van-field
-          v-model="password1"
-          type="password"
-          name="password1"
-          label="Пароль"
-          placeholder="Пароль"
-          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
-        />
-
-
-<!--        <div class="verify">-->
-<!--          <Verify ref="loginVerifyRef" @error="error" :showButton="false" @success="success" :width="'100%'"  :height="'40px'" :fontSize="'16px'" :type="picture"></Verify>-->
-<!--        </div>-->
-
-
-        <div style="margin: 16px;">
-          <div class="link-login" @click="toggle('login')">Уже есть логин</div>
+          <div class="link-register" @click="toggle('register')">Вход в систему</div>
           <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
         </div>
-
-
       </van-form>
+
+
     </div>
+
+
+
+
+
+
   </div>
 </template>
 
@@ -90,67 +69,80 @@ export default {
     return {
       username: '',
       password: '',
-      username1: '',
-      password1: '',
       type: 'login',
       verify: false,
+      isPassword:true
 
-      // imageList: [
-      //   require('../../static-files/newbee-mall.png'),
-      //   // require('../static-files/newbee-mall.png'),
-      //   // require('../static-files/newbee-mall.png'),
-      // ],
 
     }
   },
+  mounted(){
+      this.username = "",
+      this.password =""
+
+  },
+
   components: {
     sHeader,
     // Verify
   },
   methods: {
-    dealTriVer() {
-      // 执行验证码的验证，通过 this.verify 知道验证码是否填写正确
-      this.$refs.loginVerifyRef.$refs.instance.checkCode()
+    showPassword(){ // 显示隐藏密码
+      this.isPassword = !this.isPassword
+
     },
+
     toggle(v) {
-      this.verify = false
-      this.type = v
+      this.$router.push({ path: `login` })
+      // this.verify = false
+      // this.type = v
     },
     async onSubmit(values) {
-      // this.dealTriVer()
 
-      // if (!this.verify) {
-      //   Toast.fail('Проверочный код не заполнен или заполнен неправильно!')
-      //   return
-      // }
-      //
 
-      if (this.type == 'login') {
-        const { data, resultCode } = await login({
+        const { data ,resultCode ,message} = await register({
           "loginName": values.username,
-          "passwordMd5": this.$md5(values.password)
+          "password": values.password
         })
-        setLocal('token', data)
-        window.location.href = '/'
-      } else {
-        const { data } = await register({
-          "loginName": values.username1,
-          "password": values.password1
-        })
-        Toast.success('Регистрация прошла успешно')
-        this.type = 'login'
-      }
+       //注册成功
+        if (resultCode === 200){
+          //登录
+          await this.login(values.username, values.password)
+        }else {
+          Toast.fail('!! '+message)
+        }
+
+
+
     },
-    // success(obj) {
-    //   this.verify = true
-    //   // 回调之后，刷新验证码
-    //   obj.refresh()
-    // },
-    // error(obj) {
-    //   this.verify = false
-    //   // 回调之后，刷新验证码
-    //   obj.refresh()
-    // }
+
+    async login(name,psw) {
+
+      const {data, resultCode} = await login({
+        "loginName": name,
+        "passwordMd5": this.$md5(psw)
+      })
+
+      // 登录成功
+      if (resultCode === 200 && data !== null) {
+        setLocal('token', data)
+        setTimeout(() => {
+          this.jump(`user`)
+        }, 500);
+
+      }else {
+        this.jump(`login`)
+      }
+
+      Toast.success('Регистрация прошла успешно')
+
+    },
+
+    jump(v){
+       this.$router.push({path: v})
+
+    }
+
   },
 }
 </script>

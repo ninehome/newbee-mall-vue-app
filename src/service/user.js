@@ -10,22 +10,27 @@
 import axios from '../utils/axios'
 
 export function getUserInfo() {
-  return axios.get('/user/info');
+  axios.defaults.headers["token"] = localStorage.getItem("token")
+  return axios.get('/user/info',);
 }
 
 export function EditUserInfo(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.put('/user/info', params);
 }
 
 export function login(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/user/login', params);
 }
 
 export function logout() {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/user/logout')
 }
 
 export function register(params) {
+  axios.defaults.headers["token"] = localStorage.getItem("token")
   return axios.post('/user/register', params);
 }
 
