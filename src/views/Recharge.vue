@@ -8,13 +8,10 @@
  *-->
 <template>
   <div class="about">
-    <s-header :name="'Пополнить'"></s-header>
+    <s-header :name="'Справки по работе с клиентами'"></s-header>
 
-    <!-- <van-divider :style="{ color: '#1baeae', borderColor: '#1baeae', fontSize: '20px', fontWeight: 500 }">简介
-      </van-divider> -->
-    <div class="about-body">Пожалуйста, нажмите на один из способов связи, чтобы связаться с клиентской службой пополнения счета и следуйте инструкциям для завершения пополнения счета。</div>
-    <!-- <van-divider :style="{ color: '#1baeae', borderColor: '#1baeae', fontSize: '20px', fontWeight: 500 }">开源地址
-      </van-divider> -->
+    <div class="about-body">Пожалуйста, выберите способ связаться со службой поддержки клиентов</div>
+
 
 
     <ul class="user-list">

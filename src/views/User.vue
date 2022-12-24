@@ -59,8 +59,13 @@
         <van-icon name="arrow" />
       </li>
 
-      <li @click="linkDownload('https://t.me/nine183183')">
-        <a class="a-style">Связаться с</a>
+<!--      <li @click="linkDownload('https://t.me/nine183183')">-->
+<!--        <a class="a-style">Связаться с</a>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+
+      <li @click="goTo('recharge')">
+        <span>Связаться с</span>
         <van-icon name="arrow" />
       </li>
 
