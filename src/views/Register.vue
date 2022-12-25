@@ -10,8 +10,7 @@
 
 <template>
   <div class="login">
-    <s-header name="Регистрация счета" :back="'/login'"></s-header>
-
+    <s-header name="註冊" :back="'/login'"></s-header>
 
     <van-image
       class="logo"
@@ -24,9 +23,9 @@
         <van-field
           v-model="username"
           name="username"
-          label="Телефон +7"
-          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
+          label="電話號碼"
+          placeholder="請輸入電話號碼"
+          :rules="[{ required: true, message: '請輸入電話號碼' }]"
         />
 
 
@@ -34,16 +33,16 @@
           v-model="password"
           :type="isPassword? 'password' :'text'"
           name="password"
-          label="Пароль"
+          label="密碼"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
-          placeholder="Пароль"
-          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
+          placeholder="請輸入密碼"
+          :rules="[{ required: true, message: '請輸入密碼' }]"
         />
 
         <div style="margin: 16px;">
-          <div class="link-register" @click="toggle('register')">Вход в систему</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
+          <div class="link-register" @click="toggle('login')">登陸賬號</div>
+          <van-button round block type="info" color="#1baeae" native-type="submit">確認提交</van-button>
         </div>
       </van-form>
 

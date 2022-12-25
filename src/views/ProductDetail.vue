@@ -1,16 +1,8 @@
-<!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
--->
+
 
 <template>
   <div class="product-detail">
-    <s-header :name="'Детали продукта'"></s-header>
+    <s-header :name="'產品詳情'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
         <van-swipe class="my-swipe" indicator-color="#1baeae">
@@ -25,7 +17,7 @@
         <div class="product-title">
           {{ detail.goodsName }}
         </div>
-        <div class="product-desc">Бесплатная доставка</div>
+        <div class="product-desc">免費送貨上門</div>
         <div class="product-price">
           <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
           <!-- <span>库存203</span> -->
@@ -33,30 +25,22 @@
       </div>
       <div class="product-intro">
         <ul>
-          <li>Обзор</li>
-          <li>Параметры</li>
-          <li>Услуги</li>
-          <li>Рекомендации</li>
+          <li>簡介</li>
+          <li>參數</li>
+<!--          <li>Услуги</li>-->
+          <li>建議的事項</li>
         </ul>
-
-
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
-
 
       </div>
 
-
     </div>
-
-
-
-
 
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="   " />
       <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text=" " />
-      <van-goods-action-button type="warning" @click="addCart" text="Добавить в корзину" />
-      <van-goods-action-button type="danger" @click="goToCart" text="Купить сейчас" />
+      <van-goods-action-button type="warning" @click="addCart" text="添加到購物車" />
+      <van-goods-action-button type="danger" @click="goToCart" text="現在購買" />
     </van-goods-action>
   </div>
 

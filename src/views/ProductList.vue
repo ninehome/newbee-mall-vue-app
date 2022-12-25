@@ -11,16 +11,16 @@
           <i class="nbicon nbSearch"></i>
           <input type="text" class="search-title" @mouseenter="textEnter" @mouseleave="textLeave" v-model="keyword" />
         </div>
-        <span class="search-btn" @click="getSearch">Поискu</span>
+        <span class="search-btn" @click="getSearch">搜索</span>
       </header>
       <van-tabs type="card" color="#1baeae" @click="changeTab">
-        <van-tab title="Новый" name=""></van-tab>
-        <van-tab title="Популярные" name="new"></van-tab>
-        <van-tab title="Цена" name="price"></van-tab>
+        <van-tab title="新產品" name=""></van-tab>
+        <van-tab title="熱門" name="new"></van-tab>
+        <van-tab title="價格" name="price"></van-tab>
       </van-tabs>
     </div>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="Обновление данных завершено"  loading-text	="loading ...."     pulling-text="Продолжайте прокручивать вниз...">
-      <van-list v-model="loading" :finished="finished" finished-text="Не более..." @load="onLoad" @offset="300" loosing-text="loading..."  loading-text	="loading ...." >
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="數據更新完成"  loading-text	="loading ...."     pulling-text="繼續向下滾動...">
+      <van-list v-model="loading" :finished="finished" finished-text="沒有更多..." @load="onLoad" @offset="300" loosing-text="loading..."  loading-text	="loading ...." >
         <!-- <p v-for="item in list" :key="item">{{ item }}</p> -->
         <div class="product-item" v-for="(item, index) in productList" :key="index" @click="productDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" />

@@ -10,14 +10,14 @@
 
 <template>
   <div class="seting-box">
-    <s-header :name="'Управление счетами'"></s-header>
+    <s-header :name="'帳戶管理'"></s-header>
     <div class="input-item">
-      <van-field v-model="nickName" label="Прозвище" />
-      <van-field v-model="introduceSign" label="Персонифицированная подпись" />
-      <van-field v-model="password" type='password' label="Изменить пароль" />
+      <van-field v-model="nickName" label="暱稱" />
+      <van-field v-model="introduceSign" label="個性化簽名" />
+      <van-field v-model="password" type='password' label="更改密碼" />
     </div>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Сохранить</van-button>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>保存</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>登出</van-button>
   </div>
 </template>
 

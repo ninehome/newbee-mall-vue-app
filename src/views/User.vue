@@ -11,39 +11,36 @@
 <template>
   <div class="user-box">
     <!-- <s-header :name="'我的'"></s-header> -->
-    <div class="header_title">
-      Персональный центр
-    </div>
-
+    <div class="header_title">個人中心</div>
     <div class="user-info">
       <div class="info">
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
-          <span>Вход в аккаунт：{{ user.loginName }}</span>
-          <span>Баланс：{{ user.userMoney }} ₽</span>
-          <span>Класс: VIP{{ user.userLevel }}</span>
+          <span>賬戶：{{ user.loginName }}</span>
+          <span>餘額：{{ user.userMoney }} ₽</span>
+          <span>等級: VIP{{ user.userLevel }}</span>
           <!-- <span class="name">个性签名：{{ user.introduceSign }}</span> -->
         </div>
       </div>
     </div>
     <ul class="user-list">
       <li @click="goTo('recharge')">
-        <span>Пополнить</span>
+        <span>充值</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('withdrawal')">
-        <span>Снятие средств</span>
+        <span>提現</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('bank')">
-        <span>Управление банком</span>
+        <span>管理提現賬戶</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('order')">
-        <span>Мои заказы</span>
+        <span>我的訂單</span>
         <van-icon name="arrow" />
       </li>
       <!-- <li @click="goTo('setting')">
@@ -51,7 +48,7 @@
         <van-icon name="arrow" />
       </li> -->
       <li @click="goTo('address?from=mine')">
-        <span>Управление адресами</span>
+        <span>收貨地址管理</span>
         <van-icon name="arrow" />
       </li>
       <li @click="goTo('about')">
@@ -65,11 +62,11 @@
 <!--      </li>-->
 
       <li @click="goTo('recharge')">
-        <span>Связаться с</span>
+        <span>聯繫我們</span>
         <van-icon name="arrow" />
       </li>
 
-      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>退出登錄</van-button>
 
     </ul>
     <nav-bar></nav-bar>
