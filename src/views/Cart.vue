@@ -29,7 +29,7 @@
               <div class="good-btn">
 
 
-                <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
+                <div class="price">{{    formatNum(item.sellingPrice) }}  {{this.$store.state.Symbols}}</div>
 
 
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
@@ -48,7 +48,7 @@
       <van-checkbox @click="allCheck" v-model="checkAll">選擇所有</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} {{huobi}} </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} {{this.$store.state.Symbols}} </span>
       </div>
 
 
@@ -70,7 +70,7 @@ import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
 import {formatNum} from '../service/number'
-import { global } from '../common/common.vue'
+
 export default {
   data() {
     return {
@@ -80,7 +80,7 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
-      huobi: global.huobi
+
 
     }
   },

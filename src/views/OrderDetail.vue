@@ -34,7 +34,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>數量 ：</label>
-        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} ₽</span>
+        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} {{this.$store.state.Symbols}}</span>
       </div>
       <div class="price-item">
         <label>物流方式：</label>
@@ -47,7 +47,7 @@
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
-        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} ₽  </span>
+        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} {{this.$store.state.Symbols}} </span>
       </template>
 
    </van-card>

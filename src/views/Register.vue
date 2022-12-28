@@ -15,7 +15,7 @@
     <van-image
       class="logo"
       fit="contain"
-      :src="require('../../static-files/logo.png')"
+      :src="require('../../static-files/shoppe.jpg')"
     />
 
     <div  class="login-body login">

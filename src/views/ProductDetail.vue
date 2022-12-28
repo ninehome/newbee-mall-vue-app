@@ -19,7 +19,7 @@
         </div>
         <div class="product-desc">免費送貨上門</div>
         <div class="product-price">
-          <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
+          <span>{{  formatNum(detail.sellingPrice) }} {{this.$store.state.Symbols}}</span>
           <!-- <span>库存203</span> -->
         </div>
       </div>

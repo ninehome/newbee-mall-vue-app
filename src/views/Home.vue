@@ -128,22 +128,22 @@ export default {
         //   categoryId: 100003
         // },
         {
-          name: 'Глобальный',  //全球购
+          name: '全球購',  //全球购
           imgUrl: '//s.weituibao.com/1583585285470/qq.png',
           categoryId: 100002
         },
         {
-          name: 'Покупки',  //新蜂超市
+          name: '品類豐富',
           imgUrl: '//s.weituibao.com/1583585285461/cs.png',
           categoryId: 100001
         },
         {
-          name: 'Удобный',  //新蜂生鲜
+          name: '快捷購物',
           imgUrl: '//s.weituibao.com/1583585285472/sx.png',
           categoryId: 100004
         },
         {
-          name: 'Быстрый',  //新蜂到家
+          name: '急速配送',
           imgUrl: '//s.weituibao.com/1583585285467/dj.png',
           categoryId: 100005
         }

@@ -8,5 +8,6 @@
  */
 
 export default {
-  cartCount: 0
+  cartCount: 0,
+  Symbols:'TWD'
 }

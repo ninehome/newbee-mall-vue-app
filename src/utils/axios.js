@@ -14,11 +14,15 @@ import router from "../router";
 //http://154.198.224.126/
 
 //发布服务器  wildberries.store
-axios.defaults.baseURL =
-  process.env.NODE_ENV == "development"
-    ? "https://wildberries.store/api/v1"
-    : "https://wildberries.store/api/v1";
+// axios.defaults.baseURL =
+//   process.env.NODE_ENV == "development"
+//     ? "https://wildberries.store/api/v1"
+//     : "https://wildberries.store/api/v1";
 
+
+//http://154.198.224.126/
+// axios.defaults.baseURL ="http://wildberriesgoods.top/api/v1";
+axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 
 

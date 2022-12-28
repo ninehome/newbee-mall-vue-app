@@ -8,24 +8,46 @@
  *
 -->
 
+<!--<template>-->
+<!--  <div class="nav-bar">-->
+<!--    <ul class="nav-list">-->
+<!--      <router-link tag="li" class="nav-list-item active" to="home">-->
+<!--        <i class="nbicon nblvsefenkaicankaoxianban-1"></i>-->
+<!--        <span>Главная</span>-->
+<!--      </router-link>-->
+<!--      <router-link tag="li" class="nav-list-item" to="category">-->
+<!--        <i class="nbicon nbfenlei"></i>-->
+<!--        <span>Поиск</span>-->
+<!--      </router-link>-->
+<!--      <router-link tag="li" class="nav-list-item" to="cart">-->
+<!--        <van-icon name="shopping-cart-o" :info="!count ? '' : count" />-->
+<!--        <span>Корзина</span>-->
+<!--      </router-link>-->
+<!--      <router-link tag="li" class="nav-list-item" to="user">-->
+<!--        <i class="nbicon nblvsefenkaicankaoxianban-"></i>-->
+<!--        <span>Мой</span>-->
+<!--      </router-link>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</template>-->
 <template>
   <div class="nav-bar">
     <ul class="nav-list">
       <router-link tag="li" class="nav-list-item active" to="home">
         <i class="nbicon nblvsefenkaicankaoxianban-1"></i>
-        <span>Главная</span>
+        <span>主頁</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="category">
         <i class="nbicon nbfenlei"></i>
-        <span>Поиск</span>
+        <span>推薦</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="cart">
         <van-icon name="shopping-cart-o" :info="!count ? '' : count" />
-        <span>Корзина</span>
+        <span>購物車</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="user">
         <i class="nbicon nblvsefenkaicankaoxianban-"></i>
-        <span>Мой</span>
+        <span>我的</span>
       </router-link>
     </ul>
   </div>
