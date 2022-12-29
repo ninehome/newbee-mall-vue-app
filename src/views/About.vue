@@ -3,7 +3,7 @@
   <div class="about">
     <s-header :name="'關於Shopee'"></s-header>
     <div class="about-body">
-      <van-divider class="van" :style="{  fontSize: '20px', fontWeight: 500 }">Wildberries
+      <van-divider class="van" :style="{  fontSize: '20px', fontWeight: 500 }">Shopee
       </van-divider>
 
       <div  >
