@@ -48,7 +48,7 @@
       <van-checkbox @click="allCheck" v-model="checkAll">選擇所有</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} {{symbols}} </span>
+        <span style="color: #ff7337">{{ formatNum(total) }} {{symbols}} </span>
       </div>
 
 

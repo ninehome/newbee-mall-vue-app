@@ -14,7 +14,7 @@
     <div class="order-status">
       <div class="status-item">
         <label>訂單狀態 ：</label>
-        <span style="color: #1baeae">{{ detail.orderStatusString }}</span>
+        <span  style="margin-bottom: 10px"    :style={color:bindcolor}      >{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
         <label>訂單號 ：</label>
@@ -24,9 +24,9 @@
         <label>訂單時間 ：</label>
         <span>{{ detail.createTime }}</span>
       </div>
-      <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block
+      <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px"  :style={color:bindcolor} block
         @click="handleConfirmOrder(detail.orderNo)">確認回購</van-button>
-      <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block
+      <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px"  :style={color:bindcolor} block
         @click="showPayFn(detail.orderNo)">繼續支付</van-button>
       <!-- <van-button v-if="!(detail.orderStatus < 0 || detail.orderStatus == 4)" block
         @click="cancelOrder(detail.orderNo)">取消订单</van-button> -->
@@ -34,7 +34,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>數量 ：</label>
-        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} {{symbol}}</span>
+        <span :style={color:bindcolor}> {{ formatNum(detail.totalPrice) }} {{symbol}}</span>
       </div>
       <div class="price-item">
         <label>物流方式：</label>
@@ -47,7 +47,7 @@
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
-        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} {{symbol}} </span>
+        <span :style={color:bindcolor}>{{ formatNum(item.sellingPrice) }} {{symbol}} </span>
       </template>
 
    </van-card>
@@ -71,7 +71,8 @@ export default {
       formatNum:formatNum,
       detail: {},
       showPay: false,
-      symbol:''
+      symbol:'',
+      bindcolor:"#ff7337",
     }
   },
   mounted() {

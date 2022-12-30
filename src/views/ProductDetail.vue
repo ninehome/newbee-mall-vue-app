@@ -5,7 +5,7 @@
     <s-header :name="'產品詳情'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
-        <van-swipe class="my-swipe" indicator-color="#1baeae">
+        <van-swipe class="my-swipe" indicator-color="#ff7337">
           <van-swipe-item v-for="(item, index) in detail.goodsCarouselList" :key="index">
             <img :src="prefix(item)" alt="">
 <!--            <img :src="item" alt="">-->

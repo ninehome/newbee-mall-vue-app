@@ -63,7 +63,7 @@
         <van-icon name="arrow" />
       </li>
 
-      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>退出登錄</van-button>
+      <van-button class="save-btn" color="#ff7337" type="primary" @click="logout" block>退出登錄</van-button>
 
     </ul>
     <nav-bar></nav-bar>

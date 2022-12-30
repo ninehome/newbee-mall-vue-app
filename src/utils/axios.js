@@ -21,8 +21,8 @@ import router from "../router";
 
 
 //http://154.198.224.126/
-// axios.defaults.baseURL ="http://wildberriesgoods.top/api/v1";
-axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
+axios.defaults.baseURL ="https://wildberriesgoods.top/api/v1";
+// axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 
 

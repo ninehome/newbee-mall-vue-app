@@ -35,7 +35,7 @@
         <span>支付總額</span>
         <span> {{ total }} {{symbols}}</span>
       </div>
-      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>確認付款</van-button>
+      <van-button @click="createOrder" class="pay-btn" color="#ff7337" type="primary" block>確認付款</van-button>
     </div>
     <!-- <van-popup closeable :close-on-click-overlay="false" v-model="showPay" position="bottom" :style="{ height: '30%' }"
       @close="close">

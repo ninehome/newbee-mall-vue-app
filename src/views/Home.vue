@@ -35,7 +35,7 @@
     <div class="category-list">
       <div v-for="item in categoryList" v-bind:key="item.categoryId">
         <img :src="item.imgUrl">
-        <span>{{ item.name }}</span>
+        <span style="color: #1baeae" >{{ item.name }}</span>
       </div>
     </div>
 

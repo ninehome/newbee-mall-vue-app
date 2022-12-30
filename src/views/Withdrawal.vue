@@ -33,7 +33,7 @@
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
 <!--                   :rules="[{ required: true, message: '请填写收货地址' }]" />-->
         <div style="margin: 16px; margin-top: 50px;">
-          <van-button round block type="info" color="#1baeae" native-type="submit" >確認提交</van-button>
+          <van-button round block type="info" color="#ff7337" native-type="submit" >確認提交</van-button>
         </div>
 
       </van-form>
@@ -56,7 +56,7 @@ export default {
   data(){
     return{
       formatNum:formatNum,
-      bindcolor:"#14dad4",
+      bindcolor:"#ff7337",
       user_money:'0.00 ',
       user: {},
 

@@ -3,7 +3,8 @@
 <template>
   <div class="order-box">
     <s-header :name="'我的訂單'" :back="'/user'"></s-header>
-    <van-tabs @change="onChangeTab" :color="'#1baeae'" :title-active-color="'#1baeae'" class="order-tab"
+<!--    <van-tabs @change="onChangeTab" :color="'#1baeae'" :title-active-color="'#1baeae'" class="order-tab"-->
+    <van-tabs @change="onChangeTab" :color="'#ee4d2d'" :title-active-color="'#ff7337'" class="order-tab"
       v-model="status">
       <van-tab title="全部" name=''></van-tab>
       <van-tab title="未支付" name="0"></van-tab>
@@ -16,7 +17,7 @@
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
-            <span style="color: #1baeae">{{ item.orderStatusString }}</span>
+            <span style="color: #ff7337">{{ item.orderStatusString }}</span>
           </div>
           <div class="order-item-header">
             <span> {{ item.createTime }}</span>
@@ -32,7 +33,7 @@
                     :thumb="prefix(one.goodsCoverImg)" >
 
                 <template #footer>
-                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} {{symbol}}  </span>
+                  <span style="color: #ff7337">{{ formatNum(one.sellingPrice) }} {{symbol}}  </span>
 
                 </template>
             </van-card>
