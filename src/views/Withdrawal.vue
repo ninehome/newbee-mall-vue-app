@@ -13,7 +13,7 @@
       <div>
         <van-cell class="status" title="賬戶餘額" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} ₽</p>
+            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} {{symbol}}</p>
           </template>
         </van-cell>
       </div>
@@ -67,7 +67,8 @@ export default {
       select_bank:'',
       withdrawal_money: '',
       bank_id:'',
-      bankList:[]
+      bankList:[],
+      symbol:''
 
 
     }
@@ -77,6 +78,7 @@ export default {
     const { data } = await getUserInfo()
     this.user_money = data.userMoney
     await this.initBanks()
+    this.symbol = this.$store.state.Symbols
 
   },
 

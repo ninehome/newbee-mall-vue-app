@@ -25,7 +25,7 @@
             <span>x{{ item.goodsCount }}</span>
           </div>
           <div class="good-btn">
-            <div class="price">{{formatNum(item.sellingPrice)}} {{this.$store.state.Symbols}} </div>
+            <div class="price">{{formatNum(item.sellingPrice)}} {{symbols}} </div>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="pay-wrap">
       <div class="price">
         <span>支付總額</span>
-        <span> {{ total }} {{this.$store.state.Symbols}}</span>
+        <span> {{ total }} {{symbols}}</span>
       </div>
       <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>確認付款</van-button>
     </div>
@@ -67,11 +67,13 @@ export default {
       showPay: false,
       orderNo: '',
       cartItemIds: [],
-      formatNum:formatNum
+      formatNum:formatNum,
+      symbols:''
     }
   },
   mounted() {
     this.init()
+    this.symbols =  this.$store.state.Symbols
   },
   methods: {
     async init() {

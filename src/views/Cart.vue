@@ -29,7 +29,7 @@
               <div class="good-btn">
 
 
-                <div class="price">{{    formatNum(item.sellingPrice) }}  {{this.$store.state.Symbols}}</div>
+                <div class="price">{{    formatNum(item.sellingPrice) }}  {{symbols}}</div>
 
 
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
@@ -48,7 +48,7 @@
       <van-checkbox @click="allCheck" v-model="checkAll">選擇所有</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} {{this.$store.state.Symbols}} </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} {{symbols}} </span>
       </div>
 
 
@@ -80,6 +80,7 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
+      symbols:''
 
 
     }
@@ -90,6 +91,7 @@ export default {
   },
   mounted() {
     this.init()
+    this.symbols =  this.$store.state.Symbols
   },
   computed: {
     total: function () {
@@ -105,7 +107,7 @@ export default {
     async init() {
 
 
-      Toast.loading({ message: 'Загрузка...', forbidClick: true });
+      Toast.loading({ message: '加載中...', forbidClick: true });
       const { data } = await getCart({ pageNumber: 1 })
       if (data == null) {
         this.list = []
@@ -127,7 +129,7 @@ export default {
     },
     async onChange(value, detail) {
       if (this.list.filter(item => item.cartItemId == detail.name)[0].goodsCount == value) return
-      Toast.loading({ message: 'Модификации в процессе...', forbidClick: true });
+      Toast.loading({ message: '正在進行修改...', forbidClick: true });
       const params = {
         cartItemId: detail.name,
         goodsCount: value
@@ -142,7 +144,7 @@ export default {
     },
     async onSubmit() {
       if (this.result.length == 0) {
-        Toast.fail('Выберите продукт')
+        Toast.fail('選擇產品')
         return
       }
       const params = JSON.stringify(this.result)
@@ -153,7 +155,7 @@ export default {
     },
     async deleteGood(id) {
 
-      Toast.loading({ message: 'Загрузка...', forbidClick: true });
+      Toast.loading({ message: '加載中...', forbidClick: true });
       const { data } = await deleteCartItem(id)
       Toast.clear()
 

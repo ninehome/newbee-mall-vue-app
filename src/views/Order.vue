@@ -32,7 +32,7 @@
                     :thumb="prefix(one.goodsCoverImg)" >
 
                 <template #footer>
-                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} {{this.$store.state.Symbols}}  </span>
+                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} {{symbol}}  </span>
 
                 </template>
             </van-card>
@@ -57,7 +57,8 @@ export default {
       finished: false,
       refreshing: false,
       list: [],
-      page: 1
+      page: 1,
+      symbol:''
     }
   },
   components: {
@@ -65,6 +66,7 @@ export default {
   },
   async mounted() {
     // this.onLoad()
+    this.symbol = this.$store.state.Symbols
   },
   methods: {
     async loadData() {

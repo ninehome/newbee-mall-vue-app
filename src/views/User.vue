@@ -17,15 +17,19 @@
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
           <span>賬戶：{{ user.loginName }}</span>
-          <span>餘額：{{ user.userMoney }} ₽</span>
+          <span>餘額：{{ user.userMoney }} {{symbol}}</span>
           <span>等級: VIP{{ user.userLevel }}</span>
           <!-- <span class="name">个性签名：{{ user.introduceSign }}</span> -->
         </div>
       </div>
     </div>
     <ul class="user-list">
-      <li @click="goTo('recharge')">
-        <span>充值</span>
+<!--      <li @click="goTo('recharge')">-->
+<!--        <span>聯繫客服</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+      <li @click="goTo('order')">
+        <span>我的訂單</span>
         <van-icon name="arrow" />
       </li>
 
@@ -39,10 +43,7 @@
         <van-icon name="arrow" />
       </li>
 
-      <li @click="goTo('order')">
-        <span>我的訂單</span>
-        <van-icon name="arrow" />
-      </li>
+
       <!-- <li @click="goTo('setting')">
         <span>账号管理</span>
         <van-icon name="arrow" />
@@ -52,14 +53,10 @@
         <van-icon name="arrow" />
       </li>
       <li @click="goTo('about')">
-        <span>О нас</span>
+        <span>關於我們</span>
         <van-icon name="arrow" />
       </li>
 
-<!--      <li @click="linkDownload('https://t.me/nine183183')">-->
-<!--        <a class="a-style">Связаться с</a>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
 
       <li @click="goTo('recharge')">
         <span>聯繫我們</span>
@@ -91,6 +88,7 @@ export default {
       introduceSign: '',
       password: '',
       bankcard: false,
+      symbol:'',
       user: {
         loginName:'',
         userMoney:0,
@@ -101,9 +99,9 @@ export default {
   async mounted() {
     // console.log("我的token" )
     // console.log(localStorage.getItem("token") )
+    this.symbol = this.$store.state.Symbols
     const { data } = await getUserInfo()
     this.user = data
-
     await this.initBanks()
   },
   methods: {

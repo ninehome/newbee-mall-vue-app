@@ -27,7 +27,7 @@
           <div class="product-info">
             <p class="name">{{ item.goodsName }}</p>
             <p class="subtitle">{{ item.goodsIntro }}</p>
-            <span class="price">{{  formatNum(item.sellingPrice )}}  {{this.$store.state.Symbols}} </span>
+            <span class="price">{{  formatNum(item.sellingPrice )}}  {{symbol}} </span>
           </div>
         </div>
       </van-list>
@@ -54,10 +54,13 @@ export default {
       productList: [],
       totalPage: 0,
       page: 1,
-      orderBy: ''
+      orderBy: '',
+      symbol:''
+
     }
   },
   mounted() {
+    this.symbol = this.$store.state.Symbols
     // window.addEventListener('scroll', this.pageScroll)
     // setTimeout(() => {
     //     this.isLoading = false

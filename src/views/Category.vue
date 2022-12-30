@@ -18,8 +18,6 @@
 <!--      顶部边距-->
       <header class="good-header">推薦</header>
 
-
-
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <lazy-component>-->
@@ -33,7 +31,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">{{formatNum(item.sellingPrice) }} {{this.$store.state.Symbols}} </div>
+            <div class="price">{{formatNum(item.sellingPrice) }} {{symbol}} </div>
           </div>
         </div>
       </div>
@@ -63,14 +61,14 @@ export default {
       hots: [],
       newGoodses: [],
       recommends: [],
+      symbol:''
     }
   },
   components: {
     navBar,  //底部导航
   },
   async mounted() {
-
-    window.addEventListener('scroll', this.pageScroll)
+    this.symbol = this.$store.state.Symbols
     Toast.loading({
       message: 'Данные запроса...',
       forbidClick: true

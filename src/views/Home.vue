@@ -23,7 +23,7 @@
       </div>
 
 
-      <router-link class="login" tag="span" to="./login" v-if="!isLogin">Login</router-link>
+      <router-link class="login" tag="span" to="./login" v-if="!isLogin">登錄</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
       </router-link>

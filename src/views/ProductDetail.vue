@@ -80,7 +80,7 @@ export default {
     },
     async addCart() {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode == 200) Toast.success('Добавлено успешно')
+      if (resultCode == 200) Toast.success('添加成功')
       this.$store.dispatch('updateCart')
     },
     async goToCart() {

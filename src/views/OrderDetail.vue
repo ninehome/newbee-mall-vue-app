@@ -34,7 +34,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>數量 ：</label>
-        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} {{this.$store.state.Symbols}}</span>
+        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} {{symbol}}</span>
       </div>
       <div class="price-item">
         <label>物流方式：</label>
@@ -47,7 +47,7 @@
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
-        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} {{this.$store.state.Symbols}} </span>
+        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} {{symbol}} </span>
       </template>
 
    </van-card>
@@ -70,12 +70,13 @@ export default {
     return {
       formatNum:formatNum,
       detail: {},
-      showPay: false
+      showPay: false,
+      symbol:''
     }
   },
   mounted() {
     this.init()
-
+    this.symbol = this.$store.state.Symbols
   },
   methods: {
     async init() {
