@@ -51,7 +51,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>
+            <div class="price">{{formatNum(item.sellingPrice) }} {{symbols}} </div>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price"> {{formatNum(item.sellingPrice) }} ₽</div>
+            <div class="price"> {{formatNum(item.sellingPrice) }} {{symbols}}</div>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">{{ formatNum(item.sellingPrice ) }} ₽</div>
+            <div class="price">{{ formatNum(item.sellingPrice ) }} {{symbols}}</div>
           </div>
         </div>
       </div>
@@ -114,6 +114,7 @@ export default {
       isLogin: false,
       headerScroll: false,
       hots: [],
+      symbols:'',
       newGoodses: [],
       recommends: [],
       categoryList: [
@@ -155,6 +156,7 @@ export default {
     swiper, //列表
   },
   async mounted() {
+    this.symbols =  this.$store.state.Symbols
     const token = getLocal('token')
     if (token) {
       this.isLogin = true
