@@ -21,8 +21,9 @@ import router from "../router";
 
 
 //http://154.198.224.126/
-axios.defaults.baseURL ="https://wildberriesgoods.top/api/v1";
+// axios.defaults.baseURL ="https://wildberriesgoods.top/api/v1";
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
+axios.defaults.baseURL ="https://shoppe.ink/api/v1";
 
 
 
@@ -39,7 +40,7 @@ axios.defaults.baseURL ="https://wildberriesgoods.top/api/v1";
 //     : "http://localhost:9191/api/v1";
 
   // 会影响跨域
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers["token"] = localStorage.getItem("token");
 axios.defaults.headers.post["Content-Type"] = "application/json";
