@@ -43,7 +43,10 @@ axios.defaults.baseURL ="https://wildberriesgoods.top/api/v1";
 axios.defaults.withCredentials = true;
 axios.defaults.headers["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers["token"] = localStorage.getItem("token");
-axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers["token"] = localStorage.getItem("token");
+axios.defaults.headers["Access-Control-Allow-Origin"]="*"
+axios.defaults.headers["Access-Control-Request-Method"]="GET,POST,PUT"
+axios.defaults.headers.post["Access-Control-Request-Method"] = "application/json";
 
 axios.interceptors.response.use((res) => {
   console.log("-----------start---------");
