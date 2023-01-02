@@ -14,7 +14,7 @@
       <van-tab title="完成" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
     </van-tabs>
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text	="loading ...." loosing-text	="更新數據" pulling-text	="下拉並更新數據">
-      <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
+      <van-list v-model="loading" :finished="finished" finished-text="沒有更多的數據..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
             <span style="color: #ff7337">{{ item.orderStatusString }}</span>
@@ -28,7 +28,7 @@
           <van-card v-for="one in item.newBeeMallOrderItemVOS"
                     :key="one.orderId"
                     :num="one.goodsCount"
-                     desc="免费送货"
+                     desc="免費送貨"
                     :title="one.goodsName"
                     :thumb="prefix(one.goodsCoverImg)" >
 

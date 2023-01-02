@@ -22,7 +22,6 @@
         <router-link tag="span" class="search-title" to="./product-list?from=home"></router-link>
       </div>
 
-
       <router-link class="login" tag="span" to="./login" v-if="!isLogin">登錄</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
         <van-icon name="manager-o" />
@@ -163,7 +162,7 @@ export default {
     }
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: 'Данные запроса...',
+      message: '請求數據...',
       forbidClick: true
     });
     const { data } = await getHome()

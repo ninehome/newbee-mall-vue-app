@@ -42,7 +42,7 @@
 
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('login')">登陸賬號</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">確認提交</van-button>
+          <van-button round block type="info" color="#ff7337" native-type="submit">確認提交</van-button>
         </div>
       </van-form>
 

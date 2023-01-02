@@ -82,7 +82,7 @@ export default {
   methods: {
     async init() {
       Toast.loading({
-        message: 'Загрузка...',
+        message: '加载中...',
         forbidClick: true
       });
       const { id } = this.$route.query
@@ -92,11 +92,11 @@ export default {
     },
     cancelOrder(id) {
       Dialog.confirm({
-        title: 'Подтвердить отмену заказов？',
+        title: '确认订单取消？',
       }).then(() => {
         cancelOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('Удалено успешно')
+            Toast('删除成功')
             this.init()
           }
         })
@@ -106,14 +106,14 @@ export default {
     },
     handleConfirmOrder(id) {
       Dialog.confirm({
-        title: 'Подтверждать ли выкуп？',
-        confirmButtonText:"Подтверждение",
-        cancelButtonText:"Аннулирование"
+        title: '你確認贖回嗎？',
+        confirmButtonText:"確定",
+        cancelButtonText:"取消"
 
       }).then(() => {
         confirmOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('Успех')
+            Toast('成功')
             this.init()
           }
         })

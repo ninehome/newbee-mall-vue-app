@@ -102,9 +102,9 @@ export default {
       // Toast('保存成功')
 
       if (resultCode === 200) {
-        Toast('Success')
+        Toast('成功')
       } else {
-        Toast('Fail')
+        Toast('失敗')
       }
 
 
@@ -121,9 +121,9 @@ export default {
        const { resultCode} = await DeleteBank(this.addressId)
 
        if (resultCode === 200) {
-         Toast('Success')
+         Toast('成功')
        } else {
-         Toast('Fail')
+         Toast('失敗')
        }
 
        setTimeout(() => {

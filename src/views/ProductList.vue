@@ -19,8 +19,8 @@
         <van-tab title="價格" name="price"></van-tab>
       </van-tabs>
     </div>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="數據更新完成"  loading-text	="loading ...."     pulling-text="繼續向下滾動...">
-      <van-list v-model="loading" :finished="finished" finished-text="沒有更多..." @load="onLoad" @offset="300" loosing-text="loading..."  loading-text	="loading ...." >
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="數據更新完成"  loading-text	="加載中...."     pulling-text="繼續向下滾動...">
+      <van-list v-model="loading" :finished="finished" finished-text="沒有更多..." @load="onLoad" @offset="300" loosing-text="加載中..."  loading-text	="加載中...." >
         <!-- <p v-for="item in list" :key="item">{{ item }}</p> -->
         <div class="product-item" v-for="(item, index) in productList" :key="index" @click="productDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" />

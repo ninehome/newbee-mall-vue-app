@@ -70,7 +70,7 @@ export default {
   async mounted() {
     this.symbol = this.$store.state.Symbols
     Toast.loading({
-      message: 'Данные запроса...',
+      message: '請求數據...',
       forbidClick: true
     });
 

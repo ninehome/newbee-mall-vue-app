@@ -159,14 +159,14 @@ export default {
         const { data , resultCode} = await createWithdrawal({ withdrawMoney: Number(content.withdrawal_money), bankId:  Number(bankid) })
         if (resultCode === 200){
           this.$toast({
-            message:"Success",
+            message:"成功",
             duration:500
           })
           await this.$router.push({path: 'user'})
 
         }else {
           this.$toast({
-            message:"fail",
+            message:"失敗",
             duration:500
           })
         }

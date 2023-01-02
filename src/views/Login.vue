@@ -42,7 +42,7 @@
 
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">註冊賬號</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">確認提交</van-button>
+          <van-button round block type="info" color="#ff7337" native-type="submit">確認提交</van-button>
         </div>
       </van-form>
     </div>
@@ -101,10 +101,10 @@ export default {
           setLocal('token', data)
           window.location.href = '/'
         }else  if(resultCode === 417){
-          Toast.fail('Введен неправильный пароль и номер счета')
+          Toast.fail('輸入了錯誤的密碼和帳號')
 
         }else {
-          Toast.fail('Ошибка входа в систему, повторите попытку позже')
+          Toast.fail('登錄失敗請稍後再試')
 
         }
 
@@ -145,10 +145,10 @@ export default {
   .verify-bar-area {
     margin-top: 24px;
     .verify-left-bar {
-      border-color: #1baeae;
+      border-color: #ff7337;
     }
     .verify-move-block {
-      background-color: #1baeae;
+      background-color: #ff7337;
       color: #fff;
     }
   }

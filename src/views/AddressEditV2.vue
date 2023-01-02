@@ -112,7 +112,7 @@ export default {
 
       // console.log(this.type)
       const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
-      Toast('Сохранено успешно')
+      Toast('保存成功')
 
 
       setTimeout(() => {
@@ -124,7 +124,7 @@ export default {
 
     async onDelete() {
       const { data } = await DeleteAddress(this.addressId)
-      Toast('Удалено успешно')
+      Toast('刪除成功')
       setTimeout(() => {
         this.$router.push({ path: 'address' })
       }, 1000)

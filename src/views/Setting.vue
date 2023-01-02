@@ -50,7 +50,7 @@ export default {
         passwordMd5: this.$md5(this.password)
       }
       const { data } = await EditUserInfo(params)
-      Toast.success('Сохранено успешно')
+      Toast.success('保存成功')
     },
     async logout() {
       const { resultCode } = await logout()
