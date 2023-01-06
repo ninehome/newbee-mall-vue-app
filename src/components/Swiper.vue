@@ -41,7 +41,7 @@ export default {
       height: 150px; //定高
       width: 100%;
       display: block;
-      object-fit: none;
+      object-fit: contain;
     }
 
   }

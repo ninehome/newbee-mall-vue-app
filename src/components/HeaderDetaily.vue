@@ -46,7 +46,7 @@ export default {
       oInput.select();
       document.execCommand("Copy");
       oInput.remove();
-      Toast.success('Successful Replication')
+      Toast.success('商品鏈接複製成功')
     }
   }
 }
