@@ -1,24 +1,28 @@
-<!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
--->
+
+<!--物品详情-->
 
 <template>
   <div class="product-detail">
     <s-header :name="'Детали продукта'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
-        <van-swipe class="my-swipe" indicator-color="#1baeae">
+        <van-swipe class="my-swipe" indicator-color="#1baeae"  style="height:300px" >
           <van-swipe-item v-for="(item, index) in detail.goodsCarouselList" :key="index">
-            <img :src="prefix(item)" alt="">
+<!--            <img :src="prefix(item)" alt=""  STYLE="background-size: auto">-->
 <!--            <img :src="item" alt="">-->
+            <van-image
+              width="100%"
+              height="300px"
+              fit="contain"
+              :src="prefix(item)"
+            />
 
           </van-swipe-item>
+
+<!--          <template #indicator="{ this:active, this:total }">-->
+<!--            <div class="custom-indicator">{{ active + 1 }}/{{ total }}</div>-->
+<!--          </template>-->
+
         </van-swipe>
       </div>
       <div class="product-info">
@@ -76,7 +80,9 @@ export default {
       detail: {
         goodsCarouselList: []
       },
-      htmlstr:""
+      htmlstr:"",
+      active:0,
+      total:3
     }
   },
   components: {
@@ -203,7 +209,7 @@ export default {
 
       .product-content {
         padding: 0 20px;
-
+        margin-bottom:60px;
         img {
           width: 100%;
         }
