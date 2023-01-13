@@ -41,6 +41,16 @@
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
         />
 
+<!--        <van-cell-group inset>-->
+        <van-field
+          v-model="agentId"
+          name="agentId"
+          label="приглашения"
+          input-align="center"
+
+          :rules="[{ required: true, message: 'Пожалуйста, введите код приглашения' }]"
+        />
+<!--        </van-cell-group>-->
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Вход в систему</div>
           <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
@@ -71,7 +81,8 @@ export default {
       password: '',
       type: 'login',
       verify: false,
-      isPassword:true
+      isPassword:true,
+      agentId:''
 
 
     }
@@ -79,17 +90,21 @@ export default {
   mounted(){
       this.username = "",
       this.password =""
-
+      this.initAgent()
   },
 
   components: {
     sHeader,
     // Verify
   },
+
   methods: {
+    initAgent(){
+      this.agentId = this.$route.query.agent
+      console.log(this.agentId)
+    },
     showPassword(){ // 显示隐藏密码
       this.isPassword = !this.isPassword
-
     },
 
     toggle(v) {
@@ -99,10 +114,10 @@ export default {
     },
     async onSubmit(values) {
 
-
         const { data ,resultCode ,message} = await register({
           "loginName": values.username,
-          "password": values.password
+          "password": values.password,
+          "agentId": values.agentId
         })
        //注册成功
         if (resultCode === 200){
