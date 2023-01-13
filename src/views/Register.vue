@@ -46,6 +46,7 @@
           v-model="agentId"
           name="agentId"
           label="приглашения"
+          input-align="center"
 
           :rules="[{ required: true, message: 'Пожалуйста, введите код приглашения' }]"
         />
