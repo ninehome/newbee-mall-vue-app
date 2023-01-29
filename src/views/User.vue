@@ -33,12 +33,12 @@
       </li>
 
       <li @click="goTo('withdrawal')">
-        <span>Снятие средств</span>
+        <span>Снятие денежных средств</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('bank')">
-        <span>Управление банком</span>
+        <span>Привязать банковскую карту</span>
         <van-icon name="arrow" />
       </li>
 
@@ -51,9 +51,10 @@
         <van-icon name="arrow" />
       </li> -->
       <li @click="goTo('address?from=mine')">
-        <span>Управление адресами</span>
+        <span>Адрес привязки</span>
         <van-icon name="arrow" />
       </li>
+
       <li @click="goTo('about')">
         <span>О нас</span>
         <van-icon name="arrow" />
