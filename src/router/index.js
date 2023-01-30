@@ -48,6 +48,7 @@ const routes = [
     name: "home",
     meta: {
       index: 1,
+      keepAlive: true
     },
     component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
@@ -64,6 +65,7 @@ const routes = [
     name: "category",
     meta: {
       index: 1,
+      keepAlive: true
     },
     component: () =>
       import(/* webpackChunkName: "category" */ "../views/Category.vue"),
