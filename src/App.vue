@@ -1,9 +1,14 @@
 
 <template>
   <div id="app">
-    <transition :name="transitionName">
-      <router-view class="router-view" />
-    </transition>
+<!--    <transition :name="transitionName">-->
+<!--      <router-view class="router-view" />-->
+<!--     增加页面缓存 通过路由配置-->
+      <keep-alive >
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
+<!--    </transition>-->
   </div>
 </template>
 

@@ -46,6 +46,8 @@ import {
   GoodsActionIcon,
   GoodsActionButton,
   SubmitBar,
+  GridItem,
+  Grid,
   Toast,
   ActionSheet, Image
 } from "vant";
@@ -82,6 +84,8 @@ Vue.use(Divider)
   .use(Checkbox)
   .use(ActionSheet)
   .use(Image)
+  .use(GridItem)
+  .use(Grid)
   .use(CheckboxGroup);
 Vue.config.productionTip = false;
 
