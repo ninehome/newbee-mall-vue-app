@@ -1,11 +1,5 @@
 <!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
+个人中心是 九宫格布局
 -->
 
 <template>
@@ -26,52 +20,77 @@
         </div>
       </div>
     </div>
-    <ul class="user-list">
-      <li @click="goTo('recharge')">
-        <span>Пополнить</span>
-        <van-icon name="arrow" />
-      </li>
 
-      <li @click="goTo('withdrawal')">
-        <span>Снятие средств</span>
-        <van-icon name="arrow" />
-      </li>
 
-      <li @click="goTo('bank')">
-        <span>Управление банком</span>
-        <van-icon name="arrow" />
-      </li>
+<!--    九宫格布局-->
 
-      <li @click="goTo('order')">
-        <span>Мои заказы</span>
-        <van-icon name="arrow" />
-      </li>
-      <!-- <li @click="goTo('setting')">
-        <span>账号管理</span>
-        <van-icon name="arrow" />
-      </li> -->
-      <li @click="goTo('address?from=mine')">
-        <span>Управление адресами</span>
-        <van-icon name="arrow" />
-      </li>
-      <li @click="goTo('about')">
-        <span>О нас</span>
-        <van-icon name="arrow" />
-      </li>
 
-<!--      <li @click="linkDownload('https://t.me/nine183183')">-->
-<!--        <a class="a-style">Связаться с</a>-->
+    <van-grid clickable :column-num="3" class="tab-grid">
+      <van-grid-item :icon="require('../../static-files/icon_telegram.png')" text="Пополнить" to="recharge" />
+      <van-grid-item icon="search" text="Снятие средств" to="withdrawal" />
+      <van-grid-item icon="home-o" text="Управление банком" to="bank" />
+      <van-grid-item icon="search" text="Мои заказы" to="order" />
+      <van-grid-item icon="home-o" text="Управление адресами" to="address?from=mine" />
+      <van-grid-item icon="search" text="О нас" to="about" />
+    </van-grid>
+
+
+
+<!--    <ul class="user-list">-->
+<!--      <li @click="goTo('recharge')">-->
+<!--        <span>Пополнить</span>-->
 <!--        <van-icon name="arrow" />-->
 <!--      </li>-->
+
+<!--      <li @click="goTo('withdrawal')">-->
+<!--        <span>Снятие средств</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+
+<!--      <li @click="goTo('bank')">-->
+<!--        <span>Управление банком</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+
+<!--      <li @click="goTo('order')">-->
+<!--        <span>Мои заказы</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+<!--      &lt;!&ndash; <li @click="goTo('setting')">-->
+<!--        <span>账号管理</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li> &ndash;&gt;-->
+<!--      <li @click="goTo('address?from=mine')">-->
+<!--        <span>Управление адресами</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+<!--      <li @click="goTo('about')">-->
+<!--        <span>О нас</span>-->
+<!--        <van-icon name="arrow" />-->
+<!--      </li>-->
+
 
 <!--      <li @click="goTo('recharge')">-->
 <!--        <span>Связаться с</span>-->
 <!--        <van-icon name="arrow" />-->
 <!--      </li>-->
 
+      <!--      <li @click="linkDownload('https://t.me/nine183183')">-->
+      <!--        <a class="a-style">Связаться с</a>-->
+      <!--        <van-icon name="arrow" />-->
+      <!--      </li>-->
+
+<!--    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>-->
+
+<!--    </ul>-->
+
+    <div  class="user-list">
       <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
 
-    </ul>
+    </div>
+
+
+
     <nav-bar></nav-bar>
   </div>
 </template>
