@@ -1,7 +1,7 @@
 
 <template>
   <div class="address-box">
-    <s-header :name="'Управление банковским счетом для снятия средств'" ></s-header>
+    <s-header :name="'Менеджмент банковских карт'" ></s-header>
     <div class="address-item">
       <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="По умолчанию" @add="onAdd"
                         @edit="onEdit" @select="select"  add-button-text ="Добавить банковский счет"	 />
@@ -68,7 +68,7 @@ export default {
   }
 
   .address-item {
-    margin-top: 44px;
+    margin-top: 60px;
 
     .van-button {
       background: @primary;

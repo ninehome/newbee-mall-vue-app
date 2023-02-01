@@ -94,7 +94,7 @@ const routes = [
     meta: {
       index: 1,
     },
-    component: () => import(/* webpackChunkName: "user" */ "../views/UserV2Grid.vue"),
+    component: () => import(/* webpackChunkName: "user" */ "../views/User.vue"),
   },
   {
     path: "/bank",
