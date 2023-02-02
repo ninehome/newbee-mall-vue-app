@@ -32,7 +32,7 @@
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
 <!--                   :rules="[{ required: true, message: '请填写收货地址' }]" />-->
-        <div style="margin: 16px; margin-top: 50px;">
+        <div style="margin:50px; margin-top: 50px;">
           <van-button round block type="info" color="#1baeae" native-type="submit" >Отправить</van-button>
         </div>
 
@@ -143,6 +143,17 @@ export default {
 
         return
       }
+
+      if (Number(content.withdrawal_money) ===0){
+
+        this.$toast({
+          message:"Сумма вывода не может быть равна 0 ₽",
+          duration:500
+        })
+
+        return
+      }
+
       // console.log( this.select_bank)
 
       let bankid = 0

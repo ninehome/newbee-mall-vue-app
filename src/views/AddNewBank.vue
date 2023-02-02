@@ -8,7 +8,7 @@
 
       <van-field v-model="telphone" name="telphone" label="Название банка" placeholder="Пожалуйста, заполните название банка"
         :rules="[{ required: true, message: 'Пожалуйста, заполните название банка' }]" />
-      <van-field v-model="address" name="address" label="Номер банковского счета" placeholder="Пожалуйста, заполните номер банковского счета"
+      <van-field v-model="address" type="number" name="address" label="Номер банковского счета" placeholder="Пожалуйста, заполните номер банковского счета"
         :rules="[{ required: true, message: 'Пожалуйста, заполните номер банковского счета' }]" />
       <van-field v-model="username" name="username" label="Название счета" placeholder="Пожалуйста, введите ваше имя пользователя"
                  :rules="[{ required: true, message: 'Пожалуйста, введите ваше имя пользователя' }]" />
@@ -85,17 +85,30 @@ export default {
 
   methods: {
 
+     validateNum(value){
+      if(/^\d{16}$/.test(value)){
+         return true
+      }else {
+         return  false
+      }
+    },
+
     //新增 或者 修改 银行账户
     async   onSubmit(content) {
 
       const params = {
         userName: content.username,
         bankName: content.telphone,
-        BankNumber: content.address,
+        BankNumber: content.address.replace(" ",""),
         // defaultFlag: 1,
       }
       if (this.type == 'edit') {
         params['addressId'] = this.addressId
+      }
+
+      if (!this.validateNum(content.address.replace(" ",""))){
+        Toast('Можно вводить только 16-значные банковские счета')
+        return
       }
 
 
@@ -116,7 +129,7 @@ export default {
 
     },
 
-     async onDelete() {
+    async onDelete() {
 
 
        const { resultCode} = await DeleteBank(this.addressId)
