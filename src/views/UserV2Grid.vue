@@ -102,7 +102,7 @@ export default {
     },
     async logout() {
       const { resultCode } = await logout()
-      if (resultCode == 200) {
+      if (resultCode === 200) {
         setLocal('token', '')
         window.location.href = '/'
       }
@@ -112,11 +112,7 @@ export default {
       const { data,resultCode } = await  getBankList({ pageNumber: 1 })
 
       if (resultCode === 200){
-        if(data.size === 0){
-          this.bankcard  = false
-        }else {
-          this.bankcard  = true
-        }
+        this.bankcard = data.size !== 0;
 
       }
 
@@ -149,12 +145,11 @@ export default {
 
   .user-info {
     width: 94%;
-    margin: 10px;
     height: 115px;
     background: linear-gradient(90deg, @primary_start,@primary);
     box-shadow: 0 2px 5px @primary;
     border-radius: 6px;
-    margin-top: 10px;
+    margin: 20px 10px 10px;
 
     .info {
       position: relative;
@@ -202,11 +197,11 @@ export default {
   }
 
   .tab-grid{
-    margin-top: 40px;
+    margin-top: 80px;
   }
   .user-list {
     padding: 0 20px;
-    margin-top: 50px;
+    margin-top: 100px;
 
     .save-btn {
       width: 70%;
