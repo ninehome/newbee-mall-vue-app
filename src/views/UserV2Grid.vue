@@ -22,67 +22,18 @@
     </div>
 
 
-<!--    九宫格布局-->
-
+   <!-- 九宫格布局  Получатель -->
 
     <van-grid clickable :column-num="3" class="tab-grid">
-      <van-grid-item :icon="require('../../static-files/icon_telegram.png')" text="Пополнить" to="recharge" />
-      <van-grid-item icon="search" text="Снятие средств" to="withdrawal" />
-      <van-grid-item icon="home-o" text="Управление банком" to="bank" />
-      <van-grid-item icon="search" text="Мои заказы" to="order" />
-      <van-grid-item icon="home-o" text="Управление адресами" to="address?from=mine" />
-      <van-grid-item icon="search" text="О нас" to="about" />
+      <van-grid-item :icon="require('../../static-files/user/money_in.png')" text="Пополнить" to="recharge" />
+      <van-grid-item :icon="require('../../static-files/user/money_out.png')" text="Отозвано" to="withdrawal" />
+      <van-grid-item :icon="require('../../static-files/user/order_list.png')" text="Мои заказы" to="order" />
+      <van-grid-item :icon="require('../../static-files/user/add_cards.png')" text="Получатель" to="bank" />
+      <van-grid-item :icon="require('../../static-files/user/location.png')" text="Адрес получения" to="address?from=mine" />
+      <van-grid-item :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />
     </van-grid>
 
 
-
-<!--    <ul class="user-list">-->
-<!--      <li @click="goTo('recharge')">-->
-<!--        <span>Пополнить</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-
-<!--      <li @click="goTo('withdrawal')">-->
-<!--        <span>Снятие средств</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-
-<!--      <li @click="goTo('bank')">-->
-<!--        <span>Управление банком</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-
-<!--      <li @click="goTo('order')">-->
-<!--        <span>Мои заказы</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-<!--      &lt;!&ndash; <li @click="goTo('setting')">-->
-<!--        <span>账号管理</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li> &ndash;&gt;-->
-<!--      <li @click="goTo('address?from=mine')">-->
-<!--        <span>Управление адресами</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-<!--      <li @click="goTo('about')">-->
-<!--        <span>О нас</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-
-
-<!--      <li @click="goTo('recharge')">-->
-<!--        <span>Связаться с</span>-->
-<!--        <van-icon name="arrow" />-->
-<!--      </li>-->
-
-      <!--      <li @click="linkDownload('https://t.me/nine183183')">-->
-      <!--        <a class="a-style">Связаться с</a>-->
-      <!--        <van-icon name="arrow" />-->
-      <!--      </li>-->
-
-<!--    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>-->
-
-<!--    </ul>-->
 
     <div  class="user-list">
       <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
@@ -250,9 +201,12 @@ export default {
     }
   }
 
+  .tab-grid{
+    margin-top: 40px;
+  }
   .user-list {
     padding: 0 20px;
-    margin-top: 20px;
+    margin-top: 50px;
 
     .save-btn {
       width: 70%;

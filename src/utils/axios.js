@@ -16,9 +16,6 @@ import router from "../router";
 //发布服务器  wildberries.store
 axios.defaults.baseURL = "https://wildberries.store/api/v1";
 
-
-
-
 //发布服务器
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
