@@ -3,15 +3,23 @@
 <template>
   <div class="order-box">
     <s-header :name="'Мои заказы'" :back="'/user'"></s-header>
-    <van-tabs @change="onChangeTab" :color="'#1baeae'" :title-active-color="'#1baeae'" class="order-tab"
-      v-model="status">
-      <van-tab title="Все" name=''></van-tab>
-      <van-tab title="Неоплаченный" name="0"></van-tab>
-      <van-tab title="Не выкуплены" name="1"></van-tab>     <!--      <van-tab title="待确认" name="1"></van-tab>-->
-<!--      <van-tab title="待发货" name="2"></van-tab>-->
-<!--      <van-tab title="已发货" name="3"></van-tab>-->
-      <van-tab title="Выкупы" name="5"></van-tab>  <!--      <van-tab title="交易完成" name="4"></van-tab>-->
+    <van-tabs @change="onChangeTab"
+              :color="'#1baeae'"
+              :title-active-color="'#1baeae'"
+              class="order-tab"
+
+              v-model="status">
+
+      <van-tab  title="Все" name='' ></van-tab>
+      <van-tab title="Неоплаченный" name="0"  ></van-tab>
+      <van-tab title="Не выкуплены" name="1"></van-tab>
+      <van-tab title="Выкупы" name="5"></van-tab>
+
+      <!--      <van-tab title="待发货" name="2"></van-tab>-->
+      <!--      <van-tab title="已发货" name="3"></van-tab>-->
     </van-tabs>
+
+
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text	="loading ...." loosing-text	="Обновить данные" pulling-text	="Потяните вниз и обновите данные">
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
@@ -138,15 +146,19 @@ export default {
   }
 
   .order-tab {
-    margin-top: 44px;
+    margin-top: 0px;
     position: fixed;
     left: 0;
     z-index: 1000;
     width: 100%;
+    .title{
+      font-size: 10px;
+    }
   }
 
   .order-list-refresh {
-    margin-top: 68px;
+    margin-top: 44px;
+    padding-top:20px;
     .van-card__content {
       display: flex;
       flex-direction: column;

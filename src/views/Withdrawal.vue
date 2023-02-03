@@ -26,7 +26,7 @@
 
 
       <van-form @submit="onSubmit">
-        <van-field v-model="withdrawal_money" name="withdrawal_money" label="Сумма снятия" placeholder="Пожалуйста, заполните сумму снятия"
+        <van-field v-model="withdrawal_money"  type="number" name="withdrawal_money" label="Сумма снятия" placeholder="Пожалуйста, заполните сумму снятия"
                    :rules="[{ required: true, message: 'Пожалуйста, заполните сумму снятия' }]" />
 <!--        <van-field v-model="telphone" name="telphone" label="手机号码" placeholder="请填写手机号码"-->
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
