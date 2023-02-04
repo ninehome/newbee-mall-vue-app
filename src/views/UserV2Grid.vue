@@ -13,24 +13,25 @@
       <div class="info">
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
-          <span>Вход в аккаунт：{{ user.loginName }}</span>
+          <span>Счета：{{ user.loginName }}</span>
           <span>Баланс：{{ user.userMoney }} ₽</span>
           <span>Класс: VIP{{ user.userLevel }}</span>
-          <!-- <span class="name">个性签名：{{ user.introduceSign }}</span> -->
         </div>
+        <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="RefreshUserInfo()"/>
+
       </div>
     </div>
 
 
    <!-- 九宫格布局  Получатель -->
 
-    <van-grid clickable :column-num="3" class="tab-grid">
-      <van-grid-item :icon="require('../../static-files/user/money_in.png')" text="Пополнить" to="recharge" />
-      <van-grid-item :icon="require('../../static-files/user/money_out.png')" text="Отозвано" to="withdrawal" />
-      <van-grid-item :icon="require('../../static-files/user/order_list.png')" text="Мои заказы" to="order" />
-      <van-grid-item :icon="require('../../static-files/user/add_cards.png')" text="Получатель" to="bank" />
-      <van-grid-item :icon="require('../../static-files/user/location.png')" text="Адрес получения" to="address?from=mine" />
-      <van-grid-item :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />
+    <van-grid clickable :column-num="3" class="tab-grid" >
+      <van-grid-item clickable = "true" :icon="require('../../static-files/user/telemarketer.png')" text="Интернет Сервис" to="recharge" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/money_out.png')" text="Отозвано" to="withdrawal" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/order_list.png')" text="Мои заказы" to="order" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/add_cards.png')" text="Получатель" to="bank" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/location.png')" text="Адрес получения" to="address?from=mine" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />
     </van-grid>
 
 
@@ -64,6 +65,7 @@ export default {
       introduceSign: '',
       password: '',
       bankcard: false,
+      timer:null,
       user: {
         loginName:'',
         userMoney:0,
@@ -72,14 +74,50 @@ export default {
     }
   },
   async mounted() {
-    // console.log("我的token" )
-    // console.log(localStorage.getItem("token") )
-    const { data } = await getUserInfo()
-    this.user = data
 
+    const { data } = await getUserInfo(true)
+    this.user = data
     await this.initBanks()
+
+    this.timer = window.setInterval(async () => {
+
+      const  token = localStorage.getItem("token");
+      if (token !== "undefined" && token !== null && token !=="" ){
+        await this.getUserInfo(false)
+        await this.initBanks()
+      }
+
+    },5000)
+
+
   },
+  beforeDestroy() {
+    if(this.timer){
+      clearImmediate(this.timer)
+      this.timer = null;
+    }
+  },
+
+
   methods: {
+     async getUserInfo(showLoading) {
+
+       if (showLoading){
+         Toast.loading({
+           message: 'Данные запроса...',
+           forbidClick: true
+         });
+       }
+
+       const {data} = await getUserInfo()
+       this.user = data
+       Toast.clear()
+     },
+
+    RefreshUserInfo(){
+      this.getUserInfo()
+    },
+
     goBack() {
       this.$router.go(-1)
     },
@@ -103,6 +141,7 @@ export default {
     async logout() {
       const { resultCode } = await logout()
       if (resultCode === 200) {
+        this.user = null
         setLocal('token', '')
         window.location.href = '/'
       }
@@ -145,22 +184,23 @@ export default {
 
   .user-info {
     width: 94%;
-    height: 115px;
+    height: 130px;
     background: linear-gradient(90deg, @primary_start,@primary);
     box-shadow: 0 2px 5px @primary;
-    border-radius: 6px;
-    margin: 20px 10px 10px;
-
+    border-radius: 4px;
+    margin-top: 20px ;
+    margin-right: 10px ;
+    margin-left: 10px;
     .info {
       position: relative;
       display: flex;
       width: 100%;
       height: 100%;
-      padding: 25px 20px;
+      padding: 20px 15px;
       .boxSizing();
 
       img {
-        .wh(60px, 60px);
+        .wh(55px, 55px);
         border-radius: 50%;
         margin-top: 4px;
       }
@@ -175,9 +215,17 @@ export default {
 
         span {
           color: #fff;
-          font-size: 16px;
+          font-size: 15px;
           padding: 2px 0;
         }
+      }
+
+
+      .img-fresh{
+        margin-left: auto;
+        width: 28px;
+        height: 28px;
+
       }
 
       .account-setting {
