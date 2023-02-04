@@ -17,7 +17,7 @@
           <span>Баланс：{{ user.userMoney }} ₽</span>
           <span>Класс: VIP{{ user.userLevel }}</span>
         </div>
-        <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="RefreshUserInfo()"/>
+        <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="getUserInfo(true)"/>
 
       </div>
     </div>
@@ -115,7 +115,7 @@ export default {
      },
 
     RefreshUserInfo(){
-      this.getUserInfo()
+      this.getUserInfo(true)
     },
 
     goBack() {

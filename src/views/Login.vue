@@ -21,6 +21,7 @@
     <div class="login-body login">
       <van-form @submit="onSubmit" >
         <van-field
+          type="number"
           v-model="username"
           name="username"
           label="Телефон +7"
