@@ -25,22 +25,29 @@
           type="number"
           v-model="username"
           name="username"
-          label="Телефон +7"
+          label="+7"
+          label-width = "50px"
           placeholder="Пожалуйста, введите номер вашего мобильного телефона"
           :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
-        />
+        >
+          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/smartphone.png')"  ></van-icon>
+
+        </van-field>
 
 
         <van-field
           v-model="password"
           :type="isPassword? 'password' :'text'"
           name="password"
-          label="Пароль"
+          label=" "
+          label-width = "50px"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
           placeholder="Пароль"
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
-        />
+          >
+          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
+        </van-field>
 
 <!--        <van-cell-group inset>-->
         <van-field

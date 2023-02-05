@@ -21,25 +21,40 @@
     <div class="login-body login">
       <van-form @submit="onSubmit" >
         <van-field
+          class="user-name"
           type="number"
           v-model="username"
           name="username"
-          label="Телефон +7"
+          label-width = "50px"
+          label="+7"
           placeholder="Пожалуйста, введите номер вашего мобильного телефона"
           :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
-        />
+        >
+          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/smartphone.png')" > </van-icon>
 
-<!--        带眼睛 的密码显示-->
+        </van-field>
+
+
+
+        <!--        带眼睛 的密码显示-->
         <van-field
           v-model="password"
+          label-width = "50px"
+          label=" "
           :type="isPassword? 'password' :'text'"
           name="password"
-          label="Пароль"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
           placeholder="Пароль"
           :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
-        />
+        >
+
+          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
+
+        </van-field>
+
+
+
 
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Зарегистрируйтесь сейчас</div>
@@ -124,8 +139,12 @@ export default {
     display: block;
     margin: 80px auto 80px;
   }
+
   .login-body {
     padding: 0 20px;
+    .user-name{
+      margin-right: 150px;
+    }
   }
   .login {
     .link-register {
