@@ -20,7 +20,7 @@ axios.defaults.baseURL = "https://wildberries.store/api/v1";
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 //本地环境
-// axios.defaults.baseURL ="http://localhost:9090/api/v1";
+// axios.defaults.baseURL ="http://localhost:9191/api/v1";
 
   // 会影响跨域
 // axios.defaults.withCredentials = true;

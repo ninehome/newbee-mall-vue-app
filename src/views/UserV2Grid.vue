@@ -97,7 +97,12 @@ export default {
       this.timer = null;
     }
   },
-
+  deactivated() {
+    if(this.timer){
+      clearImmediate(this.timer)
+      this.timer = null;
+    }
+  },
 
   methods: {
      async getUserInfo(showLoading) {

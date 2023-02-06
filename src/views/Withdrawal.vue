@@ -144,7 +144,7 @@ export default {
         return
       }
 
-      if (Number(content.withdrawal_money) ===0){
+      if (Number(content.withdrawal_money) === 0){
 
         this.$toast({
           message:"Сумма вывода не может быть равна 0 ₽",
