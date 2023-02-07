@@ -55,9 +55,12 @@
           name="agentId"
           label="приглашения"
           input-align="center"
-
           :rules="[{ required: true, message: 'Пожалуйста, введите код приглашения' }]"
-        />
+        >
+
+
+
+        </van-field>
 <!--        </van-cell-group>-->
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Вход в систему</div>
