@@ -15,6 +15,8 @@ import router from "../router";
 
 //发布服务器  导弹
 // axios.defaults.baseURL = "https://wildberries.store/api/v1";
+
+
 //飞哥
 axios.defaults.baseURL = "https://wildberries.cool/api/v1";
 
