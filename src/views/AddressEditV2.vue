@@ -10,26 +10,26 @@
 
 <template>
   <div class="address-edit-box">
-    <s-header :name="`${type == 'add' ? 'Добавить адрес' : 'Адрес редакции'}`"></s-header>
+    <s-header :name="`${type == 'add' ? 'Add Address' : 'Editorial address'}`"></s-header>
     <!-- <van-address-edit class="edit" :area-list="areaList" :address-info="addressInfo" :show-delete="type == 'edit'"
       show-set-default show-search-result :search-result="searchResult"
       :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" /> -->
 
     <van-form @submit="onSubmit">
-      <van-field v-model="username" name="username" label="Имя" placeholder="Пожалуйста, заполните ваше имя"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните ваше имя' }]" />
-      <van-field v-model="telphone" name="telphone" label="Номер мобильного телефона" placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-        :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]" />
-      <van-field v-model="address" name="address" label="Адрес получения" placeholder="Пожалуйста, заполните адрес доставки"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните адрес доставки' }]" />
+      <van-field v-model="username" name="username" label="Имя" placeholder="Please fill in your name"
+        :rules="[{ required: true, message: 'Please fill in your name' }]" />
+      <van-field v-model="telphone" name="telphone" label="Cell phone number" placeholder="Please enter your  phone number"
+        :rules="[{ required: true, message: 'Please enter your  phone number' }]" />
+      <van-field v-model="address" name="address" label="Receiving address" placeholder="Please fill in address"
+        :rules="[{ required: true, message: 'Please fill in  address' }]" />
 
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit" >Сохранить</van-button>
+        <van-button round block type="info" color="#1baeae" native-type="submit" >Save</van-button>
       </div>
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>
+        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Delete</van-button>
       </div>
     </van-form>
 
@@ -106,13 +106,12 @@ export default {
         defaultFlag: 1,
       }
       if (this.type == 'edit') {
-        // console.log(333333333333)
         params['addressId'] = this.addressId
       }
 
       // console.log(this.type)
       const { message } = await this.type == 'add' ? addAddress(params) : EditAddress(params)
-      Toast('Сохранено успешно')
+      Toast('Saved success')
 
 
       setTimeout(() => {
@@ -124,7 +123,7 @@ export default {
 
     async onDelete() {
       const { data } = await DeleteAddress(this.addressId)
-      Toast('Удалено успешно')
+      Toast('Deleted success')
       setTimeout(() => {
         this.$router.push({ path: 'address' })
       }, 1000)

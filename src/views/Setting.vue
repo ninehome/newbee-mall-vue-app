@@ -1,23 +1,18 @@
 <!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
+
  *
 -->
 
 <template>
   <div class="seting-box">
-    <s-header :name="'Управление счетами'"></s-header>
+    <s-header :name="'Account management'"></s-header>
     <div class="input-item">
-      <van-field v-model="nickName" label="Прозвище" />
-      <van-field v-model="introduceSign" label="Персонифицированная подпись" />
-      <van-field v-model="password" type='password' label="Изменить пароль" />
+      <van-field v-model="nickName" label="Nickname" />
+      <van-field v-model="introduceSign" label="Personalized signature" />
+      <van-field v-model="password" type='password' label="Change password" />
     </div>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Сохранить</van-button>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Save</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Logout</van-button>
   </div>
 </template>
 
@@ -50,7 +45,7 @@ export default {
         passwordMd5: this.$md5(this.password)
       }
       const { data } = await EditUserInfo(params)
-      Toast.success('Сохранено успешно')
+      Toast.success('Saved success')
     },
     async logout() {
       const { resultCode } = await logout()

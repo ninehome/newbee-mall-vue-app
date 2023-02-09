@@ -27,8 +27,8 @@
           name="username"
           label-width = "50px"
           label="+7"
-          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
+          placeholder="Please enter your  phone number"
+          :rules="[{ required: true, message: 'Please enter your  phone number' }]"
         >
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/smartphone.png')" > </van-icon>
 
@@ -45,8 +45,8 @@
           name="password"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
-          placeholder="Пароль"
-          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
+          placeholder="Password"
+          :rules="[{ required: true, message: 'Please enter your password' }]"
         >
 
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
@@ -57,8 +57,8 @@
 
 
         <div style="margin: 16px;">
-          <div class="link-register" @click="toggle('register')">Зарегистрируйтесь сейчас</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Вход в систему</van-button>
+          <div class="link-register" @click="toggle('register')">Register now</div>
+          <van-button round block type="info" color="#1baeae" native-type="submit">Login</van-button>
         </div>
       </van-form>
     </div>

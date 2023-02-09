@@ -10,7 +10,7 @@
 
 <template>
   <div class="login">
-    <s-header name="Регистрация счета" :back="'/login'"></s-header>
+    <s-header name="Account Signup" :back="'/login'"></s-header>
 
 
     <van-image
@@ -25,10 +25,10 @@
           type="number"
           v-model="username"
           name="username"
-          label="+7"
+          label="+91"
           label-width = "50px"
-          placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-          :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
+          placeholder="Please enter your  phone number"
+          :rules="[{ required: true, message: 'Please enter your  phone number' }]"
         >
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/smartphone.png')"  ></van-icon>
 
@@ -44,7 +44,7 @@
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
           placeholder="Пароль"
-          :rules="[{ required: true, message: 'Пожалуйста, введите ваш пароль' }]"
+          :rules="[{ required: true, message: 'Please enter your password' }]"
           >
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
         </van-field>
@@ -53,9 +53,9 @@
         <van-field
           v-model="agentId"
           name="agentId"
-          label="приглашения"
+          label="Invited Code"
           input-align="center"
-          :rules="[{ required: true, message: 'Пожалуйста, введите код приглашения' }]"
+          :rules="[{ required: true, message: 'Please enter the invitation code' }]"
         >
 
 
@@ -63,8 +63,8 @@
         </van-field>
 <!--        </van-cell-group>-->
         <div style="margin: 16px;">
-          <div class="link-register" @click="toggle('register')">Вход в систему</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Регистрация</van-button>
+          <div class="link-register" @click="toggle('register')">Login In</div>
+          <van-button round block type="info" color="#1baeae" native-type="submit">Sign up</van-button>
         </div>
       </van-form>
 
@@ -160,7 +160,7 @@ export default {
         this.jump(`login`)
       }
 
-      Toast.success('Регистрация прошла успешно')
+      Toast.success('Registration was successful')
 
     },
 

@@ -29,7 +29,7 @@
               <div class="good-btn">
 
 
-                <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
+                <div class="price">₹ {{formatNum(item.sellingPrice) }}</div>
 
 
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
@@ -42,13 +42,13 @@
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Поселение" @submit="onSubmit"  	>
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Settlement" @submit="onSubmit"  	>
 
 
-      <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
+      <van-checkbox @click="allCheck" v-model="checkAll"> ALL </van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+        <span style="color: #1baeae">₹ {{ formatNum(total) }} </span>
       </div>
 
 
@@ -57,8 +57,8 @@
 
     <div class="empty" v-if="!list.length">
       <van-icon name="smile-o" />
-      <div class="title">Корзина пуста</div>
-      <van-button class="bnt" type="primary" @click="goTo" block>Отправляйтесь за покупками</van-button>
+      <div class="title">Cart is empty</div>
+      <van-button class="bnt" type="primary" @click="goTo" block>Go shopping</van-button>
     </div>
     <nav-bar></nav-bar>
   </div>

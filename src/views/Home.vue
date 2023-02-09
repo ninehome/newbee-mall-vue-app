@@ -13,15 +13,12 @@
 
     <header class="home-header wrap" :class="{ 'active': headerScroll }">
       <router-link tag="i" to="./category"><i class="nbicon nbmenu2"></i></router-link>
-
-
       <div class="header-search" @click="serach">
         <!-- <span class="app-name">新蜂</span> -->
         <!-- <router-link tag="span" class="search-title" to="./product-list?from=home"> <span class="app-name">新蜂</span>
           </router-link> -->
         <router-link tag="span" class="search-title" to="./product-list?from=home"></router-link>
       </div>
-
 
       <router-link class="login" tag="span" to="./login" v-if="!isLogin">Login</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
@@ -40,7 +37,7 @@
     </div>
 
     <div class="good">
-      <header class="good-header">Новые продукты онлайн</header>
+      <header class="good-header">New</header>
       <div class="good-box">
         <div class="good-item" v-for="item in newGoodses" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
@@ -57,16 +54,14 @@
       </div>
     </div>
     <div class="good">
-      <header class="good-header">Популярные товары</header>
+      <header class="good-header">Popular </header>
       <div class="good-box">
         <div class="good-item" v-for="item in hots" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
-
           <van-image
             lazy-load
             :src="prefix(item.goodsCoverImg)"
           />
-
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
@@ -76,11 +71,10 @@
       </div>
     </div>
     <div class="good" :style="{ paddingBottom: '100px' }">
-      <header class="good-header">Последние рекомендации</header>
+      <header class="good-header">Recommend</header>
       <div class="good-box">
         <div class="good-item" v-for="item in recommends" :key="item.goodsId" @click="goToDetail(item)">
 <!--          <img :src="prefix(item.goodsCoverImg)" alt="">-->
-
           <van-image
             lazy-load
             :src="prefix(item.goodsCoverImg)"
@@ -117,33 +111,23 @@ export default {
       newGoodses: [],
       recommends: [],
       categoryList: [
-        // {
-        //   name: 'Торговый центр',  //新蜂超市
-        //   imgUrl: '//s.weituibao.com/1583585285461/cs.png',
-        //   categoryId: 100001
-        // },
-        // {
-        //   name: 'Популярная одежда',  //新蜂服饰
-        //   imgUrl: '//s.weituibao.com/1583585285468/fs.png',
-        //   categoryId: 100003
-        // },
         {
-          name: 'Глобальный',  //全球购
+          name: 'Global',  //
           imgUrl: '//s.weituibao.com/1583585285470/qq.png',
           categoryId: 100002
         },
         {
-          name: 'Покупки',  //新蜂超市
+          name: 'Shop',  //
           imgUrl: '//s.weituibao.com/1583585285461/cs.png',
           categoryId: 100001
         },
         {
-          name: 'Удобный',  //新蜂生鲜
+          name: 'Convenient',  //
           imgUrl: '//s.weituibao.com/1583585285472/sx.png',
           categoryId: 100004
         },
         {
-          name: 'Быстрый',  //新蜂到家
+          name: 'Fast',  //
           imgUrl: '//s.weituibao.com/1583585285467/dj.png',
           categoryId: 100005
         }
@@ -161,7 +145,7 @@ export default {
     }
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: 'Данные запроса...',
+      message: 'Loading...',
       forbidClick: true
     });
     const { data } = await getHome()

@@ -3,7 +3,7 @@
 
 <template>
   <div class="product-detail">
-    <s-header :name="'Детали продукта'"></s-header>
+    <s-header :name="'Product Details'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
         <van-swipe class="my-swipe" indicator-color="#1baeae"  style="height:300px" >
@@ -29,23 +29,21 @@
         <div class="product-title">
           {{ detail.goodsName }}
         </div>
-        <div class="product-desc">Бесплатная доставка</div>
+        <div class="product-desc">Free Delivery</div>
         <div class="product-price">
-          <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
+          <span>₹ {{  formatNum(detail.sellingPrice) }}</span>
           <!-- <span>库存203</span> -->
         </div>
       </div>
       <div class="product-intro">
         <ul>
-          <li>Обзор</li>
-          <li>Параметры</li>
-          <li>Услуги</li>
-          <li>Рекомендации</li>
+          <li>Review</li>
+          <li>Options</li>
+          <li>Services</li>
+          <li>Guidelines</li>
         </ul>
 
-
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
-
 
       </div>
 
@@ -59,8 +57,8 @@
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="   " />
       <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text=" " />
-      <van-goods-action-button type="warning" @click="addCart" text="Добавить в корзину" />
-      <van-goods-action-button type="danger" @click="goToCart" text="Купить сейчас" />
+      <van-goods-action-button type="warning" @click="addCart" text="Add to Cart" />
+      <van-goods-action-button type="danger" @click="goToCart" text="Buy Now" />
     </van-goods-action>
   </div>
 
@@ -102,7 +100,7 @@ export default {
     },
     async addCart() {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode == 200) Toast.success('Добавлено успешно')
+      if (resultCode == 200) Toast.success('Added Success')
       this.$store.dispatch('updateCart')
     },
     async goToCart() {

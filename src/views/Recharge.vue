@@ -8,9 +8,9 @@
  *-->
 <template>
   <div class="about">
-    <s-header :name="'Справки по работе с клиентами'"></s-header>
+    <s-header :name="'Customer Service Help'"></s-header>
 
-    <div class="about-body">Пожалуйста, выберите способ связаться со службой поддержки клиентов</div>
+    <div class="about-body">Please choose a way to contact customer service</div>
 
 
 

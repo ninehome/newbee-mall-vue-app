@@ -8,32 +8,32 @@
  *-->
 <template>
   <div class="bank-box">
-    <s-header :name="'Снятие средств'" ></s-header>
+    <s-header :name="'Withdrawal'" ></s-header>
     <div class="div-content">
       <div>
-        <van-cell class="status" title="Остаток на счете" size="large"  >
+        <van-cell class="status" title="Account  Balance:" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} ₽</p>
+            <p style="margin:0" :style={color:bindcolor}>₹ {{ formatNum(user_money)}} ₽</p>
           </template>
         </van-cell>
       </div>
 <!--      @click="show = true"-->
       <div>
-        <van-cell is-link title="Выберите банк-получатель"   @click="itemClick" :value="select_bank" />
+        <van-cell is-link title="Select the receiving bank"   @click="itemClick" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>
 
 
       <van-form @submit="onSubmit">
-        <van-field v-model="withdrawal_money"  type="number" name="withdrawal_money" label="Сумма снятия" placeholder="Пожалуйста, заполните сумму снятия"
-                   :rules="[{ required: true, message: 'Пожалуйста, заполните сумму снятия' }]" />
+        <van-field v-model="withdrawal_money"  type="number" name="withdrawal_money" label="Сумма снятия" placeholder="Please fill in the withdrawal amount"
+                   :rules="[{ required: true, message: 'Please fill in the withdrawal amount' }]" />
 <!--        <van-field v-model="telphone" name="telphone" label="手机号码" placeholder="请填写手机号码"-->
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
 <!--                   :rules="[{ required: true, message: '请填写收货地址' }]" />-->
         <div style="margin:50px; margin-top: 50px;">
-          <van-button round block type="info" color="#1baeae" native-type="submit" >Отправить</van-button>
+          <van-button round block type="info" color="#1baeae" native-type="submit" >Confirm</van-button>
         </div>
 
       </van-form>
@@ -137,17 +137,17 @@ export default {
       if (this.isChoseBank === false){
         await this.initBanks()
         this.$toast({
-          message:"Пожалуйста, выберите банковский счет получателя",
+          message:"Please select the recipient's bank account",
           duration:500
         })
 
         return
       }
 
-      if (Number(content.withdrawal_money) === 0){
+      if (Number(content.withdrawal_money) <=  100){
 
         this.$toast({
-          message:"Сумма вывода не может быть равна 0 ₽",
+          message:"Withdrawal amount cannot be less than ₹ 100 ",
           duration:500
         })
 

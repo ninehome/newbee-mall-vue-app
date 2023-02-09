@@ -33,7 +33,7 @@ Vue.use(VueLazyLoad,{
            }
         }
 
-
+₹
 
 导航站
 

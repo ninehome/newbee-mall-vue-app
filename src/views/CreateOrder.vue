@@ -5,7 +5,7 @@
 
 <template>
   <div class="create-order">
-    <s-header :name="'Детали оплаты товара'" @callback="deleteLocal"></s-header>
+    <s-header :name="'Payment details'" @callback="deleteLocal"></s-header>
     <div class="address-wrap">
       <div class="name" @click="goTo">
         <span>{{ address.userName }} </span>
@@ -25,17 +25,17 @@
             <span>x{{ item.goodsCount }}</span>
           </div>
           <div class="good-btn">
-            <div class="price">{{formatNum(item.sellingPrice)}} ₽ </div>
+            <div class="price">₹ {{formatNum(item.sellingPrice)}}  </div>
           </div>
         </div>
       </div>
     </div>
     <div class="pay-wrap">
       <div class="price">
-        <span>Общая сумма платежа</span>
-        <span>₽{{ total }}</span>
+        <span>Total Price</span>
+        <span>₹ {{ total }}</span>
       </div>
-      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Подтвердить оплату</van-button>
+      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Confirm </van-button>
     </div>
     <!-- <van-popup closeable :close-on-click-overlay="false" v-model="showPay" position="bottom" :style="{ height: '30%' }"
       @close="close">
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     async init() {
-      Toast.loading({ message: 'Данные запроса...', forbidClick: true });
+      Toast.loading({ message: 'Loading...', forbidClick: true });
       const { addressId, cartItemIds } = this.$route.query
       const _cartItemIds = cartItemIds ? JSON.parse(cartItemIds) : JSON.parse(getLocal('cartItemIds'))
       setLocal('cartItemIds', JSON.stringify(_cartItemIds))
@@ -108,34 +108,22 @@ export default {
         cartItemIds: this.cartList.map(item => item.cartItemId)
       }
       const { data, resultCode, message } = await createOrder(params)  //创建订单
-
       if (resultCode == 200) {
-        // console.log(data)
-        // console.log(resultCode)
         setLocal('cartItemIds', '')
         this.orderNo = data
-        // console.log(data)
-
-
-        // console.log('------>>>0000000000000')
         const { paydata, resultCode } = await payOrder({ orderNo: this.orderNo, payType: 1 })  //支付
         if (resultCode === 200) {
           await this.$router.push({path: '/order'})
           await this.$router.push({path: `order-detail?id=${this.orderNo}`})
         }else {
           await this.$router.push({path: '/order'})
-
         }
-
 
       } else {
         //支付失败返回购物车
-
         if (message != null) {
           Toast.fail(message)
-
         }
-
 
         setTimeout(() => {
           this.$router.push({ path: '/cart' })
