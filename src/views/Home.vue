@@ -291,7 +291,7 @@ export default {
 
     .good-item {
       box-sizing: border-box;
-      width: 50%;
+      width: 33%;
       border-bottom: 1PX solid #e9e9e9;
       padding: 10px 10px;
 

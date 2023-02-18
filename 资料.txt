@@ -52,3 +52,6 @@ https://color.adobe.com/zh/flipkart-color-scheme-color-theme-9725604/
 
 //俄罗斯电商
 https://www.mvideo.ru/
+
+//印度仿抖音电商
+https://play.google.com/store/apps/details?id=com.toogud.android&hl=en&gl=US
