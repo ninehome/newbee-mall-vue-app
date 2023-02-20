@@ -3,7 +3,7 @@
   <div class="about">
     <s-header :name="'About Us'"></s-header>
     <div class="about-body">
-      <van-divider class="van" :style="{  fontSize: '20px', fontWeight: 500 }">Wildberries
+      <van-divider class="van" :style="{  fontSize: '20px', fontWeight: 500 }">Flipkart
       </van-divider>
 
       <div  >
