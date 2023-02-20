@@ -37,8 +37,7 @@
 
 
     <div  class="user-list">
-      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Log Out</van-button>
-
+      <van-button class="save-btn" color="#287FF0" type="primary" @click="logout" block>Log Out</van-button>
     </div>
 
 
