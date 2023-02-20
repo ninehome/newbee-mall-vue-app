@@ -30,10 +30,18 @@
 
     <!-- 头部功能模块布局 -->
     <div class="category-list">
-      <div v-for="item in categoryList" v-bind:key="item.categoryId">
-        <img :src="item.imgUrl">
-        <span>{{ item.name }}</span>
-      </div>
+
+      <van-grid clickable :column-num="4" class="tab-grid" >
+        <van-grid-item clickable = "true" :icon="require('../../static-files/home/team.png')" text="Global"  />
+        <van-grid-item clickable = "true"  :icon="require('../../static-files/home/shop.png')" text="Shop" />
+        <van-grid-item clickable = "true"  :icon="require('../../static-files/home/convenience.png')" text="Convenient"  />
+        <van-grid-item clickable = "true"  :icon="require('../../static-files/home/fast.png')" text="Fast" />
+      </van-grid>
+
+<!--      <div v-for="item in categoryList" v-bind:key="item.categoryId">-->
+<!--        <img :src="item.imgUrl">-->
+<!--        <span>{{ item.name }}</span>-->
+<!--      </div>-->
     </div>
 
     <div class="good">
@@ -113,7 +121,7 @@ export default {
       categoryList: [
         {
           name: 'Global',  //
-          imgUrl: '//s.weituibao.com/1583585285470/qq.png',
+          imgUrl: "require('../../static-files/user/about_us.png')",
           categoryId: 100002
         },
         {
@@ -254,23 +262,23 @@ export default {
 }
 
 .category-list {
-  display: flex;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  width: 100%;
-  padding-bottom: 13px;
+  //display: flex;
+  //flex-shrink: 0;
+  //flex-wrap: wrap;
+  //width: 100%;
+  //padding-bottom: 13px;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    text-align: center;
-
-    img {
-      .wh(40px, 40px);
-      margin: 13px auto 8px auto;
-    }
-  }
+  //div {
+  //  display: flex;
+  //  flex-direction: column;
+  //  width: 25%;
+  //  text-align: center;
+  //
+  //  img {
+  //    .wh(40px, 40px);
+  //    margin: 13px auto 8px auto;
+  //  }
+  //}
 }
 
 .good {
