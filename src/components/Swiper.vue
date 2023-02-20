@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <van-swipe class="my-swipe" :autoplay="5000" indicator-color="#1baeae">
+  <van-swipe class="my-swipe" :autoplay="5000" indicator-color="#287FF0" >
     <van-swipe-item v-for="(item, index) in list" :key="index">
       <img :src="item.carouselUrl" alt="" @click="goTo(item.redirectUrl)">
     </van-swipe-item>
