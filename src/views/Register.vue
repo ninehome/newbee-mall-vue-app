@@ -43,7 +43,7 @@
           label-width = "50px"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
-          placeholder="Пароль"
+          placeholder="Password"
           :rules="[{ required: true, message: 'Please enter your password' }]"
           >
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
@@ -64,7 +64,7 @@
 <!--        </van-cell-group>-->
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Login In</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Sign up</van-button>
+          <van-button round block type="info" color="#287FF0" native-type="submit">Sign up</van-button>
         </div>
       </van-form>
 

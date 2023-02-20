@@ -35,7 +35,7 @@
         <span>Total Price</span>
         <span>₹ {{ total }}</span>
       </div>
-      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Confirm </van-button>
+      <van-button @click="createOrder" class="pay-btn" color="#287FF0" type="primary" block>Confirm </van-button>
     </div>
     <!-- <van-popup closeable :close-on-click-overlay="false" v-model="showPay" position="bottom" :style="{ height: '30%' }"
       @close="close">

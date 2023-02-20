@@ -26,7 +26,7 @@
           v-model="username"
           name="username"
           label-width = "50px"
-          label="+7"
+          label="+91"
           placeholder="Please enter your  phone number"
           :rules="[{ required: true, message: 'Please enter your  phone number' }]"
         >
@@ -58,7 +58,7 @@
 
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">Register now</div>
-          <van-button round block type="info" color="#1baeae" native-type="submit">Login</van-button>
+          <van-button round block type="info" color="#287FF0" native-type="submit">Login</van-button>
         </div>
       </van-form>
     </div>

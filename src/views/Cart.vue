@@ -48,7 +48,7 @@
       <van-checkbox @click="allCheck" v-model="checkAll"> ALL </van-checkbox>
 
       <div >
-        <span style="color: #1baeae">₹ {{ formatNum(total) }} </span>
+        <span style="color: #287FF0">₹ {{ formatNum(total) }} </span>
       </div>
 
 

@@ -25,11 +25,11 @@
 
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit" >Save</van-button>
+        <van-button round block type="info" color="#287FF0" native-type="submit" >Save</van-button>
       </div>
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Delete</van-button>
+        <van-button round block type="info" color="#287FF0" @click="onDelete" v-show="bnt_delet">Delete</van-button>
       </div>
     </van-form>
 

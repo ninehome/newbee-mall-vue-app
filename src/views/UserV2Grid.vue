@@ -14,7 +14,7 @@
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
           <span>Account：{{ user.loginName }}</span>
-          <span>Balance：{{ user.userMoney }} ₽</span>
+          <span>Balance：₹ {{ user.userMoney }} </span>
           <span>Vip Level : VIP{{ user.userLevel }}</span>
         </div>
         <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="getUserInfo(true)"/>

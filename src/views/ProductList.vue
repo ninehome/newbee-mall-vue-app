@@ -13,7 +13,7 @@
         </div>
         <span class="search-btn" @click="getSearch">Search</span>
       </header>
-      <van-tabs type="card" color="#1baeae" @click="changeTab">
+      <van-tabs type="card" color="#287FF0" @click="changeTab">
         <van-tab title="New" name=""></van-tab>
         <van-tab title="Popular" name="new"></van-tab>
         <van-tab title="Price" name="price"></van-tab>

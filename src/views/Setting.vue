@@ -11,8 +11,8 @@
       <van-field v-model="introduceSign" label="Personalized signature" />
       <van-field v-model="password" type='password' label="Change password" />
     </div>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Save</van-button>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Logout</van-button>
+    <van-button class="save-btn" color="#287FF0" type="primary" @click="save" block>Save</van-button>
+    <van-button class="save-btn" color="#287FF0" type="primary" @click="logout" block>Logout</van-button>
   </div>
 </template>
 

@@ -14,7 +14,7 @@
     <div class="order-status">
       <div class="status-item">
         <label>Статус заказа：</label>
-        <span style="color: #1baeae">{{ detail.orderStatusString }}</span>
+        <span style="color: #287FF0">{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
         <label>Order number：</label>
@@ -35,7 +35,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>Amount of goods：</label>
-        <span style="color: #1baeae">₹ {{ formatNum(detail.totalPrice) }} </span>
+        <span style="color: #287FF0">₹ {{ formatNum(detail.totalPrice) }} </span>
       </div>
       <div class="price-item">
         <label>Delivery：</label>
@@ -48,7 +48,7 @@
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
-        <span style="color: #1baeae">₹ {{ formatNum(item.sellingPrice) }}   </span>
+        <span style="color: #287FF0">₹ {{ formatNum(item.sellingPrice) }}   </span>
       </template>
 
    </van-card>
