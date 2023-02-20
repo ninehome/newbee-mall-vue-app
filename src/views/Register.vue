@@ -46,7 +46,7 @@
           placeholder="Password"
           :rules="[{ required: true, message: 'Please enter your password' }]"
           >
-          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
+          <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/password.png')"  ></van-icon>
         </van-field>
 
 <!--        <van-cell-group inset>-->
