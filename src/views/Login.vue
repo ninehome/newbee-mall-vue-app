@@ -114,13 +114,14 @@ export default {
         })
 
         if (resultCode === 200){
-          setLocal('token', data)
+          setLocal('token', data.token)
+          setLocal('userId', data.userId)
           window.location.href = '/'
         }else  if(resultCode === 417){
-          Toast.fail('Введен неправильный пароль и номер счета')
+          Toast.fail('The password or account number are wrong')
 
         }else {
-          Toast.fail('Ошибка входа в систему, повторите попытку позже')
+          Toast.fail('Login error, try again later')
 
         }
 

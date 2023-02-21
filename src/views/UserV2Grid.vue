@@ -73,8 +73,10 @@ export default {
     }
   },
   async mounted() {
-
-    const { data } = await getUserInfo(true)
+    const  userId = localStorage.getItem("userId");
+    const { data } = await getUserInfo({
+      "userId": userId,
+    })
     this.user = data
     await this.initBanks()
 

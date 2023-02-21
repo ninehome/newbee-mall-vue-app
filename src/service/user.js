@@ -9,9 +9,9 @@
 
 import axios from '../utils/axios'
 
-export function getUserInfo() {
+export function getUserInfo(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  return axios.get('/user/info',);
+  return axios.post('/user/info/V2',params);
 }
 
 export function EditUserInfo(params) {
@@ -21,7 +21,7 @@ export function EditUserInfo(params) {
 
 export function login(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  return axios.post('/user/login', params);
+  return axios.post('/user/login/v2', params);
 }
 
 export function logout() {

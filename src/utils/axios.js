@@ -33,9 +33,14 @@ axios.defaults.headers["token"] = localStorage.getItem("token");
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 axios.interceptors.response.use((res) => {
-  console.log("-----------start---------");
+
   console.log(res.data);
   console.log("----------end----------");
+  // if (res.request.url.search("/user/login")){
+  //   console.log("-----------start---------");
+  //   console.log(res.data);
+  //   console.log("----------end----------");
+  // }
   // if (typeof res.data !== "object") {
   //   Toast.fail("Ошибка сети, попробуйте еще раз！");
   //   return Promise.reject(res);
