@@ -124,7 +124,10 @@ export default {
       // this.type = v
     },
     async onSubmit(values) {
-
+      Toast.loading({
+        message: 'Данные запроса...',
+        forbidClick: true
+      });
         const { data ,resultCode ,message} = await register({
           "loginName": values.username,
           "password": values.password,
@@ -134,7 +137,9 @@ export default {
         if (resultCode === 200){
           //登录
           await this.login(values.username, values.password)
+          Toast.clear()
         }else {
+          Toast.clear()
           Toast.fail('!! '+message)
         }
 
