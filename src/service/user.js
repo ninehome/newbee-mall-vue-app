@@ -11,7 +11,10 @@ import axios from '../utils/axios'
 
 export function getUserInfo(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  return axios.post('/user/info/V2',params);
+  const  userId = localStorage.getItem("userId");
+  return axios.post('/user/info/V2',{
+    "userId": userId,
+  });
 }
 
 export function EditUserInfo(params) {

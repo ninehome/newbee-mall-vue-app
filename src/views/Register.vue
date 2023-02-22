@@ -112,7 +112,7 @@ export default {
   methods: {
     initAgent(){
       this.agentId = this.$route.query.agent
-      console.log(this.agentId)
+      // console.log(this.agentId)
     },
     showPassword(){ // 显示隐藏密码
       this.isPassword = !this.isPassword
