@@ -21,13 +21,13 @@ import router from "../router";
 // axios.defaults.baseURL = "https://wildberries.cool/api/v1";
 
 //印度
-// axios.defaults.baseURL = "https://shoppe.ink/api/v1";
+axios.defaults.baseURL = "https://shoppe.ink/api/v1";
 
 //发布服务器
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 //本地环境
-axios.defaults.baseURL ="http://localhost:9191/api/v1";
+// axios.defaults.baseURL ="http://localhost:9191/api/v1";
 
   // 会影响跨域
 // axios.defaults.withCredentials = true;
