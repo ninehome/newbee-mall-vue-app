@@ -200,7 +200,7 @@ export default {
   z-index: 10000;
 
   .nbmenu2 {
-    color: @primary;
+    color:@orange;
   }
 
   &.active {
@@ -251,7 +251,7 @@ export default {
   }
 
   .login {
-    color: @primary;
+    color: @orange;
     line-height: 52px;
 
     .van-icon-manager-o {
