@@ -13,7 +13,7 @@
     <s-header :name="'Order Details'" @callback="close"></s-header>
     <div class="order-status">
       <div class="status-item">
-        <label>Статус заказа：</label>
+        <label>Order status：</label>
         <span style="color: #287FF0">{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
@@ -24,9 +24,9 @@
         <label>Time：</label>
         <span>{{ detail.createTime }}</span>
       </div>
-      <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block
+      <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#287FF0" block
         @click="handleConfirmOrder(detail.orderNo)">Confirmation of redemption</van-button>
-      <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block
+      <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#287FF0" block
         @click="showPayFn(detail.orderNo)">
         Proceed to payment</van-button>
       <!-- <van-button v-if="!(detail.orderStatus < 0 || detail.orderStatus == 4)" block

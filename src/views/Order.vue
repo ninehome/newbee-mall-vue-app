@@ -4,8 +4,8 @@
   <div class="order-box">
     <s-header :name="'Orders'" :back="'/user'"></s-header>
     <van-tabs @change="onChangeTab"
-              :color="'#1baeae'"
-              :title-active-color="'#1baeae'"
+              :color="'#287FF0'"
+              :title-active-color="'#287FF0'"
               class="order-tab"
               v-model="status">
 
@@ -23,7 +23,7 @@
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
-            <span style="color: #1baeae">{{ item.orderStatusString }}</span>
+            <span style="color: #287FF0">{{ item.orderStatusString }}</span>
           </div>
           <div class="order-item-header">
             <span> {{ item.createTime }}</span>
@@ -39,7 +39,7 @@
                     :thumb="prefix(one.goodsCoverImg)" >
 
                 <template #footer>
-                  <span style="color: #1baeae">₹{{ formatNum(one.sellingPrice) }}  </span>
+                  <span style="color: #287FF0">₹{{ formatNum(one.sellingPrice) }}  </span>
 
                 </template>
             </van-card>

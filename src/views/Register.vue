@@ -10,7 +10,7 @@
 
 <template>
   <div class="login">
-    <s-header name="Account Signup" :back="'/login'"></s-header>
+    <s-header name="Register" :back="'/login'"></s-header>
 
 
     <van-image
