@@ -8,9 +8,9 @@
 
       <van-field v-model="telphone" name="telphone" label="Name of bank" placeholder="Please fill in the name of the bank"
         :rules="[{ required: true, message: 'Please fill in the name of the bank' }]" />
-      <van-field v-model="address" type="number" name="address" label="Bank account number" placeholder="Please fill in the bank account number"
+      <van-field v-model="address" type="number" name="address" label="UPI ID" placeholder="Please fill in your UPI ID"
         :rules="[{ required: true, message: 'Please fill in the bank account number' }]" />
-      <van-field v-model="username" name="username" label="Account name" placeholder="Please enter your username"
+      <van-field v-model="username" name="username" label="Your Name" placeholder="Please enter your name"
                  :rules="[{ required: true, message: 'Please enter your username' }]" />
 
       <div style="margin: 16px; margin-top: 100px;">

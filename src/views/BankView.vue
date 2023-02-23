@@ -1,12 +1,12 @@
 
 <template>
   <div class="address-box">
-    <s-header :name="'Bank card management'" ></s-header>
+    <s-header :name="'UPI Management'" ></s-header>
     <div class="address-item">
       <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="Default" @add="onAdd"
-                        @edit="onEdit" @select="select"  add-button-text ="Add a bank account"	 />
+                        @edit="onEdit" @select="select"  add-button-text ="Add UPI"	 />
       <van-address-list v-else v-model="chosenAddressId" :list="list" default-tag-text="Default" @add="onAdd"
-                        @edit="onEdit"   add-button-text = "Add a bank account"	/>
+                        @edit="onEdit"   add-button-text = "Add UPI"	/>
     </div>
   </div>
 </template>

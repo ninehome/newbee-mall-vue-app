@@ -16,11 +16,11 @@
       :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" /> -->
 
     <van-form @submit="onSubmit">
-      <van-field v-model="username" name="username" label="Имя" placeholder="Please fill in your name"
+      <van-field v-model="username" name="username" label="Name" placeholder="Please fill in your name"
         :rules="[{ required: true, message: 'Please fill in your name' }]" />
-      <van-field v-model="telphone" name="telphone" label="Cell phone number" placeholder="Please enter your  phone number"
+      <van-field v-model="telphone" name="telphone" label=" Phone number" placeholder="Please enter your  phone number"
         :rules="[{ required: true, message: 'Please enter your  phone number' }]" />
-      <van-field v-model="address" name="address" label="Receiving address" placeholder="Please fill in address"
+      <van-field v-model="address" name="address" label=" Address" placeholder="Please fill in address"
         :rules="[{ required: true, message: 'Please fill in  address' }]" />
 
 

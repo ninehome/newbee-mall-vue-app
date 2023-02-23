@@ -9,7 +9,7 @@
 -->
 <template>
   <div class="address-box">
-    <s-header :name="'Editorial address'" :back="'/user'"></s-header>
+    <s-header :name="'Editorial Address'" :back="'/user'"></s-header>
     <div class="address-item">
       <van-address-list v-if="from != 'mine'" v-model="chosenAddressId" :list="list" default-tag-text="Default"  add-button-text ="New address"    @add="onAdd"
         @edit="onEdit" @select="select" />

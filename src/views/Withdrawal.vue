@@ -13,13 +13,13 @@
       <div>
         <van-cell class="status" title="Account  Balance:" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>₹ {{ formatNum(user_money)}} ₽</p>
+            <p style="margin:0" :style={color:bindcolor}>₹ {{ formatNum(user_money)}}</p>
           </template>
         </van-cell>
       </div>
 <!--      @click="show = true"-->
       <div>
-        <van-cell is-link title="Select the receiving bank"   @click="itemClick" :value="select_bank" />
+        <van-cell is-link title="Select the Receiving UPI"   @click="itemClick" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>
@@ -144,10 +144,10 @@ export default {
         return
       }
 
-      if (Number(content.withdrawal_money) <=  100){
+      if (Number(content.withdrawal_money) <  300){
 
         this.$toast({
-          message:"Withdrawal amount cannot be less than ₹ 100 ",
+          message:"Withdrawal amount cannot be less than ₹ 300 ",
           duration:500
         })
 
