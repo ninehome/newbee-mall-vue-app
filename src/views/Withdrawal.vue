@@ -19,7 +19,7 @@
       </div>
 <!--      @click="show = true"-->
       <div>
-        <van-cell is-link title="Select the Receiving UPI"   @click="itemClick" :value="select_bank" />
+        <van-cell is-link title="Select the Receiving Bank Card"   @click="itemClick" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>

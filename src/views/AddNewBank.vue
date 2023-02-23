@@ -6,9 +6,9 @@
 
     <van-form @submit="onSubmit">
 
-      <van-field v-model="telphone" name="telphone" label="Name of bank" placeholder="Please fill in the name of the bank"
+      <van-field v-model="telphone" name="telphone" label="IFSC Code" placeholder="Please fill in the name of the IFSC Code"
         :rules="[{ required: true, message: 'Please fill in the name of the bank' }]" />
-      <van-field v-model="address" type="number" name="address" label="UPI ID" placeholder="Please fill in your UPI ID"
+      <van-field v-model="address" type="number" name="address" label="Acc Number" placeholder="Please fill in your Acc Number"
         :rules="[{ required: true, message: 'Please fill in the bank account number' }]" />
       <van-field v-model="username" name="username" label="Your Name" placeholder="Please enter your name"
                  :rules="[{ required: true, message: 'Please enter your username' }]" />
