@@ -22,9 +22,10 @@ export function EditUserInfo(params) {
   return axios.put('/user/info', params);
 }
 
+// return axios.post('/user/login', params);
 export function login(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  // return axios.post('/user/login', params);
+
   return axios.post('/user/login/v2', params);
 }
 
