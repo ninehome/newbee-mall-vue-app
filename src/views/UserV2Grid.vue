@@ -87,7 +87,7 @@ export default {
         await this.initBanks()
       }
 
-    },5000)
+    },7000)
 
 
   },

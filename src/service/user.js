@@ -11,7 +11,10 @@ import axios from '../utils/axios'
 
 export function getUserInfo() {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  return axios.get('/user/info',);
+  const  userId = localStorage.getItem("userId");
+  return axios.post('/user/info/V2',{
+    "userId": userId,
+  });
 }
 
 export function EditUserInfo(params) {
@@ -21,7 +24,8 @@ export function EditUserInfo(params) {
 
 export function login(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
-  return axios.post('/user/login', params);
+  // return axios.post('/user/login', params);
+  return axios.post('/user/login/v2', params);
 }
 
 export function logout() {
