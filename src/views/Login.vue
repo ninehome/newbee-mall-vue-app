@@ -114,7 +114,7 @@ export default {
         })
 
         if (resultCode === 200){
-          setLocal('token', data)
+          setLocal('token', data.token)
           setLocal('userId', data.userId)
           window.location.href = '/'
         }else  if(resultCode === 417){
