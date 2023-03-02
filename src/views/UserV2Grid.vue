@@ -79,15 +79,22 @@ export default {
     this.user = data
     await this.initBanks()
 
-    this.timer = window.setInterval(async () => {
+    this.timer =setInterval(async () => {
+        const  userId = localStorage.getItem("userId");
+         const  token = localStorage.getItem("token");
 
-      const  token = localStorage.getItem("token");
-      if (token !== "undefined" && token !== null && token !=="" ){
-        await this.getUserInfo(false)
-        await this.initBanks()
+
+      if (userId!=null && userId !==""){
+         await this.getUserInfo(false)
       }
 
-    },7000)
+       if (token != null && token !==""){
+         await this.initBanks()
+       }
+
+
+
+    },6000)
 
 
   },
@@ -156,7 +163,12 @@ export default {
       const { data,resultCode } = await  getBankList({ pageNumber: 1 })
 
       if (resultCode === 200){
-        this.bankcard = data.size !== 0;
+        try {
+          this.bankcard = data.size !== 0;
+        }catch (e) {
+           console.log(e)
+        }
+
 
       }
 

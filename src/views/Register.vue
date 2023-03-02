@@ -186,7 +186,8 @@ export default {
 
       // 登录成功
       if (resultCode === 200 && data !== null) {
-        setLocal('token', data)
+        setLocal('token', data.token)
+        setLocal('userId', data.userId)
         setTimeout(() => {
           this.jump(`user`)
         }, 500);
