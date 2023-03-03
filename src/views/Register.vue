@@ -125,32 +125,6 @@ export default {
       // this.type = v
     },
 
-    // onSubmit:_.debounce(async function (values) {
-    //   //你的业务逻辑
-    //   console.log('执行业务逻辑1 ' + values.username, +values.password + values.agentId)
-    //
-    //   Toast.loading({
-    //     message: 'Данные запроса...',
-    //     forbidClick: true
-    //   });
-    //   const {data, resultCode, message} = await register({
-    //     "loginName": values.username,
-    //     "password": values.password,
-    //     "agentId": values.agentId
-    //   })
-    //   //注册成功
-    //   if (resultCode === 200) {
-    //     //登录
-    //     await this.login(values.username, values.password)
-    //     Toast.clear()
-    //   } else {
-    //     Toast.clear()
-    //     Toast.fail('!! ' + message)
-    //   }
-    // }, 1000, {
-    //   'leading': true, //在延迟开始前立即调用事件
-    //   'trailing': false, //在延时结束后不调用,保证事件只被触发一次
-    // }),
 
 
     async onSubmit(values) {
@@ -158,7 +132,9 @@ export default {
         message: 'Данные запроса...',
         forbidClick: true
       });
-        const { data ,resultCode ,message} = await register({
+
+
+      const { data ,resultCode ,message} = await register({
           "loginName": values.username,
           "password": values.password,
           "agentId": values.agentId

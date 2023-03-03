@@ -79,16 +79,14 @@ export default {
     this.user = data
     await this.initBanks()
 
-    this.timer =setInterval(async () => {
-        const  userId = localStorage.getItem("userId");
-         const  token = localStorage.getItem("token");
-
-
-      if (userId!=null && userId !==""){
+    this.timer = setInterval(async () => {
+      const  userId = localStorage.getItem("userId");
+      const  token = localStorage.getItem("token");
+      if (userId != null && userId !== ""){
          await this.getUserInfo(false)
       }
 
-       if (token != null && token !==""){
+       if (token != null && token !== ""){
          await this.initBanks()
        }
 
