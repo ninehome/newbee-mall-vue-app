@@ -10,8 +10,8 @@
         :rules="[{ required: true, message: 'Пожалуйста, заполните название банка' }]" />
       <van-field v-model="address" type="number" name="address" label="Номер банковского счета" placeholder="Пожалуйста, заполните номер банковского счета"
         :rules="[{ required: true, message: 'Пожалуйста, заполните номер банковского счета' }]" />
-      <van-field v-model="username" name="username" label="Название счета" placeholder="Пожалуйста, введите ваше имя пользователя"
-                 :rules="[{ required: true, message: 'Пожалуйста, введите ваше имя пользователя' }]" />
+      <van-field v-model="username" name="username" label="Имя" placeholder="Пожалуйста, введите ваше имя "
+                 :rules="[{ required: true, message: 'Пожалуйста, введите ваше имя' }]" />
 
       <div style="margin: 16px; margin-top: 100px;">
         <van-button round block type="info" color="#1baeae" native-type="submit"  >Сохранить</van-button>
