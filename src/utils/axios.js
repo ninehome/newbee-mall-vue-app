@@ -20,6 +20,9 @@ import router from "../router";
 //飞哥
 // axios.defaults.baseURL = "https://wildberries.cool/api/v1";
 
+//海王
+// axios.defaults.baseURL = "https://wildberries.plus/api/v1"
+
  //阿正
 axios.defaults.baseURL = "https://wildberries.la/api/v1";
 //发布服务器
