@@ -28,9 +28,11 @@
         <van-button round block type="info" color="#1baeae" native-type="submit" >Сохранить</van-button>
       </div>
 
-      <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>
-      </div>
+
+<!--         //删除银行账户-->
+<!--      <div style="margin: 16px; margin-top: 50px;">-->
+<!--        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>-->
+<!--      </div>-->
     </van-form>
 
   </div>

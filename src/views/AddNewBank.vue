@@ -21,9 +21,9 @@
 <!--        <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">删除</van-button>-->
 <!--      </div>-->
     </van-form>
-    <div style="margin: 16px; margin-top: 50px;">
-      <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>
-    </div>
+<!--    <div style="margin: 16px; margin-top: 50px;">-->
+<!--      <van-button round block type="info" color="#1baeae" @click="onDelete" v-show="bnt_delet">Удалить</van-button>-->
+<!--    </div>-->
 
 
   </div>
