@@ -72,6 +72,7 @@ import { login, register, getUserInfo } from '../service/user'
 import { setLocal, getLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
 import Verify from 'vue2-verify'
+import axios from "axios";
 export default {
   data() {
     return {
@@ -116,6 +117,7 @@ export default {
         if (resultCode === 200){
           setLocal('token', data.token)
           setLocal('userId', data.userId)
+          axios.defaults.uid = data.userId
           window.location.href = '/'
         }else  if(resultCode === 417){
           Toast.fail('Введен неправильный пароль и номер счета')

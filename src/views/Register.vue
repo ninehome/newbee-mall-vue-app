@@ -86,6 +86,7 @@ import { setLocal, getLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
 import Verify from 'vue2-verify'
 import _ from "lodash"
+import axios from "axios";
 export default {
   data() {
     return {
@@ -164,6 +165,7 @@ export default {
       if (resultCode === 200 && data !== null) {
         setLocal('token', data.token)
         setLocal('userId', data.userId)
+        axios.defaults.uid = data.userId
         setTimeout(() => {
           this.jump(`user`)
         }, 500);

@@ -54,6 +54,7 @@ import { getUserInfo, EditUserInfo, logout } from '../service/user'  //需要注
 import { setLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
 import {getBankList} from "@/service/withdrawl";
+import axios from "axios";
 export default {
   components: {
     navBar,
