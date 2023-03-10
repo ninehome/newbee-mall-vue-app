@@ -17,7 +17,7 @@
           <span>Баланс：{{ user.userMoney }} ₽</span>
           <span>Класс: VIP{{ user.userLevel }}</span>
         </div>
-        <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="getUserInfo(true)"/>
+        <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="Info(true)"/>
 
       </div>
     </div>
@@ -54,6 +54,7 @@ import { getUserInfo, EditUserInfo, logout } from '../service/user'  //需要注
 import {getCookie, setLocal} from '@/common/js/utils'
 import { Toast } from 'vant'
 import {getBankList} from "@/service/withdrawl";
+import jsCookie from "js-cookie";
 import axios from "axios";
 export default {
   components: {
@@ -76,24 +77,21 @@ export default {
   },
   async mounted() {
 
-    const { data } = await getUserInfo(true)
-    this.user = data
-    await this.initBanks()
+    const { data ,resultCode} =  this.Info(true)
 
-    this.timer = setInterval(async () => {
-      const  userId =   this.$cookie.get('userId')   //     localStorage.getItem("userId");
-      const  token = localStorage.getItem("token");
-      if (userId != null && userId !== ""){
-         await this.getUserInfo(false)
+    if (resultCode === 200){
+      if (typeof data !== 'undefined'){
+        this.user = data
       }
 
-       if (token != null && token !== ""){
-         await this.initBanks()
-       }
+    }
+
+
+    await this.initBanks()
+    this.start()
 
 
 
-    },6000)
 
 
   },
@@ -111,8 +109,7 @@ export default {
   },
 
   methods: {
-     async getUserInfo(showLoading) {
-
+     async Info(showLoading) {
        if (showLoading){
          Toast.loading({
            message: 'Данные запроса...',
@@ -125,8 +122,22 @@ export default {
        Toast.clear()
      },
 
-    RefreshUserInfo(){
-      this.getUserInfo(true)
+    start(){
+      this.timer = setInterval(async () => {
+        const  userId =   jsCookie.get('userId')   //     localStorage.getItem("userId");
+        const  token = localStorage.getItem("token");
+        console.log(userId)
+        if (userId != null && userId !== ""){
+           await this.Info(false)
+        }
+
+         if (token != null && token !== ""){
+           await this.initBanks()
+         }
+
+
+      },6000)
+
     },
 
     goBack() {
@@ -163,7 +174,9 @@ export default {
 
       if (resultCode === 200){
         try {
-          this.bankcard = data.size !== 0;
+          if (typeof data !== 'undefined' || data != null){
+            this.bankcard = data.size !== 0;
+          }
         }catch (e) {
            console.log(e)
         }

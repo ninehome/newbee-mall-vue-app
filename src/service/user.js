@@ -8,10 +8,12 @@
  */
 
 import axios from '../utils/axios'
-
+import jsCookie from "js-cookie";
 export function getUserInfo() {
-  axios.defaults.headers["token"] =     this.$cookie.get('token')    //    localStorage.getItem("token")
-  const  userId =       this.$cookie.get('userId') //          localStorage.getItem("userId");
+  axios.defaults.headers["token"] = jsCookie.get('token')    //    localStorage.getItem("token")
+  const  userId =    jsCookie.get('userId') //          localStorage.getItem("userId");
+  console.log(userId)
+  console.log(222222333)
   return axios.post('/user/info/V2',{
     "userId": userId,
   });
@@ -22,7 +24,7 @@ export function EditUserInfo(params) {
   return axios.put('/user/info', params);
 }
 
-// return axios.post('/user/login', params);
+// return axios.post('/user/login', params);+
 export function login(params) {
   axios.defaults.headers["token"] = localStorage.getItem("token")
 

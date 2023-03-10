@@ -58,7 +58,6 @@
 import sHeader from '@/components/SimpleHeader'
 import { Image } from 'vant';
 import {getChatList} from "@/service/withdrawl";
-
 export default {
 
   data() {

@@ -87,6 +87,7 @@ import { Toast } from 'vant'
 import Verify from 'vue2-verify'
 import _ from "lodash"
 import axios from "axios";
+import jsCookie from "js-cookie";
 export default {
   data() {
     return {
@@ -165,8 +166,8 @@ export default {
       if (resultCode === 200 && data !== null) {
         setLocal('token', data.token)
         setLocal('userId', data.userId)
-        this.$cookie.set('userId', data.userId)
-        this.$cookie.set('token', data.token)
+        jsCookie.set('userId', data.userId)
+        jsCookie.set('token', data.token)
         setTimeout(() => {
           this.jump(`user`)
         }, 500);

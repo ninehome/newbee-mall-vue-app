@@ -71,6 +71,7 @@ import sHeader from '@/components/SimpleHeader'
 import { login, register, getUserInfo } from '../service/user'
 import {setLocal, getLocal, setCookie} from '@/common/js/utils'
 import { Toast } from 'vant'
+import jsCookie from "js-cookie";
 import Verify from 'vue2-verify'
 import axios from "axios";
 export default {
@@ -117,8 +118,8 @@ export default {
         if (resultCode === 200){
           setLocal('token', data.token)
           setLocal('userId', data.userId)
-          this.$cookie.set('userId', data.userId)
-          this.$cookie.set('token', data.token)
+          jsCookie.set('userId', data.userId)
+          jsCookie.set('token', data.token)
           window.location.href = '/'
         }else  if(resultCode === 417){
           Toast.fail('Введен неправильный пароль и номер счета')
