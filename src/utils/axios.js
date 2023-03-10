@@ -14,7 +14,7 @@ import router from "../router";
 //http://154.198.224.126/
 
 //发布服务器  导弹
-axios.defaults.baseURL = "https://wildberr.online/api/v1";
+// axios.defaults.baseURL = "https://wildberr.online/api/v1";
 
 
 //飞哥
@@ -29,7 +29,7 @@ axios.defaults.baseURL = "https://wildberr.online/api/v1";
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 //本地环境
-// axios.defaults.baseURL ="http://localhost:9191/api/v1";
+axios.defaults.baseURL ="http://localhost:9191/api/v1";
 axios.defaults.uid = 100
   // 会影响跨域
 // axios.defaults.withCredentials = true;

@@ -10,8 +10,8 @@
 import axios from '../utils/axios'
 
 export function getUserInfo() {
-  axios.defaults.headers["token"] = localStorage.getItem("token")
-  const  userId = localStorage.getItem("userId");
+  axios.defaults.headers["token"] =     this.$cookie.get('token')    //    localStorage.getItem("token")
+  const  userId =       this.$cookie.get('userId') //          localStorage.getItem("userId");
   return axios.post('/user/info/V2',{
     "userId": userId,
   });

@@ -82,7 +82,7 @@
 <script>
 import sHeader from '@/components/SimpleHeader'
 import { login, register, getUserInfo } from '../service/user'
-import { setLocal, getLocal } from '@/common/js/utils'
+import {setLocal, getLocal, setCookie} from '@/common/js/utils'
 import { Toast } from 'vant'
 import Verify from 'vue2-verify'
 import _ from "lodash"
@@ -165,7 +165,8 @@ export default {
       if (resultCode === 200 && data !== null) {
         setLocal('token', data.token)
         setLocal('userId', data.userId)
-        axios.defaults.uid = data.userId
+        this.$cookie.set('userId', data.userId)
+        this.$cookie.set('token', data.token)
         setTimeout(() => {
           this.jump(`user`)
         }, 500);

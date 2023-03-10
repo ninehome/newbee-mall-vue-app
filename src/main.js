@@ -14,6 +14,7 @@ import router from "./router";
 import store from "./store";
 import { prefix } from "@/common/js/utils";
 import { Lazyload } from 'vant';
+import jsCookie from "js-cookie";
 // import VueLazyLoad from 'vue-lazyload'
 
 import {
@@ -105,7 +106,7 @@ new Vue({
 
 Vue.prototype.$md5 = md5;
 Vue.prototype.prefix = prefix;
-
+Vue.prototype.$cookie = jsCookie
 Array.prototype.remove = function(val) {
   var index = this.indexOf(val);
   if (index > -1) {

@@ -51,7 +51,7 @@
 import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getUserInfo, EditUserInfo, logout } from '../service/user'  //需要注册网络请求的方法
-import { setLocal } from '@/common/js/utils'
+import {getCookie, setLocal} from '@/common/js/utils'
 import { Toast } from 'vant'
 import {getBankList} from "@/service/withdrawl";
 import axios from "axios";
@@ -81,7 +81,7 @@ export default {
     await this.initBanks()
 
     this.timer = setInterval(async () => {
-      const  userId = localStorage.getItem("userId");
+      const  userId =   this.$cookie.get('userId')   //     localStorage.getItem("userId");
       const  token = localStorage.getItem("token");
       if (userId != null && userId !== ""){
          await this.getUserInfo(false)

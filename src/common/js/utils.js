@@ -25,6 +25,16 @@ export const setLocal = (name, value) => {
   localStorage.setItem(name, value);
 };
 
+
+// export const getCookie = (name) => {
+//   return this.$cookie.get(name);
+// };
+
+// export const setCookie = (name, value) => {
+//   this.$cookie.set(name, value)
+// };
+
+
 // 图片前缀方法
 export const prefix = (url) => {
   if (url && url.startsWith("http")) {
