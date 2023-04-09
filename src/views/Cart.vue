@@ -42,7 +42,7 @@
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Поселение" @submit="onSubmit"  	>
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit"  	>
 
 
       <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
