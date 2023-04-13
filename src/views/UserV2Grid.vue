@@ -31,7 +31,7 @@
       <van-grid-item clickable = "true"  :icon="require('../../static-files/user/order_list.png')" text="Мои заказы" to="order" />
       <van-grid-item clickable = "true"  :icon="require('../../static-files/user/add_cards.png')" text="Получатель" to="bank" />
       <van-grid-item clickable = "true"  :icon="require('../../static-files/user/location.png')" text="Адрес получения" to="address?from=mine" />
-      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />
+<!--      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />-->
     </van-grid>
 
 

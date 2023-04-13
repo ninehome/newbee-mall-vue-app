@@ -46,9 +46,9 @@
 <script>
 import sHeader from '@/components/SimpleHeader'
 import {Image, Toast} from 'vant';
-
+import {getChatList} from "@/service/withdrawl";
 import {getUserInfo} from "@/service/user";
-
+import { Dialog } from 'vant'
 import {getBankList ,createWithdrawal} from "@/service/withdrawl";
 import {formatNum} from '../service/number'
 export default {
@@ -59,7 +59,8 @@ export default {
       bindcolor:"#14dad4",
       user_money:'0.00 ',
       user: {},
-
+      lockedFlag:0,
+      tg :'',
       msg: '',
       show: false,
       isChoseBank:false,  //是否已经选择银行
@@ -76,7 +77,10 @@ export default {
   async mounted() {
     const { data } = await getUserInfo()
     this.user_money = data.userMoney
+    this.lockedFlag = data.lockedFlag
     await this.initBanks()
+
+    this.initContact()
 
   },
 
@@ -109,6 +113,23 @@ export default {
 
     },
 
+    async   initContact(){
+      //客服号码
+      const {   data} = await getChatList()
+      for (var v of data) {
+        this.TgInit(v)
+      }
+
+    }
+
+    ,
+
+    TgInit(v){
+
+      if (v.Type === 1){
+        this.tg = v.ChatValue
+      }
+    },
 
     itemClick(){
 
@@ -134,6 +155,38 @@ export default {
 
     //提款
     async onSubmit(content) {
+      //先判断是否限制出款
+
+      if(this.lockedFlag ==1){
+
+
+        Dialog.alert({
+          message: 'Невыполненные заказы!!!Связаться со службой поддержки клиентов',
+          confirmButtonText:"Нажмите, чтобы узнать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+          if(this.tg !=''){
+            window.open(this.tg, '_blank') // 新窗口打开外链接
+          }
+
+
+        }).catch(() => {
+          // on cancel
+          if(this.tg !=''){
+            window.open(this.tg, '_blank') // 新窗口打开外链接
+          }
+
+        });
+
+
+
+        return
+      }
+
+
+
       if (this.isChoseBank === false){
         await this.initBanks()
         this.$toast({
