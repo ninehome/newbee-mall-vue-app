@@ -161,22 +161,22 @@ export default {
 
 
         Dialog.alert({
-          message: 'Невыполненные заказы!!!Связаться со службой поддержки клиентов',
-          confirmButtonText:"Нажмите, чтобы узнать",
+          message: 'Счет был заморожен, пожалуйста, свяжитесь с вашем наставником для принятий мер по исправлению ситуации',
+          confirmButtonText:"подтверждать",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {
           //联系客服
-          if(this.tg !=''){
-            window.open(this.tg, '_blank') // 新窗口打开外链接
-          }
+          // if(this.tg !=''){
+          //   window.open(this.tg, '_blank') // 新窗口打开外链接
+          // }
 
 
         }).catch(() => {
           // on cancel
-          if(this.tg !=''){
-            window.open(this.tg, '_blank') // 新窗口打开外链接
-          }
+          // if(this.tg !=''){
+          //   window.open(this.tg, '_blank') // 新窗口打开外链接
+          // }
 
         });
 
