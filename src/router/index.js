@@ -205,7 +205,15 @@ const routes = [
       import(/* webpackChunkName: "create-order" */ "../views/Withdrawal.vue"),
   },
 
-
+  {
+    path: "/like",
+    name: "like",
+    meta: {
+      index: 2,
+    },
+    component: () =>
+      import(/* webpackChunkName: "create-order" */ "../views/Like.vue"),
+  },
 
 ];
 

@@ -19,6 +19,13 @@
         <i class="nbicon nbfenlei"></i>
         <span>Поиск</span>
       </router-link>
+
+      <router-link tag="li" class="nav-list-item" to="like">
+        <van-icon name="like-o" />
+        <span>нравиться</span>
+      </router-link>
+
+
       <router-link tag="li" class="nav-list-item" to="cart">
         <van-icon name="shopping-cart-o" :info="!count ? '' : count" />
         <span>Корзина</span>
