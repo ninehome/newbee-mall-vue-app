@@ -6,24 +6,24 @@
     <s-header :name="'Детали продукта'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
+        <div style="height: 50px;width: 100%" class="like-content">
+          <img class="img-like" :src='this.like_url'  @click="ClickLike()"/>
+        </div>
+
         <van-swipe class="my-swipe" indicator-color="#1baeae"  style="height:300px" >
           <van-swipe-item v-for="(item, index) in detail.goodsCarouselList" :key="index">
-<!--            <img :src="prefix(item)" alt=""  STYLE="background-size: auto">-->
-<!--            <img :src="item" alt="">-->
+
             <van-image
               width="100%"
               height="300px"
               fit="contain"
               :src="prefix(item)"
             />
-
           </van-swipe-item>
 
-<!--          <template #indicator="{ this:active, this:total }">-->
-<!--            <div class="custom-indicator">{{ active + 1 }}/{{ total }}</div>-->
-<!--          </template>-->
-
         </van-swipe>
+
+
       </div>
       <div class="product-info">
         <div class="product-title">
@@ -73,6 +73,9 @@ import { addCart } from '../service/cart'
 import sHeader from '@/components/HeaderDetaily'
 import { Toast } from 'vant'
 import {formatNum} from '../service/number'
+import jsCookie from "js-cookie";
+import like_black from '../../static-files/like/love_black.png'
+import like_read from  '../../static-files/like/love_red.png'
 export default {
   data() {
     return {
@@ -80,9 +83,12 @@ export default {
       detail: {
         goodsCarouselList: []
       },
+      like_url:like_black,
       htmlstr:"",
       active:0,
-      total:3
+      total:3,
+      like:[],
+      goodId:''
     }
   },
   components: {
@@ -90,8 +96,13 @@ export default {
   },
   async mounted() {
     const { id } = this.$route.params
+    this.goodId = id
     const { data } = await getDetail(id)
     this.detail = data
+
+    //读取本地存储的
+
+     this.getLikeList()
   },
   methods: {
     goBack() {
@@ -109,7 +120,41 @@ export default {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
       this.$store.dispatch('updateCart')
       this.$router.push({ path: '/cart' })
+    },
+
+    ClickLike(){
+      const  saveLike  =  jsCookie.get('like')
+      if (saveLike == null || saveLike === ""){
+        jsCookie.set('like', this.goodId.toString())
+      }else {
+        jsCookie.set('like', saveLike.toString() +"noe"+this.goodId.toString())
+      }
+      this.like_url = like_read
+
+    },
+
+
+   async getLikeList(){
+      const  saveLike  =  jsCookie.get('like')
+
+      if ( saveLike != null && saveLike !== ""){
+        this.like = saveLike.split("noe")
+
+        for (const ids of this.like) {
+          if(ids === this.goodId){
+            this.like_url = like_read
+          }
+
+        }
+
+
+      }
+
+
+
     }
+
+
   },
   computed: {
     count() {
@@ -152,6 +197,21 @@ export default {
           // height: 300px;
         }
       }
+
+      .like-content{
+        display: flow;
+        .img-like{
+          width: 33px;
+          height: 33px;
+          margin-right: 15px;
+          margin-top: 10px;
+          position: absolute;
+          left: 90%;
+        }
+
+      }
+
+
     }
 
     .product-info {

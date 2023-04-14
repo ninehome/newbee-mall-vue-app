@@ -35,7 +35,6 @@
         </van-field>
 
 
-
         <!--        带眼睛 的密码显示-->
         <van-field
           v-model="password"
@@ -52,8 +51,6 @@
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
 
         </van-field>
-
-
 
 
         <div style="margin: 16px;">
