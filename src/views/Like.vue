@@ -70,6 +70,8 @@ import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
 import {formatNum} from '../service/number'
+import jsCookie from "js-cookie";
+import like_read from "../../static-files/like/love_red.png";
 export default {
   data() {
     return {
@@ -137,6 +139,17 @@ export default {
         }
       })
       Toast.clear();
+    },
+    async getLikeList(){
+      const  saveLike  =  jsCookie.get('like')
+      if ( saveLike != null && saveLike !== ""){
+        this.like = saveLike.split("noe")
+        for (const ids of this.like) {
+          if(ids === this.goodId){
+            this.like_url = like_read
+          }
+        }
+      }
     },
     async onSubmit() {
       if (this.result.length == 0) {

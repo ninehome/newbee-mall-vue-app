@@ -117,16 +117,6 @@ export default {
       newGoodses: [],
       recommends: [],
       categoryList: [
-        // {
-        //   name: 'Торговый центр',  //新蜂超市
-        //   imgUrl: '//s.weituibao.com/1583585285461/cs.png',
-        //   categoryId: 100001
-        // },
-        // {
-        //   name: 'Популярная одежда',  //新蜂服饰
-        //   imgUrl: '//s.weituibao.com/1583585285468/fs.png',
-        //   categoryId: 100003
-        // },
         {
           name: 'Глобальный',  //全球购
           imgUrl: '//s.weituibao.com/1583585285470/qq.png',
