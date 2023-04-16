@@ -22,8 +22,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    redirect: "/home",
+    name: "homes",
+    meta: {
+      index: 1,
+      keepAlive: true
+    },
+    component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
   {
     path: "/login",
@@ -205,7 +209,15 @@ const routes = [
       import(/* webpackChunkName: "create-order" */ "../views/Withdrawal.vue"),
   },
 
-
+  {
+    path: "/like",
+    name: "like",
+    meta: {
+      index: 2,
+    },
+    component: () =>
+      import(/* webpackChunkName: "create-order" */ "../views/Like.vue"),
+  },
 
 ];
 
