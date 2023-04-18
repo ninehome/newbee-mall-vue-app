@@ -14,45 +14,23 @@
       Моя коллекция
     </div>
 
+    <div class="good">
 
-    <div class="cart-body">
-      <van-checkbox-group @change="groupChange" v-model="result" ref="checkboxGroup">
-        <van-swipe-cell :right-width="50" v-for="(item, index) in list" :key="index">
-          <div class="good-item">
-            <van-checkbox :name="item.cartItemId" />
-            <div class="good-img"><img :src="prefix(item.goodsCoverImg)" alt=""></div>
-            <div class="good-desc">
-              <div class="good-title">
-                <span>{{ item.goodsName }}</span>
-                <span>x{{ item.goodsCount }}</span>
-              </div>
-              <div class="good-btn">
+      <div class="good-box">
+        <div class="good-item" v-for="item in list" :key="item.goodsId" @click="goToDetail(item)">
+          <van-image
+            lazy-load
+            :src="prefix(item.goodsCoverImg)"
+          />
 
-
-                <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
-
-
-                <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
-                  @change="onChange" />
-              </div>
-            </div>
+          <div class="good-desc">
+            <div class="title">{{ item.goodsName }}</div>
+            <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>
           </div>
-          <van-button slot="right" square icon="delete" type="danger" class="delete-button"
-            @click="deleteGood(item.cartItemId)" />
-        </van-swipe-cell>
-      </van-checkbox-group>
-    </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit"  	>
-
-
-      <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
-
-      <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+        </div>
       </div>
+    </div>
 
-
-    </van-submit-bar>
 
 
     <div class="empty" v-if="!list.length">
@@ -72,6 +50,7 @@ import { getCart, deleteCartItem, modifyCart } from '../service/cart'
 import {formatNum} from '../service/number'
 import jsCookie from "js-cookie";
 import like_read from "../../static-files/like/love_red.png";
+import { getDetail } from '../service/good'
 export default {
   data() {
     return {
@@ -91,18 +70,36 @@ export default {
   mounted() {
     this.init()
   },
-  computed: {
-    total: function () {
-      let sum = 0
-      let _list = this.list.filter(item => this.result.includes(item.cartItemId))
-      _list.forEach(item => {
-        sum += item.goodsCount * item.sellingPrice
-      })
-      return sum
-    }
-  },
+  // computed: {
+  //   total: function () {
+  //     let sum = 0
+  //     let _list = this.list.filter(item => this.result.includes(item.cartItemId))
+  //     _list.forEach(item => {
+  //       sum += item.goodsCount * item.sellingPrice
+  //     })
+  //     return sum
+  //   }
+  // },
   methods: {
     async init() {
+      const  saveLike  =  jsCookie.get('like')
+      if ( saveLike != null && saveLike !== ""){
+        this.like = saveLike.split("noe")
+
+        for (const ids of this.like) {
+          if(ids === this.goodId){
+            const { data } = await getDetail(id)
+            this.detail = data
+
+            // this.like_url = like_read
+          }
+
+        }
+
+
+      }
+
+
 
 
       // Toast.loading({ message: 'Загрузка...', forbidClick: true });
