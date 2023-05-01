@@ -34,6 +34,21 @@
           <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
           <!-- <span>库存203</span> -->
         </div>
+
+        <div  v-if="countTime"  class="count-down-div" style="margin-bottom: 5px;margin-top: 5px">
+          <van-count-down :time="time" @finish="onFinish">
+            <template #default="timeData">
+<!--              <span class="block">{{ timeData.hours }}</span>-->
+<!--              <span class="colon">:</span>-->
+              <span class="block">0{{ timeData.minutes }}</span>
+              <span class="colon">:</span>
+              <span class="block">{{ timeData.seconds }}</span>
+            </template>
+          </van-count-down>
+        </div>
+
+        <van-tag  v-if="countFinish"   type="warning" >Время покупки истекло</van-tag>
+
       </div>
       <div class="product-intro">
         <ul>
@@ -42,18 +57,9 @@
           <li>Услуги</li>
           <li>Рекомендации</li>
         </ul>
-
-
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
-
-
       </div>
-
-
     </div>
-
-
-
 
 
     <van-goods-action>
@@ -86,8 +92,11 @@ export default {
       like_url:like_black,
       htmlstr:"",
       active:0,
+      time: 5 * 60 * 1000,
       total:3,
       like:[],
+      countFinish: false,
+      countTime: true,
       goodId:''
     }
   },
@@ -101,10 +110,15 @@ export default {
     this.detail = data
 
     //读取本地存储的
-
-     this.getLikeList()
+     await this.getLikeList()
   },
   methods: {
+
+    onFinish() {
+      // Toast('倒计时结束');
+      this.countFinish = true
+      this.countTime = false
+    },
     goBack() {
       this.$router.go(-1)
     },
@@ -113,13 +127,13 @@ export default {
     },
     async addCart() {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode == 200) Toast.success('Добавлено успешно')
-      this.$store.dispatch('updateCart')
+      if (resultCode === 200) Toast.success('Добавлено успешно')
+      await this.$store.dispatch('updateCart')
     },
     async goToCart() {
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      this.$store.dispatch('updateCart')
-      this.$router.push({ path: '/cart' })
+      await this.$store.dispatch('updateCart')
+      await this.$router.push({path: '/cart'})
     },
 
     ClickLike(){
@@ -221,6 +235,19 @@ export default {
         font-size: 18px;
         text-align: left;
         color: #333;
+      }
+      .colon {
+        display: inline-block;
+        margin: 0 4px;
+        color: #1baeae;
+      }
+      .block {
+        display: inline-block;
+        width: 22px;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        background-color:#1baeae;
       }
 
       .product-desc {
