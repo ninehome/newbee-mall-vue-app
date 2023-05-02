@@ -77,7 +77,7 @@
 import { getDetail } from '../service/good'
 import { addCart } from '../service/cart'
 import sHeader from '@/components/HeaderDetaily'
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import {formatNum} from '../service/number'
 import jsCookie from "js-cookie";
 import like_black from '../../static-files/like/love_black.png'
@@ -114,6 +114,7 @@ export default {
   },
   methods: {
 
+
     onFinish() {
       // Toast('倒计时结束');
       this.countFinish = true
@@ -126,11 +127,41 @@ export default {
       this.$router.push({ path: '/cart' })
     },
     async addCart() {
+
+      if(this.countFinish === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
+
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
       if (resultCode === 200) Toast.success('Добавлено успешно')
       await this.$store.dispatch('updateCart')
     },
     async goToCart() {
+      if(this.countFinish === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
       await this.$store.dispatch('updateCart')
       await this.$router.push({path: '/cart'})
