@@ -18,6 +18,7 @@
     <div class="cart-body">
       <van-checkbox-group @change="groupChange" v-model="result" ref="checkboxGroup">
         <van-swipe-cell :right-width="50" v-for="(item, index) in list" :key="index">
+
           <div class="good-item">
             <van-checkbox :name="item.cartItemId" />
             <div class="good-img"><img :src="prefix(item.goodsCoverImg)" alt=""></div>
@@ -27,11 +28,7 @@
                 <span>x{{ item.goodsCount }}</span>
               </div>
               <div class="good-btn">
-
-
                 <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
-
-
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
                   @change="onChange" />
               </div>
@@ -39,18 +36,25 @@
           </div>
           <van-button slot="right" square icon="delete" type="danger" class="delete-button"
             @click="deleteGood(item.cartItemId)" />
+          <div  v-if="allCountTime[index]"  class="count-down-div" style="margin-bottom: 8px;margin-top: 1px ;margin-left: 2px">
+            <van-count-down :time="listTime[index]" @finish="onFinish(index)">
+              <template #default="timeData">
+                <span class="block">0{{ timeData.minutes }}</span>
+                <span class="colon">:</span>
+                <span class="block">{{ timeData.seconds }}</span>
+              </template>
+            </van-count-down>
+          </div>
+          <van-tag  v-if="allFinish[index]"  type="warning" >Время покупки истекло</van-tag>
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit"  	>
-
-
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit" >
       <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} ₽ </span>
       </div>
-
 
     </van-submit-bar>
 
@@ -79,7 +83,12 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
-
+      countFinish: false,
+      countTime: true,
+      time: 5 * 60 * 1000,
+      listTime:    [5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000],
+      allFinish:   [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      allCountTime:[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     }
   },
   components: {
@@ -109,12 +118,43 @@ export default {
         this.list = []
         this.result = []
       } else {
+
+        // for(var key = 0; i < data.length; key++){
+        //   const nowTime = Math.floor(Date.now()/1000)
+        //   // console.log("现在的时间戳")
+        //   if (data.countTime === 0){
+        //     this.$data.allFinish[key] = false
+        //     this.$data.allCountTime[key] = false
+        //   }else {
+        //     if (nowTime >= data.countTime){
+        //       this.countTime = false
+        //     }else {
+        //       this.listTime[key] = (data[key].countTime - nowTime) * 1000
+        //       this.$data.allCountTime[key] = true
+        //     }
+        //   }
+        // }
+
         this.list = data
         this.result = data.map(item => item.cartItemId)
       }
 
       Toast.clear()
 
+    },
+
+    onFinish(index) {
+      // Toast('倒计时结束');
+      this.allFinish[index] = true
+      this.allCountTime[index] = false
+
+      console.log(index)
+      console.log(    this.allFinish[index])
+      console.log(   this.allCountTime[index] )
+
+      this.init()
+      // this.countFinish = true
+      // this.countTime = false
     },
     goBack() {
       this.$router.go(-1)
@@ -124,7 +164,7 @@ export default {
       this.$router.push({ path: 'home' })
     },
     async onChange(value, detail) {
-      if (this.list.filter(item => item.cartItemId == detail.name)[0].goodsCount == value) return
+      if (this.list.filter(item => item.cartItemId === detail.name)[0].goodsCount === value) return
       Toast.loading({ message: 'Модификации в процессе...', forbidClick: true });
       const params = {
         cartItemId: detail.name,
@@ -132,14 +172,14 @@ export default {
       }
       const { data } = await modifyCart(params)
       this.list.forEach(item => {
-        if (item.cartItemId == detail.name) {
+        if (item.cartItemId === detail.name) {
           item.goodsCount = value
         }
       })
       Toast.clear();
     },
     async onSubmit() {
-      if (this.result.length == 0) {
+      if (this.result.length === 0) {
         Toast.fail('Выберите продукт')
         return
       }
@@ -164,7 +204,7 @@ export default {
 
     },
     groupChange(result) {
-      if (result.length == this.list.length) {
+      if (result.length === this.list.length) {
         this.checkAll = true
       } else {
         this.checkAll = false
@@ -208,6 +248,19 @@ export default {
     margin: 10px 0 100px 0;
     padding-left: 10px;
 
+    .colon {
+      display: inline-block;
+      margin: 0 4px;
+      color: #1baeae;
+    }
+    .block {
+      display: inline-block;
+      width: 22px;
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      background-color:#1baeae;
+    }
     .good-item {
       display: flex;
 
@@ -216,6 +269,8 @@ export default {
           .wh(100px, 100px)
         }
       }
+
+
 
       .good-desc {
         display: flex;
