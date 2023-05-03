@@ -38,8 +38,6 @@
         <div  v-if="countTime"  class="count-down-div" style="margin-bottom: 5px;margin-top: 5px">
           <van-count-down :time="time" @finish="onFinish">
             <template #default="timeData">
-<!--              <span class="block">{{ timeData.hours }}</span>-->
-<!--              <span class="colon">:</span>-->
               <span class="block">0{{ timeData.minutes }}</span>
               <span class="colon">:</span>
               <span class="block">{{ timeData.seconds }}</span>
@@ -92,11 +90,11 @@ export default {
       like_url:like_black,
       htmlstr:"",
       active:0,
-      time: 5 * 60 * 1000,
       total:3,
       like:[],
       countFinish: false,
-      countTime: true,
+      countTime: false,
+      time: 5 * 60 * 1000,
       goodId:''
     }
   },
@@ -108,6 +106,22 @@ export default {
     this.goodId = id
     const { data } = await getDetail(id)
     this.detail = data
+    const nowTime = Math.floor(Date.now()/1000)
+    // console.log("现在的时间戳")
+    // console.log(nowTime)
+    if (data.countTime === 0){
+      this.countTime = false
+      this.countFinish = false
+    }else {
+      if (nowTime >= data.countTime){
+        this.countTime = false
+      }else {
+        this.time = (data.countTime - nowTime) * 1000
+        this.countTime = true
+      }
+    }
+
+
 
     //读取本地存储的
      await this.getLikeList()
