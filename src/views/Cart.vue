@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
@@ -83,12 +83,13 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
-      countFinish: false,
-      countTime: true,
-      time: 5 * 60 * 1000,
-      listTime:    [5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000],
-      allFinish:   [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      allCountTime:[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+      haveTimeCount :false,
+      // countFinish: false,
+      // countTime: true,
+      // time: 5 * 60 * 1000,
+      listTime:    [5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,14000,5000,10000,15000,18000,14000],
+      allFinish:   [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      allCountTime:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,],
     }
   },
   components: {
@@ -119,21 +120,26 @@ export default {
         this.result = []
       } else {
 
-        // for(var key = 0; i < data.length; key++){
-        //   const nowTime = Math.floor(Date.now()/1000)
-        //   // console.log("现在的时间戳")
-        //   if (data.countTime === 0){
-        //     this.$data.allFinish[key] = false
-        //     this.$data.allCountTime[key] = false
-        //   }else {
-        //     if (nowTime >= data.countTime){
-        //       this.countTime = false
-        //     }else {
-        //       this.listTime[key] = (data[key].countTime - nowTime) * 1000
-        //       this.$data.allCountTime[key] = true
-        //     }
-        //   }
-        // }
+        for(let key = 0; key < data.length; key++){
+          const nowTime = Math.floor(Date.now()/1000)
+
+          console.log(data[key].countTime )
+          const dataTime = data[key].countTime
+          // console.log("现在的时间戳")
+          if (dataTime === 0){
+            this.$data.allFinish[key] = false
+            this.$data.allCountTime[key] = false
+          }else {
+            if (nowTime >= dataTime){
+              this.$data.allFinish[key] = true
+              this.$data.allCountTime[key] = false
+            }else {
+              this.listTime[key] = (dataTime - nowTime) * 1000
+              this.$data.allCountTime[key] = true
+              this.$data.allFinish[key] = false
+            }
+          }
+        }
 
         this.list = data
         this.result = data.map(item => item.cartItemId)
@@ -147,11 +153,6 @@ export default {
       // Toast('倒计时结束');
       this.allFinish[index] = true
       this.allCountTime[index] = false
-
-      console.log(index)
-      console.log(    this.allFinish[index])
-      console.log(   this.allCountTime[index] )
-
       this.init()
       // this.countFinish = true
       // this.countTime = false
@@ -179,10 +180,40 @@ export default {
       Toast.clear();
     },
     async onSubmit() {
+
       if (this.result.length === 0) {
         Toast.fail('Выберите продукт')
         return
       }
+
+      //判断是否有时间过期商品。如果有不许购买
+      for(let key = 0; key <   this.list.length; key++){
+        const nowTime = Math.floor(Date.now()/1000)
+        const dataTime =  this.list[key].countTime
+        console.log(this.result)
+        if ( dataTime !== 0 && nowTime > dataTime){
+          this.haveTimeCount =  true  //有过期无法购买商品
+          break
+        }
+      }
+
+
+
+      if(this.haveTimeCount === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
+
       const params = JSON.stringify(this.result)
       // for (let i = 0; i < this.result.length; i++) {
       //   await deleteCartItem(this.result[i])
