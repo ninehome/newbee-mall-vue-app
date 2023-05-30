@@ -50,7 +50,10 @@ import {
   GridItem,
   Grid,
   Toast,
-  ActionSheet, Image
+  ActionSheet
+  ,Image
+  ,CountDown
+  ,Tag
 } from "vant";
 import "lib-flexible/flexible";
 
@@ -87,6 +90,8 @@ Vue.use(Divider)
   .use(Image)
   .use(GridItem)
   .use(Grid)
+  .use(CountDown)
+  .use(Tag)
   .use(CheckboxGroup);
 Vue.config.productionTip = false;
 

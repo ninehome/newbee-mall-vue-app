@@ -1,10 +1,5 @@
 <!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
+
  *
 -->
 
@@ -18,6 +13,7 @@
     <div class="cart-body">
       <van-checkbox-group @change="groupChange" v-model="result" ref="checkboxGroup">
         <van-swipe-cell :right-width="50" v-for="(item, index) in list" :key="index">
+
           <div class="good-item">
             <van-checkbox :name="item.cartItemId" />
             <div class="good-img"><img :src="prefix(item.goodsCoverImg)" alt=""></div>
@@ -27,11 +23,7 @@
                 <span>x{{ item.goodsCount }}</span>
               </div>
               <div class="good-btn">
-
-
                 <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
-
-
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
                   @change="onChange" />
               </div>
@@ -39,18 +31,25 @@
           </div>
           <van-button slot="right" square icon="delete" type="danger" class="delete-button"
             @click="deleteGood(item.cartItemId)" />
+          <div  v-if="allCountTime[index]"  class="count-down-div" style="margin-bottom: 8px;margin-top: 1px ;margin-left: 2px">
+            <van-count-down :time="listTime[index]" @finish="onFinish(index)">
+              <template #default="timeData">
+                <span class="block">0{{ timeData.minutes }}</span>
+                <span class="colon">:</span>
+                <span class="block">{{ timeData.seconds }}</span>
+              </template>
+            </van-count-down>
+          </div>
+          <van-tag  v-if="allFinish[index]"  type="warning" >Время покупки истекло</van-tag>
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit"  	>
-
-
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit" >
       <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽  </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} ₽ </span>
       </div>
-
 
     </van-submit-bar>
 
@@ -65,7 +64,7 @@
 </template>
 
 <script>
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
 import { getCart, deleteCartItem, modifyCart } from '../service/cart'
@@ -79,7 +78,13 @@ export default {
       result: [],
       checkAll: true,
       formatNum:formatNum,
-
+      haveTimeCount :false,
+      // countFinish: false,
+      // countTime: true,
+      // time: 5 * 60 * 1000,
+      listTime:    [5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,5000,10000,15000,18000,14000,14000,5000,10000,15000,18000,14000],
+      allFinish:   [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      allCountTime:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,],
     }
   },
   components: {
@@ -109,12 +114,43 @@ export default {
         this.list = []
         this.result = []
       } else {
+
+        for(let key = 0; key < data.length; key++){
+          const nowTime = Math.floor(Date.now()/1000)
+
+          console.log(data[key].countTime )
+          const dataTime = data[key].countTime
+          // console.log("现在的时间戳")
+          if (dataTime === 0){
+            this.$data.allFinish[key] = false
+            this.$data.allCountTime[key] = false
+          }else {
+            if (nowTime >= dataTime){
+              this.$data.allFinish[key] = true
+              this.$data.allCountTime[key] = false
+            }else {
+              this.listTime[key] = (dataTime - nowTime) * 1000
+              this.$data.allCountTime[key] = true
+              this.$data.allFinish[key] = false
+            }
+          }
+        }
+
         this.list = data
         this.result = data.map(item => item.cartItemId)
       }
 
       Toast.clear()
 
+    },
+
+    onFinish(index) {
+      // Toast('倒计时结束');
+      this.allFinish[index] = true
+      this.allCountTime[index] = false
+      this.init()
+      // this.countFinish = true
+      // this.countTime = false
     },
     goBack() {
       this.$router.go(-1)
@@ -124,7 +160,7 @@ export default {
       this.$router.push({ path: 'home' })
     },
     async onChange(value, detail) {
-      if (this.list.filter(item => item.cartItemId == detail.name)[0].goodsCount == value) return
+      if (this.list.filter(item => item.cartItemId === detail.name)[0].goodsCount === value) return
       Toast.loading({ message: 'Модификации в процессе...', forbidClick: true });
       const params = {
         cartItemId: detail.name,
@@ -132,17 +168,47 @@ export default {
       }
       const { data } = await modifyCart(params)
       this.list.forEach(item => {
-        if (item.cartItemId == detail.name) {
+        if (item.cartItemId === detail.name) {
           item.goodsCount = value
         }
       })
       Toast.clear();
     },
     async onSubmit() {
-      if (this.result.length == 0) {
+
+      if (this.result.length === 0) {
         Toast.fail('Выберите продукт')
         return
       }
+
+      //判断是否有时间过期商品。如果有不许购买
+      for(let key = 0; key <   this.list.length; key++){
+        const nowTime = Math.floor(Date.now()/1000)
+        const dataTime =  this.list[key].countTime
+        console.log(this.result)
+        if ( dataTime !== 0 && nowTime > dataTime){
+          this.haveTimeCount =  true  //有过期无法购买商品
+          break
+        }
+      }
+
+
+
+      if(this.haveTimeCount === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
+
       const params = JSON.stringify(this.result)
       // for (let i = 0; i < this.result.length; i++) {
       //   await deleteCartItem(this.result[i])
@@ -164,7 +230,7 @@ export default {
 
     },
     groupChange(result) {
-      if (result.length == this.list.length) {
+      if (result.length === this.list.length) {
         this.checkAll = true
       } else {
         this.checkAll = false
@@ -208,6 +274,19 @@ export default {
     margin: 10px 0 100px 0;
     padding-left: 10px;
 
+    .colon {
+      display: inline-block;
+      margin: 0 4px;
+      color: #1baeae;
+    }
+    .block {
+      display: inline-block;
+      width: 22px;
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      background-color:#1baeae;
+    }
     .good-item {
       display: flex;
 
@@ -216,6 +295,8 @@ export default {
           .wh(100px, 100px)
         }
       }
+
+
 
       .good-desc {
         display: flex;

@@ -34,6 +34,19 @@
           <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
           <!-- <span>库存203</span> -->
         </div>
+
+        <div  v-if="countTime"  class="count-down-div" style="margin-bottom: 5px;margin-top: 5px">
+          <van-count-down :time="time" @finish="onFinish">
+            <template #default="timeData">
+              <span class="block">0{{ timeData.minutes }}</span>
+              <span class="colon">:</span>
+              <span class="block">{{ timeData.seconds }}</span>
+            </template>
+          </van-count-down>
+        </div>
+
+        <van-tag  v-if="countFinish"   type="warning" >Время покупки истекло</van-tag>
+
       </div>
       <div class="product-intro">
         <ul>
@@ -42,18 +55,9 @@
           <li>Услуги</li>
           <li>Рекомендации</li>
         </ul>
-
-
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
-
-
       </div>
-
-
     </div>
-
-
-
 
 
     <van-goods-action>
@@ -71,7 +75,7 @@
 import { getDetail } from '../service/good'
 import { addCart } from '../service/cart'
 import sHeader from '@/components/HeaderDetaily'
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import {formatNum} from '../service/number'
 import jsCookie from "js-cookie";
 import like_black from '../../static-files/like/love_black.png'
@@ -88,6 +92,9 @@ export default {
       active:0,
       total:3,
       like:[],
+      countFinish: false,
+      countTime: false,
+      time: 5 * 60 * 1000,
       goodId:''
     }
   },
@@ -99,12 +106,34 @@ export default {
     this.goodId = id
     const { data } = await getDetail(id)
     this.detail = data
+    const nowTime = Math.floor(Date.now()/1000)
+    // console.log("现在的时间戳")
+    // console.log(nowTime)
+    if (data.countTime === 0){
+      this.countTime = false
+      this.countFinish = false
+    }else {
+      if (nowTime >= data.countTime){
+        this.countTime = false
+      }else {
+        this.time = (data.countTime - nowTime) * 1000
+        this.countTime = true
+      }
+    }
+
+
 
     //读取本地存储的
-
-     this.getLikeList()
+     await this.getLikeList()
   },
   methods: {
+
+
+    onFinish() {
+      // Toast('倒计时结束');
+      this.countFinish = true
+      this.countTime = false
+    },
     goBack() {
       this.$router.go(-1)
     },
@@ -112,14 +141,44 @@ export default {
       this.$router.push({ path: '/cart' })
     },
     async addCart() {
+
+      if(this.countFinish === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
+
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode == 200) Toast.success('Добавлено успешно')
-      this.$store.dispatch('updateCart')
+      if (resultCode === 200) Toast.success('Добавлено успешно')
+      await this.$store.dispatch('updateCart')
     },
     async goToCart() {
+      if(this.countFinish === true){
+        Dialog.alert({
+          message: 'Время покупки прошло',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+        return
+      }
+
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      this.$store.dispatch('updateCart')
-      this.$router.push({ path: '/cart' })
+      await this.$store.dispatch('updateCart')
+      await this.$router.push({path: '/cart'})
     },
 
     ClickLike(){
@@ -221,6 +280,19 @@ export default {
         font-size: 18px;
         text-align: left;
         color: #333;
+      }
+      .colon {
+        display: inline-block;
+        margin: 0 4px;
+        color: #1baeae;
+      }
+      .block {
+        display: inline-block;
+        width: 22px;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        background-color:#1baeae;
       }
 
       .product-desc {

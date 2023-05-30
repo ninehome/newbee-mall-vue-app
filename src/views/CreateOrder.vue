@@ -53,8 +53,9 @@ import { getCart, getByCartItemIds } from '../service/cart'
 import { getDefaultAddress, getAddressDetail } from '../service/address'
 import { createOrder, payOrder } from '../service/order'
 import { setLocal, getLocal } from '@/common/js/utils'
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import {formatNum} from '../service/number'
+import {getUserInfo} from "@/service/user";
 import { timeout } from 'q'
 export default {
   components: {
@@ -65,13 +66,17 @@ export default {
       cartList: [],
       address: {},
       showPay: false,
+      lockedFlag:0,
       orderNo: '',
       cartItemIds: [],
       formatNum:formatNum
     }
   },
-  mounted() {
-    this.init()
+  async mounted() {
+    const {data} = await getUserInfo()
+    this.lockedFlag = data.lockedFlag
+
+    await this.init()
   },
   methods: {
     async init() {
@@ -103,6 +108,41 @@ export default {
     },
 
     async createOrder() {
+      //先判断是否限制购买
+
+
+      if(this.lockedFlag ==1){
+
+
+        Dialog.alert({
+          message: 'Счет был заморожен, пожалуйста, свяжитесь с вашем наставником для принятий мер по исправлению ситуации',
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+          // if(this.tg !=''){
+          //   window.open(this.tg, '_blank') // 新窗口打开外链接
+          // }
+
+
+        }).catch(() => {
+          // on cancel
+          // if(this.tg !=''){
+          //   window.open(this.tg, '_blank') // 新窗口打开外链接
+          // }
+
+        });
+
+
+
+        return
+      }
+
+
+
+
+
       const params = {
         addressId: this.address.addressId,
         cartItemIds: this.cartList.map(item => item.cartItemId)
