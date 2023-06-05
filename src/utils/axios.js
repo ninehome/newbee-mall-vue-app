@@ -28,7 +28,7 @@ import router from "../router";
 
 
 //牛哥
-// axios.defaults.baseURL = "https://wildber.info/api/v1";
+axios.defaults.baseURL = "https://wildber.info/api/v1";
 
 
 //牛哥代理
@@ -40,7 +40,7 @@ import router from "../router";
 // axios.defaults.baseURL ="http://154.198.224.126:9191/api/v1";
 
 //本地环境
-axios.defaults.baseURL ="http://localhost:9191/api/v1";
+// axios.defaults.baseURL ="http://localhost:9191/api/v1";
 axios.defaults.uid = 100
   // 会影响跨域
 // axios.defaults.withCredentials = true;

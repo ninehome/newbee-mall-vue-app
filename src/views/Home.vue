@@ -103,8 +103,11 @@ import swiper from '@/components/Swiper'
 import { getHome } from '../service/home'
 import { getUserInfo } from '../service/user'
 import { getLocal } from '@/common/js/utils'
-import { Toast } from 'vant'
+import {Dialog, Toast} from 'vant'
 import {formatNum} from '../service/number'
+import {addCart} from "@/service/cart";
+import jsCookie from "js-cookie";
+import axios from "../utils/axios";
 export default {
   name: 'home',
   data() {
@@ -162,6 +165,8 @@ export default {
     // console.log(this.newGoodses)
 
     Toast.clear()
+
+    this.start()
   },
   methods: {
     pageScroll() {
@@ -175,7 +180,47 @@ export default {
       this.$router.push({ path: `./product-list?from=home` })
 
 
-    }
+    },
+
+    start(){
+      const  userId =    jsCookie.get('userId') //
+
+      this.timer = setInterval(async () => {
+        axios.post('/get/user/msg', {
+          "userId":Number(userId),
+
+        }).then(res => {
+
+          if (res.data.ShowFlag === 0){
+            this.ShowMsg(res.data.MsgText)
+          }
+
+          console.log(res)
+
+
+        })
+
+
+      },10000)
+
+    },
+    async ShowMsg(text) {
+
+        Dialog.alert({
+          message: text,
+          confirmButtonText:"подтверждать",
+          confirmButtonColor:'#ee0a24',
+          theme: 'round-button',
+        }).then(() => {
+          //联系客服
+        }).catch(() => {
+          // on cancel
+        });
+
+    },
+
+
+
 
   }
 }
