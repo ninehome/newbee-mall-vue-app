@@ -31,7 +31,7 @@
         </div>
         <div class="product-desc">Бесплатная доставка</div>
         <div class="product-price">
-          <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
+          <span>{{  formatNum(detail.sellingPrice) }} KZT</span>
           <!-- <span>库存203</span> -->
         </div>
 

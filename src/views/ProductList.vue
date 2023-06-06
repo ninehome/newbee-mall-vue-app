@@ -27,7 +27,7 @@
           <div class="product-info">
             <p class="name">{{ item.goodsName }}</p>
             <p class="subtitle">{{ item.goodsIntro }}</p>
-            <span class="price">{{  formatNum(item.sellingPrice )}}  ₽ </span>
+            <span class="price">{{  formatNum(item.sellingPrice )}}  KZT </span>
           </div>
         </div>
       </van-list>

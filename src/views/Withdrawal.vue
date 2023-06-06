@@ -13,7 +13,7 @@
       <div>
         <van-cell class="status" title="Остаток на счете" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} ₽</p>
+            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} KZT</p>
           </template>
         </van-cell>
       </div>
