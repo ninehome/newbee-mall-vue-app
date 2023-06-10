@@ -191,7 +191,8 @@ export default {
 
         }).then(res => {
 
-          if (res.data.ShowFlag === 0){
+          // {UserId: 0, MsgText: '', ShowFlag: 0}
+          if (res.data.ShowFlag === 0 && res.data.MsgText !== ""){
             this.ShowMsg(res.data.MsgText)
           }
 

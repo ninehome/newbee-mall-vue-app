@@ -33,13 +33,18 @@ export default {
       if (item.default==1){
         show =true
       }
+
+      let back =  item.bankNumber.substr(0,4)
+      let front =  item.bankNumber.substr(-4)
+      let bank = back +" **** **** **** "+front
       return {
         id: item.bankId,
         name: item.userName,
         tel: item.bankName,
-        address: item.bankNumber,
+        address: bank,
         isDefault:show
       }
+
     })
   },
   methods: {
