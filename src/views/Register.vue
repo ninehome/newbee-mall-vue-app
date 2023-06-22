@@ -19,7 +19,7 @@
           type="number"
           v-model="username"
           name="username"
-          label="+7"
+          label="+997"
           label-width = "50px"
           placeholder="Пожалуйста, введите номер вашего мобильного телефона"
           :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]"
