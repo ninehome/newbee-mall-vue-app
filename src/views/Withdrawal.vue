@@ -104,12 +104,7 @@ export default {
           this.bankList = data
           data.forEach((value, index) => {
 
-            let back =  value.bankNumber.substr(0,4)
-            let front =  value.bankNumber.substr(-4)
-            let bank = back +" **** **** **** "+front
-
-
-            let c = {name:value.bankName,subname:bank}
+            let c = {name:value.bankName,subname:value.bankNumber}
             this.actions[index]  = c
           })
         }

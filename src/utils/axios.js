@@ -27,7 +27,7 @@ import router from "../router";
 // axios.defaults.baseURL = "https://wildberries.la/api/v1";
 
 
-//牛哥
+// 俄罗斯
 // axios.defaults.baseURL = "https://wildber.info/api/v1";
 
 
