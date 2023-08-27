@@ -2,19 +2,19 @@
 
 <template>
   <div class="address-edit-box" >
-    <s-header :name="`${type == 'add' ? 'Добавьте новый счет для вывода средств' : 'Редактирование счета для вывода средств'}`"></s-header>
+    <s-header :name="`${type == 'add' ? 'Adicionar uma nova conta para saque' : 'Edição de uma conta para saque'}`"></s-header>
 
     <van-form @submit="onSubmit">
 
-      <van-field v-model="telphone" name="telphone" label="Название банка" placeholder="Пожалуйста, заполните название банка"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните название банка' }]" />
-      <van-field v-model="address" type="number" name="address" label="Номер банковского счета" placeholder="Пожалуйста, заполните номер банковского счета"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните номер банковского счета' }]" />
-      <van-field v-model="username" name="username" label="Имя" placeholder="Пожалуйста, введите ваше имя "
-                 :rules="[{ required: true, message: 'Пожалуйста, введите ваше имя' }]" />
+      <van-field v-model="telphone" name="telphone" label="Nome do banco" placeholder="Por favor, preencha o nome do banco"
+        :rules="[{ required: true, message: 'Por favor, preencha o nome do banco' }]" />
+      <van-field v-model="address" type="number" name="address" label="Número da conta bancária" placeholder="Por favor, preencha o número da conta bancária"
+        :rules="[{ required: true, message: 'Por favor, preencha o número da conta bancária' }]" />
+      <van-field v-model="username" name="username" label="Nome" placeholder="Digite seu nome"
+                 :rules="[{ required: true, message: 'Digite seu nome' }]" />
 
       <div style="margin: 16px; margin-top: 100px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit"  >Сохранить</van-button>
+        <van-button round block type="info" color="#1baeae" native-type="submit"  >Salvar</van-button>
       </div>
 
 <!--      <div style="margin: 16px; margin-top: 50px;">-->

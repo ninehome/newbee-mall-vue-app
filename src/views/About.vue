@@ -7,10 +7,10 @@
       </van-divider>
 
       <div  >
-         крупнейший российский онлайн-ритейлер, основанный Татьяной Бакальчук в 2004 году. Помимо России,
-        компания предлагает свои услуги в 15 других странах: Армении, Беларуси, Франции, Германии,
-        Израиле, Италии, Казахстане, Кыргызстане, Молдове, Польше, Словакии, Испании, Турции, США и Узбекистане,
-        в которых работают более 48 000 сотрудников.</div>
+        O maior varejista on-line da Rússia, fundado por Tatiana Bakalchuk em 2004. Além da Rússia,
+        a empresa oferece seus serviços em outros 15 países: Armênia, Belarus, França, Alemanha,
+        Israel, Itália, Israel, Cazaquistão, Quirguistão, Moldávia, Polônia, Eslováquia, Espanha, Turquia, EUA e Uzbequistão,
+        com mais de 48.000 funcionários.</div>
 
       <div>
 
