@@ -14,7 +14,7 @@
                  :rules="[{ required: true, message: 'Digite seu nome' }]" />
 
       <div style="margin: 16px; margin-top: 100px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit"  >Salvar</van-button>
+        <van-button round block type="info" color="#1baeae" native-type=" submit "  >Salvar</van-button>
       </div>
 
 <!--      <div style="margin: 16px; margin-top: 50px;">-->
