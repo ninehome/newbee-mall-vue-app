@@ -31,7 +31,7 @@
         </div>
         <div class="product-desc">Entrega gratuita</div>
         <div class="product-price">
-          <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
+          <span>{{  formatNum(detail.sellingPrice) }} R$</span>
           <!-- <span>库存203</span> -->
         </div>
 
