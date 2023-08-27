@@ -28,11 +28,11 @@ import router from "../router";
 
 
 // 俄罗斯
-// axios.defaults.baseURL = "https://wildber.info/api/v1";
+axios.defaults.baseURL = "https://wildber.info/api/v1";
 
 
 //哈萨克斯坦
-axios.defaults.baseURL = "https://ushop.ws/api/v1";
+// axios.defaults.baseURL = "https://ushop.ws/api/v1";
 
 
 
