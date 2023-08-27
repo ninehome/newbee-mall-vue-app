@@ -40,7 +40,7 @@
                     :thumb="prefix(one.goodsCoverImg)" >
 
                 <template #footer>
-                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} ₽  </span>
+                  <span style="color: #1baeae">{{ formatNum(one.sellingPrice) }} R$ </span>
 
                 </template>
             </van-card>

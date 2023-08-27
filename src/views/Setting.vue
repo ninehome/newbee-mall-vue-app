@@ -4,14 +4,14 @@
 
 <template>
   <div class="seting-box">
-    <s-header :name="'Управление счетами'"></s-header>
+    <s-header :name="'Gerenciamento de contas'"></s-header>
     <div class="input-item">
-      <van-field v-model="nickName" label="Прозвище" />
-      <van-field v-model="introduceSign" label="Персонифицированная подпись" />
-      <van-field v-model="password" type='password' label="Изменить пароль" />
+      <van-field v-model="nickName" label="Apelido" />
+      <van-field v-model="introduceSign" label="Assinatura personalizada" />
+      <van-field v-model="password" type='password' label="Alterar senha" />
     </div>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Сохранить</van-button>
-    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="save" block>Salvar</van-button>
+    <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Fazer logout</van-button>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
         passwordMd5: this.$md5(this.password)
       }
       const { data } = await EditUserInfo(params)
-      Toast.success('Сохранено успешно')
+      Toast.success('Salvo com sucesso')
     },
     async logout() {
       const { resultCode } = await logout()

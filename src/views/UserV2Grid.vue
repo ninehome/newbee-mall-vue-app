@@ -6,7 +6,7 @@
   <div class="user-box">
     <!-- <s-header :name="'我的'"></s-header> -->
     <div class="header_title">
-      Персональный центр
+      Centro pessoal
     </div>
 
     <div class="user-info">
@@ -14,7 +14,7 @@
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
           <span>Счета：{{ user.loginName }}</span>
-          <span>Баланс：{{ user.userMoney }} ₽</span>
+          <span>Баланс：{{ user.userMoney }} R$</span>
           <span>Класс: VIP{{ user.userLevel }}</span>
         </div>
         <img class="img-fresh" :src="require('../../static-files/user/refresh.png')"  @click="Info(true)"/>
@@ -26,18 +26,18 @@
    <!-- 九宫格布局  Получатель -->
 
     <van-grid clickable :column-num="3" class="tab-grid" >
-      <van-grid-item clickable = "true" :icon="require('../../static-files/user/telemarketer.png')" text="Интернет Сервис" to="recharge" />
-      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/money_out.png')" text="Отозвано" to="withdrawal" />
-      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/order_list.png')" text="Мои заказы" to="order" />
-      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/add_cards.png')" text="Получатель" to="bank" />
-      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/location.png')" text="Адрес получения" to="address?from=mine" />
+      <van-grid-item clickable = "true" :icon="require('../../static-files/user/telemarketer.png')" text="Serviço de Internet" to="recharge" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/money_out.png')" text="Retirado" to="withdrawal" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/order_list.png')" text="Meus pedidos" to="order" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/add_cards.png')" text="Beneficiário" to="bank" />
+      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/location.png')" text="Endereço do recibo" to="address?from=mine" />
 <!--      <van-grid-item clickable = "true"  :icon="require('../../static-files/user/about_us.png')" text="О нас" to="about" />-->
     </van-grid>
 
 
 
     <div  class="user-list">
-      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Fazer logout</van-button>
 
     </div>
 
@@ -112,7 +112,7 @@ export default {
      async Info(showLoading) {
        if (showLoading){
          Toast.loading({
-           message: 'Данные запроса...',
+           message: 'Dados de consulta...',
            forbidClick: true
          });
        }

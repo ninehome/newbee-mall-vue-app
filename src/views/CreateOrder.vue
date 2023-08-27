@@ -25,7 +25,7 @@
             <span>x{{ item.goodsCount }}</span>
           </div>
           <div class="good-btn">
-            <div class="price">{{formatNum(item.sellingPrice)}} ₽ </div>
+            <div class="price">{{formatNum(item.sellingPrice)}} R$ </div>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="pay-wrap">
       <div class="price">
         <span>Valor total do pagamento</span>
-        <span>₽{{ total }}</span>
+        <span>R${{ total }}</span>
       </div>
       <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Confirmar o pagamento</van-button>
     </div>

@@ -63,8 +63,8 @@
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="   " />
       <van-goods-action-icon icon="cart-o" :info="!count ? '' : count" @click="goTo()" text=" " />
-      <van-goods-action-button type="warning" @click="addCart" text="Добавить в корзину" />
-      <van-goods-action-button type="danger" @click="goToCart" text="Купить сейчас" />
+      <van-goods-action-button type="warning" @click="addCart" text="Adicionar à cesta" />
+      <van-goods-action-button type="danger" @click="goToCart" text="Compre agora" />
     </van-goods-action>
   </div>
 

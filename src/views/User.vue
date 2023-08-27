@@ -20,7 +20,7 @@
         <img src="//s.weituibao.com/1583583975067/user-graduate%20(1).png" />
         <div class="user-desc">
           <span>Вход в аккаунт：{{ user.loginName }}</span>
-          <span>Баланс：{{ user.userMoney }} ₽</span>
+          <span>Баланс：{{ user.userMoney }} R$</span>
           <span>Класс: VIP{{ user.userLevel }}</span>
           <!-- <span class="name">个性签名：{{ user.introduceSign }}</span> -->
         </div>
@@ -28,17 +28,17 @@
     </div>
     <ul class="user-list">
       <li @click="goTo('recharge')">
-        <span>Пополнить</span>
+        <span>Refil</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('withdrawal')">
-        <span>Снятие денежных средств</span>
+        <span>Retirada de fundos</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('bank')">
-        <span>Привязать банковскую карту</span>
+        <span>Vincular um cartão bancário</span>
         <van-icon name="arrow" />
       </li>
 
@@ -51,12 +51,12 @@
         <van-icon name="arrow" />
       </li> -->
       <li @click="goTo('address?from=mine')">
-        <span>Адрес привязки</span>
+        <span>Meus pedidos</span>
         <van-icon name="arrow" />
       </li>
 
       <li @click="goTo('about')">
-        <span>О нас</span>
+        <span>Sobre nós</span>
         <van-icon name="arrow" />
       </li>
 
@@ -70,7 +70,7 @@
 <!--        <van-icon name="arrow" />-->
 <!--      </li>-->
 
-      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Выйти из системы</van-button>
+      <van-button class="save-btn" color="#1baeae" type="primary" @click="logout" block>Fazer logout</van-button>
 
     </ul>
     <nav-bar></nav-bar>

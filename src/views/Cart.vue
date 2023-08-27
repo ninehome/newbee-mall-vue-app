@@ -23,7 +23,7 @@
                 <span>x{{ item.goodsCount }}</span>
               </div>
               <div class="good-btn">
-                <div class="price">{{    formatNum(item.sellingPrice) }}  ₽</div>
+                <div class="price">{{    formatNum(item.sellingPrice) }} R$</div>
                 <van-stepper integer :min="1" :value="item.goodsCount" :name="item.cartItemId" async-change
                   @change="onChange" />
               </div>
@@ -48,7 +48,7 @@
       <van-checkbox @click="allCheck" v-model="checkAll">Selecionar tudo</van-checkbox>
 
       <div >
-        <span style="color: #1baeae">{{ formatNum(total) }} ₽ </span>
+        <span style="color: #1baeae">{{ formatNum(total) }} R$ </span>
       </div>
 
     </van-submit-bar>

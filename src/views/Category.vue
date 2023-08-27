@@ -33,7 +33,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price">{{formatNum(item.sellingPrice) }} ₽ </div>
+            <div class="price">{{formatNum(item.sellingPrice) }} R$ </div>
           </div>
         </div>
       </div>

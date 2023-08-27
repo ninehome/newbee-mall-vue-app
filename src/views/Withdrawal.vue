@@ -8,32 +8,32 @@
  *-->
 <template>
   <div class="bank-box">
-    <s-header :name="'Снятие средств'" ></s-header>
+    <s-header :name="'Retirada de fundos'" ></s-header>
     <div class="div-content">
       <div>
-        <van-cell class="status" title="Остаток на счете" size="large"  >
+        <van-cell class="status" title="Saldo da conta" size="large"  >
           <template>
-            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} ₽</p>
+            <p style="margin:0" :style={color:bindcolor}>{{ formatNum(user_money)}} R$</p>
           </template>
         </van-cell>
       </div>
 <!--      @click="show = true"-->
       <div>
-        <van-cell is-link title="Выберите банк-получатель"   @click="itemClick" :value="select_bank" />
+        <van-cell is-link title="Selecione o banco beneficiário"   @click="itemClick" :value="select_bank" />
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect"  />
 
       </div>
 
 
       <van-form @submit="onSubmit">
-        <van-field v-model="withdrawal_money"  type="number" name="withdrawal_money" label="Сумма снятия" placeholder="Пожалуйста, заполните сумму снятия"
-                   :rules="[{ required: true, message: 'Пожалуйста, заполните сумму снятия' }]" />
+        <van-field v-model="withdrawal_money"  type="number" name="withdrawal_money" label="Valor do saque" placeholder="Por favor, preencha o valor da retirada"
+                   :rules="[{ required: true, message: 'Por favor, preencha o valor da retirada' }]" />
 <!--        <van-field v-model="telphone" name="telphone" label="手机号码" placeholder="请填写手机号码"-->
 <!--                   :rules="[{ required: true, message: '请填写手机号码' }]" />-->
 <!--        <van-field v-model="address" name="address" label="收货地址" placeholder="请填写收货地址"-->
 <!--                   :rules="[{ required: true, message: '请填写收货地址' }]" />-->
         <div style="margin:50px; margin-top: 50px;">
-          <van-button round block type="info" color="#1baeae" native-type="submit" >Отправить</van-button>
+          <van-button round block type="info" color="#1baeae" native-type="submit" >Enviar</van-button>
         </div>
 
       </van-form>
@@ -161,8 +161,8 @@ export default {
 
 
         Dialog.alert({
-          message: 'Счет был заморожен, пожалуйста, свяжитесь с вашем наставником для принятий мер по исправлению ситуации',
-          confirmButtonText:"подтверждать",
+          message: 'A conta foi congelada. Entre em contato com seu tutor para tomar as medidas corretivas',
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {
@@ -190,7 +190,7 @@ export default {
       if (this.isChoseBank === false){
         await this.initBanks()
         this.$toast({
-          message:"Пожалуйста, выберите банковский счет получателя",
+          message:"Selecione a conta bancária do destinatário",
           duration:500
         })
 
@@ -200,7 +200,7 @@ export default {
       if (Number(content.withdrawal_money) === 0){
 
         this.$toast({
-          message:"Сумма вывода не может быть равна 0 ₽",
+          message:"O valor da retirada não pode ser igual a 0 R$",
           duration:500
         })
 

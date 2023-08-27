@@ -11,23 +11,23 @@
           <i class="nbicon nbSearch"></i>
           <input type="text" class="search-title" @mouseenter="textEnter" @mouseleave="textLeave" v-model="keyword" />
         </div>
-        <span class="search-btn" @click="getSearch">Поискu</span>
+        <span class="search-btn" @click="getSearch">Pesquisa</span>
       </header>
       <van-tabs type="card" color="#1baeae" @click="changeTab">
-        <van-tab title="Новый" name=""></van-tab>
-        <van-tab title="Популярные" name="new"></van-tab>
-        <van-tab title="Цена" name="price"></van-tab>
+        <van-tab title="Novo" name=""></van-tab>
+        <van-tab title="Popular" name="new"></van-tab>
+        <van-tab title="Preço" name="price"></van-tab>
       </van-tabs>
     </div>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="Обновление данных завершено"  loading-text	="loading ...."     pulling-text="Продолжайте прокручивать вниз...">
-      <van-list v-model="loading" :finished="finished" finished-text="Не более..." @load="onLoad" @offset="300" loosing-text="loading..."  loading-text	="loading ...." >
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="product-list-refresh" loosing-text="Atualização de dados concluída"  loading-text	="loading ...."     pulling-text="Continue rolando a tela para baixo.....">
+      <van-list v-model="loading" :finished="finished" finished-text="Não mais..." @load="onLoad" @offset="300" loosing-text="loading..."  loading-text	="loading ...." >
         <!-- <p v-for="item in list" :key="item">{{ item }}</p> -->
         <div class="product-item" v-for="(item, index) in productList" :key="index" @click="productDetail(item)">
           <img :src="prefix(item.goodsCoverImg)" />
           <div class="product-info">
             <p class="name">{{ item.goodsName }}</p>
             <p class="subtitle">{{ item.goodsIntro }}</p>
-            <span class="price">{{  formatNum(item.sellingPrice )}}  ₽ </span>
+            <span class="price">{{  formatNum(item.sellingPrice )}}  R$ </span>
           </div>
         </div>
       </van-list>

@@ -35,7 +35,7 @@
     <div class="order-price">
       <div class="price-item">
         <label>Soma das mercadorias：</label>
-        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} ₽</span>
+        <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} R$</span>
       </div>
       <div class="price-item">
         <label>Método de entrega：</label>
@@ -48,7 +48,7 @@
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
-        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} ₽  </span>
+        <span style="color: #1baeae">{{ formatNum(item.sellingPrice) }} R$  </span>
       </template>
 
    </van-card>
