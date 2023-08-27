@@ -106,10 +106,10 @@ export default {
         params['addressId'] = this.addressId
       }
 
-      if (!this.validateNum(content.address.replace(" ",""))){
-        Toast('Можно вводить только 16-значные банковские счета')
-        return
-      }
+      // if (!this.validateNum(content.address.replace(" ",""))){
+      //   Toast('Somente contas bancárias com 16 dígitos podem ser inseridas')
+      //   return
+      // }
 
 
       const { resultCode } =  this.type == 'add' ?await addAddress(params) :await EditAddress(params)
