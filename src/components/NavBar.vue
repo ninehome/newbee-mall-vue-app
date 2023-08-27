@@ -13,7 +13,7 @@
     <ul class="nav-list">
       <router-link tag="li" class="nav-list-item active" to="home">
         <i class="nbicon nblvsefenkaicankaoxianban-1"></i>
-        <span>Главная</span>
+        <span>Principal</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="category">
         <i class="nbicon nbfenlei"></i>
@@ -22,17 +22,17 @@
 
       <router-link tag="li" class="nav-list-item" to="like">
         <van-icon name="like-o" />
-        <span>нравиться</span>
+        <span>como</span>
       </router-link>
 
 
       <router-link tag="li" class="nav-list-item" to="cart">
         <van-icon name="shopping-cart-o" :info="!count ? '' : count" />
-        <span>Корзина</span>
+        <span>Cesta</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="user">
         <i class="nbicon nblvsefenkaicankaoxianban-"></i>
-        <span>Мой</span>
+        <span>Minhas</span>
       </router-link>
     </ul>
   </div>

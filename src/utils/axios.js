@@ -28,11 +28,11 @@ import router from "../router";
 
 
 //牛哥
-axios.defaults.baseURL = "https://wildber.info/api/v1";
+// axios.defaults.baseURL = "https://wildber.info/api/v1";
 
 
-//牛哥代理
-// axios.defaults.baseURL = "https://ushop.ws/api/v1";
+//哈萨克斯坦
+axios.defaults.baseURL = "https://ushop.ws/api/v1";
 
 
 

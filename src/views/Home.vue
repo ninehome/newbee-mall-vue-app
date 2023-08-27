@@ -121,22 +121,22 @@ export default {
       recommends: [],
       categoryList: [
         {
-          name: 'Глобальный',  //全球购
+          name: 'global',  //全球购
           imgUrl: '//s.weituibao.com/1583585285470/qq.png',
           categoryId: 100002
         },
         {
-          name: 'Покупки',  //新蜂超市
+          name: 'Compras',  //新蜂超市
           imgUrl: '//s.weituibao.com/1583585285461/cs.png',
           categoryId: 100001
         },
         {
-          name: 'Удобный',  //新蜂生鲜
+          name: 'Conveniente',  //新蜂生鲜
           imgUrl: '//s.weituibao.com/1583585285472/sx.png',
           categoryId: 100004
         },
         {
-          name: 'Быстрый',  //新蜂到家
+          name: 'Rápido',  //新蜂到家
           imgUrl: '//s.weituibao.com/1583585285467/dj.png',
           categoryId: 100005
         }
