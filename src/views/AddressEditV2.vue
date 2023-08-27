@@ -10,22 +10,22 @@
 
 <template>
   <div class="address-edit-box">
-    <s-header :name="`${type == 'add' ? 'Добавить адрес' : 'Адрес редакции'}`"></s-header>
+    <s-header :name="`${type == 'add' ? 'Adicionar um endereço' : 'Endereço editorial'}`"></s-header>
     <!-- <van-address-edit class="edit" :area-list="areaList" :address-info="addressInfo" :show-delete="type == 'edit'"
       show-set-default show-search-result :search-result="searchResult"
       :area-columns-placeholder="['请选择', '请选择', '请选择']" @save="onSave" @delete="onDelete" /> -->
 
     <van-form @submit="onSubmit">
-      <van-field v-model="username" name="username" label="Имя" placeholder="Пожалуйста, заполните ваше имя"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните ваше имя' }]" />
-      <van-field v-model="telphone" name="telphone" label="Номер мобильного телефона" placeholder="Пожалуйста, введите номер вашего мобильного телефона"
-        :rules="[{ required: true, message: 'Пожалуйста, введите номер вашего мобильного телефона' }]" />
-      <van-field v-model="address" name="address" label="Адрес получения" placeholder="Пожалуйста, заполните адрес доставки"
-        :rules="[{ required: true, message: 'Пожалуйста, заполните адрес доставки' }]" />
+      <van-field v-model="username" name="username" label="Имя" placeholder="Por favor, preencha seu nome"
+        :rules="[{ required: true, message: 'Por favor, preencha seu nome' }]" />
+      <van-field v-model="telphone" name="telphone" label="Número de telefone celular" placeholder="Digite seu número de telefone celular"
+        :rules="[{ required: true, message: 'Digite seu número de telefone celular' }]" />
+      <van-field v-model="address" name="address" label="Endereço do recibo" placeholder="Preencha o endereço de entrega"
+        :rules="[{ required: true, message: 'Preencha o endereço de entrega' }]" />
 
 
       <div style="margin: 16px; margin-top: 50px;">
-        <van-button round block type="info" color="#1baeae" native-type="submit" >Сохранить</van-button>
+        <van-button round block type="info" color="#1baeae" native-type="submit" >Salvar</van-button>
       </div>
 
 

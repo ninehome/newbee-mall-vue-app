@@ -6,7 +6,7 @@
 <template>
   <div class="cart-box">
     <div class="header_title">
-      Корзина
+      Cesta
     </div>
 
 
@@ -40,12 +40,12 @@
               </template>
             </van-count-down>
           </div>
-          <van-tag  v-if="allFinish[index]"  type="warning" >Время покупки истекло</van-tag>
+          <van-tag  v-if="allFinish[index]"  type="warning" >O prazo para compra expirou</van-tag>
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Купить" @submit="onSubmit" >
-      <van-checkbox @click="allCheck" v-model="checkAll">Выбрать все</van-checkbox>
+    <van-submit-bar v-if="list.length > 0" class="submit-all"  button-text="Comprar" @submit="onSubmit" >
+      <van-checkbox @click="allCheck" v-model="checkAll">Selecionar tudo</van-checkbox>
 
       <div >
         <span style="color: #1baeae">{{ formatNum(total) }} ₽ </span>
@@ -56,8 +56,8 @@
 
     <div class="empty" v-if="!list.length">
       <van-icon name="smile-o" />
-      <div class="title">Корзина пуста</div>
-      <van-button class="bnt" type="primary" @click="goTo" block>Отправляйтесь за покупками</van-button>
+      <div class="title">A cesta está vazia</div>
+      <van-button class="bnt" type="primary" @click="goTo" block>Fazer compras</van-button>
     </div>
     <nav-bar></nav-bar>
   </div>
@@ -108,7 +108,7 @@ export default {
     async init() {
 
 
-      Toast.loading({ message: 'Загрузка...', forbidClick: true });
+      Toast.loading({ message: 'Carregando...', forbidClick: true });
       const { data } = await getCart({ pageNumber: 1 })
       if (data == null) {
         this.list = []
@@ -161,7 +161,7 @@ export default {
     },
     async onChange(value, detail) {
       if (this.list.filter(item => item.cartItemId === detail.name)[0].goodsCount === value) return
-      Toast.loading({ message: 'Модификации в процессе...', forbidClick: true });
+      Toast.loading({ message: 'Modificações em andamento...', forbidClick: true });
       const params = {
         cartItemId: detail.name,
         goodsCount: value
@@ -177,7 +177,7 @@ export default {
     async onSubmit() {
 
       if (this.result.length === 0) {
-        Toast.fail('Выберите продукт')
+        Toast.fail('Selecione um produto')
         return
       }
 
@@ -196,8 +196,8 @@ export default {
 
       if(this.haveTimeCount === true){
         Dialog.alert({
-          message: 'Время покупки прошло',
-          confirmButtonText:"подтверждать",
+          message: 'O momento de comprar já passou',
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {
@@ -217,7 +217,7 @@ export default {
     },
     async deleteGood(id) {
 
-      Toast.loading({ message: 'Загрузка...', forbidClick: true });
+      Toast.loading({ message: 'Carregando...', forbidClick: true });
       const { data } = await deleteCartItem(id)
       Toast.clear()
 

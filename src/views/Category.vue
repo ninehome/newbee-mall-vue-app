@@ -16,7 +16,7 @@
     <nav-bar></nav-bar>
     <div class="good">
 <!--      顶部边距-->
-      <header class="good-header">Популярные</header>
+      <header class="good-header">Popular</header>
 
 
 
@@ -39,7 +39,7 @@
       </div>
 
 <!-- 底部边距-->
-      <header class="good-header">Больше никаких предметов...</header>
+      <header class="good-header">Não há mais itens...</header>
     </div>
 
 

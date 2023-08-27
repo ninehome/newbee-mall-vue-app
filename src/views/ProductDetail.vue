@@ -3,7 +3,7 @@
 
 <template>
   <div class="product-detail">
-    <s-header :name="'Детали продукта'"></s-header>
+    <s-header :name="'Detalhes do produto'"></s-header>
     <div class="detail-content">
       <div class="detail-swipe-wrap">
         <div style="height: 50px;width: 100%" class="like-content">
@@ -29,7 +29,7 @@
         <div class="product-title">
           {{ detail.goodsName }}
         </div>
-        <div class="product-desc">Бесплатная доставка</div>
+        <div class="product-desc">Entrega gratuita</div>
         <div class="product-price">
           <span>{{  formatNum(detail.sellingPrice) }} ₽</span>
           <!-- <span>库存203</span> -->
@@ -45,15 +45,15 @@
           </van-count-down>
         </div>
 
-        <van-tag  v-if="countFinish"   type="warning" >Время покупки истекло</van-tag>
+        <van-tag  v-if="countFinish"   type="warning" >O prazo para compra expirou</van-tag>
 
       </div>
       <div class="product-intro">
         <ul>
-          <li>Обзор</li>
-          <li>Параметры</li>
-          <li>Услуги</li>
-          <li>Рекомендации</li>
+          <li>Revisão</li>
+          <li>Parâmetros</li>
+          <li>Serviços</li>
+          <li>Recomendações</li>
         </ul>
         <div class="product-content" v-html="detail.goodsDetailContent"></div>
       </div>
@@ -144,8 +144,8 @@ export default {
 
       if(this.countFinish === true){
         Dialog.alert({
-          message: 'Время покупки прошло',
-          confirmButtonText:"подтверждать",
+          message: 'O momento de comprar já passou',
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {
@@ -158,14 +158,14 @@ export default {
 
 
       const { data, resultCode } = await addCart({ goodsCount: 1, goodsId: this.detail.goodsId })
-      if (resultCode === 200) Toast.success('Добавлено успешно')
+      if (resultCode === 200) Toast.success('Adicionado com sucesso')
       await this.$store.dispatch('updateCart')
     },
     async goToCart() {
       if(this.countFinish === true){
         Dialog.alert({
-          message: 'Время покупки прошло',
-          confirmButtonText:"подтверждать",
+          message: 'O momento de comprar já passou',
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {

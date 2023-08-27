@@ -5,7 +5,7 @@
 
 <template>
   <div class="create-order">
-    <s-header :name="'Детали оплаты товара'" @callback="deleteLocal"></s-header>
+    <s-header :name="'Detalhes do pagamento das mercadorias'" @callback="deleteLocal"></s-header>
     <div class="address-wrap">
       <div class="name" @click="goTo">
         <span>{{ address.userName }} </span>
@@ -32,10 +32,10 @@
     </div>
     <div class="pay-wrap">
       <div class="price">
-        <span>Общая сумма платежа</span>
+        <span>Valor total do pagamento</span>
         <span>₽{{ total }}</span>
       </div>
-      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Подтвердить оплату</van-button>
+      <van-button @click="createOrder" class="pay-btn" color="#1baeae" type="primary" block>Confirmar o pagamento</van-button>
     </div>
     <!-- <van-popup closeable :close-on-click-overlay="false" v-model="showPay" position="bottom" :style="{ height: '30%' }"
       @close="close">
@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     async init() {
-      Toast.loading({ message: 'Данные запроса...', forbidClick: true });
+      Toast.loading({ message: 'Dados de consulta...', forbidClick: true });
       const { addressId, cartItemIds } = this.$route.query
       const _cartItemIds = cartItemIds ? JSON.parse(cartItemIds) : JSON.parse(getLocal('cartItemIds'))
       setLocal('cartItemIds', JSON.stringify(_cartItemIds))
@@ -115,8 +115,8 @@ export default {
 
 
         Dialog.alert({
-          message: 'Счет был заморожен, пожалуйста, свяжитесь с вашем наставником для принятий мер по исправлению ситуации',
-          confirmButtonText:"подтверждать",
+          message: 'A conta foi congelada. Entre em contato com seu tutor para tomar as medidas corretivas',
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {

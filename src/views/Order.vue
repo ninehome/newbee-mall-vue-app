@@ -2,7 +2,7 @@
 
 <template>
   <div class="order-box">
-    <s-header :name="'Мои заказы'" :back="'/user'"></s-header>
+    <s-header :name="'Meus pedidos'" :back="'/user'"></s-header>
     <van-tabs @change="onChangeTab"
               :color="'#1baeae'"
               :title-active-color="'#1baeae'"
@@ -10,17 +10,17 @@
 
               v-model="status">
 
-      <van-tab  title="Все" name='' ></van-tab>
-      <van-tab title="Неоплаченный" name="0"  ></van-tab>
-      <van-tab title="Не выкуплены" name="1"></van-tab>
-      <van-tab title="Выкупы" name="5"></van-tab>
+      <van-tab  title="Todos eles" name='' ></van-tab>
+      <van-tab title="Não pago" name="0"  ></van-tab>
+      <van-tab title="Não resgatado" name="1"></van-tab>
+      <van-tab title="Resgates" name="5"></van-tab>
 
       <!--      <van-tab title="待发货" name="2"></van-tab>-->
       <!--      <van-tab title="已发货" name="3"></van-tab>-->
     </van-tabs>
 
 
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text	="loading ...." loosing-text	="Обновить данные" pulling-text	="Потяните вниз и обновите данные">
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" class="order-list-refresh" loading-text	="loading ...." loosing-text	="Atualizar dados" pulling-text	="Puxe para baixo e atualize os dados">
       <van-list v-model="loading" :finished="finished" finished-text="no more data..." @load="onLoad" @offset="300"  loading-text	="loading ....">
         <div v-for="(item, index) in list" :key="index" class="order-item-box" @click="goTo(item.orderNo)">
           <div class="order-item-header">
@@ -35,7 +35,7 @@
           <van-card v-for="one in item.newBeeMallOrderItemVOS"
                     :key="one.orderId"
                     :num="one.goodsCount"
-                     desc="Бесплатная доставка"
+                     desc="Entrega gratuita"
                     :title="one.goodsName"
                     :thumb="prefix(one.goodsCoverImg)" >
 

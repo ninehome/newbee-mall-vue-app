@@ -10,22 +10,22 @@
 
 <template>
   <div class="order-detail-box">
-    <s-header :name="'Детали заказа'" @callback="close"></s-header>
+    <s-header :name="'Detalhes do pedido'" @callback="close"></s-header>
     <div class="order-status">
       <div class="status-item">
-        <label>Статус заказа：</label>
+        <label>Status do pedido：</label>
         <span style="color: #1baeae">{{ detail.orderStatusString }}</span>
       </div>
       <div class="status-item">
-        <label>Номер заказа：</label>
+        <label>Número do pedido：</label>
         <span>{{ detail.orderNo }}</span>
       </div>
       <div class="status-item">
-        <label>Время：</label>
+        <label>Tempo：</label>
         <span>{{ detail.createTime }}</span>
       </div>
       <van-button v-if="[1, 2, 3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block
-        @click="handleConfirmOrder(detail.orderNo)">Подтверждение выкупа</van-button>
+        @click="handleConfirmOrder(detail.orderNo)">Confirmação do resgate</van-button>
       <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block
         @click="showPayFn(detail.orderNo)">
         Перейти к оплате</van-button>
@@ -34,17 +34,17 @@
     </div>
     <div class="order-price">
       <div class="price-item">
-        <label>Сумма товаров：</label>
+        <label>Soma das mercadorias：</label>
         <span style="color: #1baeae"> {{ formatNum(detail.totalPrice) }} ₽</span>
       </div>
       <div class="price-item">
-        <label>Способ доставки：</label>
+        <label>Método de entrega：</label>
         <span>DHL Express</span>
       </div>
     </div>
 
     <van-card v-for="item in detail.newBeeMallOrderItemVOS" :key="item.goodsId" style="background: #fff"
-      :num="item.goodsCount"  desc="Бесплатная доставка" :title="item.goodsName"
+      :num="item.goodsCount"  desc="Entrega gratuita" :title="item.goodsName"
       :thumb="prefix(item.goodsCoverImg)" >
 
       <template #footer>
@@ -81,7 +81,7 @@ export default {
   methods: {
     async init() {
       Toast.loading({
-        message: 'Загрузка...',
+        message: 'Carregando...',
         forbidClick: true
       });
       const { id } = this.$route.query
@@ -91,11 +91,11 @@ export default {
     },
     cancelOrder(id) {
       Dialog.confirm({
-        title: 'Подтвердить отмену заказов？',
+        title: 'Confirmar o cancelamento de pedidos？？',
       }).then(() => {
         cancelOrder(id).then(res => {
           if (res.resultCode == 200) {
-            Toast('Удалено успешно')
+            Toast('Excluído com êxito')
             this.init()
           }
         })
@@ -105,9 +105,9 @@ export default {
     },
     handleConfirmOrder(id) {
       Dialog.confirm({
-        title: 'Подтверждать ли выкуп？',
-        confirmButtonText:"Подтверждение",
-        cancelButtonText:"Аннулирование"
+        title: 'Se deve confirmar o resgate？',
+        confirmButtonText:"Confirmação",
+        cancelButtonText:"Cancelamento"
 
       }).then(() => {
         confirmOrder(id).then(res => {

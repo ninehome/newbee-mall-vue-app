@@ -36,7 +36,7 @@
     <div class="empty" v-if="!list.length">
 <!--      <van-icon name="smile-o" />-->
       <van-icon name="goods-collect-o" />
-      <van-button class="bnt" type="primary" @click="goTo" block>Нажмите, чтобы выбрать продукты</van-button>
+      <van-button class="bnt" type="primary" @click="goTo" block>Clique para selecionar produtos</van-button>
     </div>
     <nav-bar></nav-bar>
   </div>
@@ -124,7 +124,7 @@ export default {
     },
     async onChange(value, detail) {
       if (this.list.filter(item => item.cartItemId == detail.name)[0].goodsCount == value) return
-      Toast.loading({ message: 'Модификации в процессе...', forbidClick: true });
+      Toast.loading({ message: 'Modificações em andamento...', forbidClick: true });
       const params = {
         cartItemId: detail.name,
         goodsCount: value
@@ -150,7 +150,7 @@ export default {
     },
     async onSubmit() {
       if (this.result.length == 0) {
-        Toast.fail('Выберите продукт')
+        Toast.fail('Selecione um produto')
         return
       }
       const params = JSON.stringify(this.result)
@@ -161,7 +161,7 @@ export default {
     },
     async deleteGood(id) {
 
-      Toast.loading({ message: 'Загрузка...', forbidClick: true });
+      Toast.loading({ message: 'Carregando...', forbidClick: true });
       const { data } = await deleteCartItem(id)
       Toast.clear()
 
