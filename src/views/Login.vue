@@ -44,7 +44,7 @@
           name="password"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
-          placeholder="Пароль"
+          placeholder="Senha"
           :rules="[{ required: true, message: 'Digite sua senha' }]"
         >
 

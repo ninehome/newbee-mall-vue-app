@@ -37,7 +37,7 @@
           label-width = "50px"
           :right-icon=" isPassword? 'eye-o' : 'closed-eye' "
           @click-right-icon="showPassword"
-          placeholder="Пароль"
+          placeholder="Senha"
           :rules="[{ required: true, message: 'Digite sua senha' }]"
           >
           <van-icon class="iconfont" class-prefix="icon" slot="left-icon" :name="require('../../static-files/user/padlock.png')"  ></van-icon>
