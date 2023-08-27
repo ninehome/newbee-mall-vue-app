@@ -19,7 +19,7 @@
           type="number"
           v-model="username"
           name="username"
-          label="+7"
+          label="+55"
           label-width = "50px"
           placeholder="Digite seu número de telefone celular"
           :rules="[{ required: true, message: 'Digite seu número de telefone celular' }]"
