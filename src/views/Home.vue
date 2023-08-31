@@ -70,7 +70,7 @@
 
           <div class="good-desc">
             <div class="title">{{ item.goodsName }}</div>
-            <div class="price"> {{formatNum(item.sellingPrice) }} R$/div>
+            <div class="price"> {{formatNum(item.sellingPrice) }} R$</div>
           </div>
         </div>
       </div>
@@ -349,7 +349,7 @@ export default {
 
       img {
         display: block;
-        width: 120px;
+        width: 50%;
         margin: 0 auto;
       }
 
