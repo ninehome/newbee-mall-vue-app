@@ -12,11 +12,11 @@
   <div class="login">
     <s-header name="Login" :back="'/home'"></s-header>
 
-<!--    <van-image-->
-<!--      class="logo"-->
-<!--      fit="contain"-->
-<!--      :src="require('../../static-files/logo.png')"-->
-<!--    />-->
+    <van-image
+      class="logo"
+      fit="contain"
+      :src="require('../../static-files/logo.png')"
+    />
 
     <div class="login-body login">
       <van-form @submit="onSubmit" >
