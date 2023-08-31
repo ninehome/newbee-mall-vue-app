@@ -12,7 +12,7 @@
   <div class="user-box">
     <!-- <s-header :name="'我的'"></s-header> -->
     <div class="header_title">
-      Персональный центр
+      Centro pessoal
     </div>
 
     <div class="user-info">
@@ -43,7 +43,7 @@
       </li>
 
       <li @click="goTo('order')">
-        <span>Мои заказы</span>
+        <span>Meus pedidos</span>
         <van-icon name="arrow" />
       </li>
       <!-- <li @click="goTo('setting')">

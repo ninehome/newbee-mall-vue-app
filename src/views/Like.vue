@@ -11,7 +11,7 @@
 <template>
   <div class="cart-box">
     <div class="header_title">
-      Моя коллекция
+      Minha coleção
     </div>
 
     <div class="good">

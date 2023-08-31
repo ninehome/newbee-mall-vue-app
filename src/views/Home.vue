@@ -154,7 +154,7 @@ export default {
     }
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: 'Данные запроса...',
+      message: 'Dados de consulta...',
       forbidClick: true
     });
     const { data } = await getHome()
@@ -209,7 +209,7 @@ export default {
 
         Dialog.alert({
           message: text,
-          confirmButtonText:"подтверждать",
+          confirmButtonText:"confirmar",
           confirmButtonColor:'#ee0a24',
           theme: 'round-button',
         }).then(() => {

@@ -72,7 +72,7 @@ export default {
 
     window.addEventListener('scroll', this.pageScroll)
     Toast.loading({
-      message: 'Данные запроса...',
+      message: 'Dados de consulta...',
       forbidClick: true
     });
 
