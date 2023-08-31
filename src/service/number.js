@@ -14,7 +14,7 @@ export function formatNum  (v){
     counter++;
     result.unshift(num[i]);
     if (!(counter % 3) && i !== 0) {
-      result.unshift(' ');
+      result.unshift('');  // 三数字 拼接
     }
   }
   return result.join('');
